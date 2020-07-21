@@ -31,10 +31,29 @@
       height: 200px;
       margin-left: 50px;
     }
-    @media(max-width: 320px){
+    @media(max-width: 790px){
+      margin-left: 15px;
+      margin-right: 15px;
+      &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
+        margin-left: 15px;
+        margin-right: 15px;
+      }
+    }
+    @media(max-width: 705px){
+      width: 40%;
+      height: 250px;
+    }
+    @media(max-width: 624px){
+      width: 45%;
+      height: 200px;
+      margin: 10px auto;
+      &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
+        margin: 10px auto;
+      }
+    }
+    @media(max-width: 460px){
       width: 80%;
-      height: 280px;
-      margin: 0 auto;
+      height: 250px;
     }
   }
 }
