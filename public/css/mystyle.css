@@ -108,10 +108,38 @@ form textarea {
   }
 }
 
-@media (max-width: 320px) {
+@media (max-width: 790px) {
+  .memoWrapp div {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+  .memoWrapp div:first-of-type, .memoWrapp div:nth-of-type(3n+1), .memoWrapp div:nth-of-type(3n) {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 705px) {
+  .memoWrapp div {
+    width: 40%;
+    height: 250px;
+  }
+}
+
+@media (max-width: 624px) {
+  .memoWrapp div {
+    width: 45%;
+    height: 200px;
+    margin: 10px auto;
+  }
+  .memoWrapp div:first-of-type, .memoWrapp div:nth-of-type(3n+1), .memoWrapp div:nth-of-type(3n) {
+    margin: 10px auto;
+  }
+}
+
+@media (max-width: 460px) {
   .memoWrapp div {
     width: 80%;
-    height: 280px;
-    margin: 0 auto;
+    height: 250px;
   }
 }
