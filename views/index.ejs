@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memo.app</title>
+
+  <link rel="stylesheet" href="/css/mystyle.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Memo.app(仮)</h1>
+      <p>ちょっとしたメモに使えます！</p>
+    </header>
+
+    <article>
+      <form action="/create" method="post">
+        <label>
+          <textarea name="memoContent" id="" cols="20" rows="10" placeholder="メモを入力してください(50文字以内)"></textarea>
+          <input type="submit" value="作成する" class="submit">
+        </label>
+      </form>
+
+      <div class="memoWrapp">
+        <% memos.forEach((memo) => { %>
+        <div>
+          <form action="/delete/<%= memo.id %>" method="post">
+            <input type="submit" class="delete_btn" value="×">
+          </form>
+
+          <pre><%= memo.content %></pre>
+
+        </div>
+        <% }); %>
+      </div>
+    </article>
+  </div>
+</body>
+</html>
