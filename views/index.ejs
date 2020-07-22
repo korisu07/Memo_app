@@ -17,24 +17,67 @@
     <article>
       <form action="/create" method="post">
         <label>
-          <textarea name="memoContent" id="" cols="20" rows="10" placeholder="メモを入力してください(50文字以内)"></textarea>
-          <input type="submit" value="作成する" class="submit">
+          <textarea name="memoContent" id="memoTextArea" cols="20" rows="10" placeholder="メモを入力してください(50文字以内)" onkeyup="textCheck()"></textarea>
+          <input type="submit" value="作成する" class="submit_btn">
         </label>
       </form>
+      <div id="countText"></div>
 
       <div class="memoWrapp">
         <% memos.forEach((memo) => { %>
         <div>
           <form action="/delete/<%= memo.id %>" method="post">
             <input type="submit" class="delete_btn" value="×">
+            <label>
+              <pre><%= memo.content %></pre>
+            </label>
           </form>
-
-          <pre><%= memo.content %></pre>
-
         </div>
         <% }); %>
       </div>
     </article>
   </div>
+
+  <script>
+
+    // 50文字以下の場合省略する
+    function omitContent(string) {
+      const MaxLength = 50; //表示する文字数
+      if (string.length > MaxLength) {
+        return string.substr(0, MaxLength) + '...';
+      } // 50文字を超えた場合、超えた分を省略する処理
+      return string;
+      // 50文字以内ならそのまま表示
+    }
+
+    // 関数を実行するための処理
+    const contents = document.querySelectorAll('pre');
+
+    // preタグを一つずつ処理
+    contents.forEach(content => {
+      content.textContent = omitContent(content.textContent);
+    });
+
+
+    // ここから下は作りかけ
+    // テキストを感知して、0文字ならページに反映させないようにしたい
+
+    const textArea = document.getElementById('memoTextArea').value;
+    const textLength = textArea.length;
+
+    if (textLength === 0) {
+      function textCheck() {
+
+        const submit = document.getElementsByClassName('submit_btn');
+
+        submit.addEventListener("action", function (e) {
+          // リンクがクリックされたときの処理
+          return false;  // 画面遷移を無効化
+        }, false);
+
+      }
+    }
+
+  </script>
 </body>
 </html>
