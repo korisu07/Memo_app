@@ -43,8 +43,11 @@ form{
     font-size: 20px;
   }
 }
+pre {
+	white-space: pre-wrap ;
+}
 
-.submit{
+.submit_btn{
   width: 200px;
   height: 50px;
   font-size: 25px;
