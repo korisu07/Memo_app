@@ -3,22 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Memo.app</title>
+  <title>メモくん - Memo.app</title>
+  <meta name="description" content="メモくんは、日常のちょっとしたことをメモするWEBアプリです。">
+  <meta name="keywords" content="メモ,メモアプリ,メモメモくん,買い物メモ,予定リスト,予定メモ">
 
   <link rel="stylesheet" href="/css/mystyle.css">
 </head>
 <body>
   <div class="container">
     <header>
-      <h1>Memo.app(仮)</h1>
+      <h1>メモくん - Memo.app</h1>
       <p>ちょっとしたメモに使えます！</p>
     </header>
 
     <article>
-      <form action="/create" method="post">
+      <form action="/create" method="post" id="create">
         <label>
-          <textarea name="memoContent" id="memoTextArea" cols="20" rows="10" placeholder="メモを入力してください(50文字以内)" onkeyup="textCheck()"></textarea>
-          <input type="submit" value="作成する" class="submit_btn">
+          <textarea name="memoContent" id="memoTextArea" cols="20" rows="10" placeholder="メモを入力してください(200文字以内)" maxlength="200" form="create"></textarea>
+          <input type="submit" value="作成する" class="submit_btn" form="create">
         </label>
       </form>
       <div id="countText"></div>
@@ -26,12 +28,15 @@
       <div class="memoWrapp">
         <% memos.forEach((memo) => { %>
         <div>
-          <form action="/delete/<%= memo.id %>" method="post">
-            <input type="submit" class="delete_btn" value="×">
-            <label>
+
+          <form action="/delete/<%= memo.id %>" method="post" id="delete">
+            <input type="submit" class="delete_btn" value="×" form="delete">
+            <label form="delete">
               <pre><%= memo.content %></pre>
+              <a href="<%= memo.id %> " class="openMemo">メモを開く</a>
             </label>
           </form>
+
         </div>
         <% }); %>
       </div>
@@ -57,26 +62,6 @@
     contents.forEach(content => {
       content.textContent = omitContent(content.textContent);
     });
-
-
-    // ここから下は作りかけ
-    // テキストを感知して、0文字ならページに反映させないようにしたい
-
-    const textArea = document.getElementById('memoTextArea').value;
-    const textLength = textArea.length;
-
-    if (textLength === 0) {
-      function textCheck() {
-
-        const submit = document.getElementsByClassName('submit_btn');
-
-        submit.addEventListener("action", function (e) {
-          // リンクがクリックされたときの処理
-          return false;  // 画面遷移を無効化
-        }, false);
-
-      }
-    }
 
   </script>
 </body>
