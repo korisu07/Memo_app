@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+@import "_mixin";
+
 .memoWrapp{
   div{
     &:first-of-type{
@@ -14,8 +16,7 @@
       }
     }
     @media(max-width: 990px){
-      width:250px;
-      height: 250px;
+      @include memoLength(250px, 250px);
       &:nth-of-type(3n){
         margin-right: 0;
       }
@@ -27,8 +28,7 @@
       margin-right: 25px;
     }
     @media(max-width: 840px){
-      width:200px;
-      height: 200px;
+      @include memoLength(200px, 200px);
       margin-left: 50px;
     }
     @media(max-width: 790px){
@@ -40,20 +40,20 @@
       }
     }
     @media(max-width: 705px){
-      width: 40%;
-      height: 250px;
+    @include memoLength(40%, 250px, 30, 12, 30px);
     }
     @media(max-width: 624px){
-      width: 45%;
-      height: 200px;
+    @include memoLength(45%, 200px, 35, 15, 30px);
       margin: 10px auto;
       &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
         margin: 10px auto;
       }
     }
     @media(max-width: 460px){
-      width: 80%;
-      height: 250px;
+    @include memoLength(80%, 250px, 16, 16, 30px);
+    }
+    @media(max-width: 374px){
+    @include memoLength(80%, 250px, 20, 14, 30px);
     }
   }
 }

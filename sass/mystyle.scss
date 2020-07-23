@@ -1,5 +1,8 @@
 // リセットCSS
 @charset "UTF-8";
+
+@import "_mixin";
+
 *{
   color: #000;
   background: #fff;
@@ -21,6 +24,7 @@
 // メインのスタイル設定
 body{
   background: #fff;
+  font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
   // 見出しの設定
   h1{
     font-weight: normal;
@@ -67,12 +71,56 @@ pre {
   flex-wrap: wrap;
   justify-content: start;
   div{
-    width: 200px;
-    height: 200px;
+    position: relative;
+    @include memoLength(200px, 200px);
     margin-right: 50px;
     margin-bottom: 50px;
     border: 1px solid #000;
-  }
+    form#delete{
+      // レイアウト調整
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      // 削除ボタン
+      .delete_btn{
+        font-family: 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        padding: 0;
+        // 右上に表示
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: 5px;
+        margin-right: 5px;
+        // 色などを指定
+        opacity: 0.7;
+        $red: rgb(255, 112, 112);
+        $brown: rgb(48, 32, 0);
+        background-color: $red;
+        color: #fff;
+        border:1.2px solid $brown;
+        font-weight: bold;
+        border-radius: 10px;
+        &:hover{
+          opacity: 1;
+        }
+}
+    }
+    a.openMemo{
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+    label{
+      height: 90%;
+    }
 }
 
 @import "_memo_size.scss";
