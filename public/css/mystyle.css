@@ -108,7 +108,7 @@ pre {
   border-radius: 10px;
 }
 
-.memoWrapp div .delete_btn:hover {
+.memoWrapp div .delete_btn:hover, .memoWrapp div .delete_btn:active {
   opacity: 1;
 }
 
