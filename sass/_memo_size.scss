@@ -3,11 +3,11 @@
 @import "_mixin";
 
 .memoWrapp{
-  div{
+  div.memo{
     &:first-of-type{
       margin-left: 25px;
     }
-    @media(min-width: 991px){
+    @media(min-width: 1008px){
       &:nth-of-type(4n){
         margin-right: 0;
       }
@@ -15,8 +15,8 @@
         margin-left: 25px;
       }
     }
-    @media(max-width: 990px){
-      @include memoLength(250px, 250px);
+    @media(max-width: 1007px){
+      @include memoSize(250px, 250px);
       &:nth-of-type(3n){
         margin-right: 0;
       }
@@ -24,14 +24,14 @@
         margin-left: 25px;
       }
     }
-    @media(max-width: 900px){
+    @media(max-width: 907px){
       margin-right: 25px;
     }
-    @media(max-width: 840px){
-      @include memoLength(200px, 200px);
+    @media(max-width: 857px){
+      @include memoSize(200px, 200px);
       margin-left: 50px;
     }
-    @media(max-width: 790px){
+    @media(max-width: 807px){
       margin-left: 15px;
       margin-right: 15px;
       &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
@@ -39,21 +39,25 @@
         margin-right: 15px;
       }
     }
-    @media(max-width: 705px){
-    @include memoLength(40%, 250px, 30, 12, 30px);
+    @media(max-width: 722px){
+    @include memoSize(40%, 250px, 30, 12, 30px);
     }
     @media(max-width: 624px){
-    @include memoLength(45%, 200px, 35, 15, 30px);
+    @include memoSize(45%, 200px, 35, 15, 30px);
+      margin: 10px;
+      &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
+        margin: 10px;
+      }
+    }
+    @media(max-width: 460px){
+    @include memoSize(80%, 250px, 16, 16, 30px);
       margin: 10px auto;
       &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
         margin: 10px auto;
       }
     }
-    @media(max-width: 460px){
-    @include memoLength(80%, 250px, 16, 16, 30px);
-    }
     @media(max-width: 374px){
-    @include memoLength(80%, 250px, 20, 14, 30px);
+    @include memoSize(80%, 250px, 20, 14, 30px);
     }
   }
 }
