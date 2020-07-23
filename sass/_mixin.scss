@@ -1,9 +1,11 @@
-@mixin memoLength($memoWidth, $memoHeight, $btnPercentW: 15, $btnPercentH: 15, $btnFont: $memoWidth * 0.15) {
+// メモ部分のレイアウト用
+@mixin memoSize($memoWidth, $memoHeight, $btnPercentW: 15, $btnPercentH: 15, $btnFont: $memoWidth * 0.15) {
   width: $memoWidth;
   height: $memoHeight;
   // 削除ボタンの大きさを指定
   .delete_btn{
   // メモの大きさに合わせて変化
+  // $btnPercentW と $btnPercentH は、それぞれの長さの何％かを表す
   width: $memoWidth * ($btnPercentW / 100);
   height: $memoHeight * ($btnPercentH / 100);
   line-height: ($memoHeight * ($btnPercentH / 100) ) - 2;
