@@ -1,3 +1,5 @@
+
+
 // 50文字以下の場合省略する
 function omitContent(string) {
   const MaxLength = 50; //表示する文字数
@@ -10,11 +12,32 @@ function omitContent(string) {
   return string;
 }
 
-// 関数を実行するための処理
+function sizeControl(string) {
+  const
+    //div.memoの高さを取得
+    memoElement = window.document.getElementById('memoBox'),
+    divMemoSize = memoElement.scrollHeight;
+
+  console.log(divMemoSize);
+
+  const preHeight = string.clientHeight;
+
+  // preタグの高さがdiv.memoを超えたら発動
+  if (preHeight - 20 > 200) {
+    return string.textContent.substr(0, 3) + '...';
+  }
+}
 
 // preタグをすべて読み込み
-const contents = document.querySelectorAll('pre');
+const contents = window.document.querySelectorAll('pre');
 
+// preタグを一つずつ処理
+contents.forEach(pre => {
+  sizeControl(pre);
+  console.log(pre.clientHeight - 20);
+});
+
+// 関数を実行するための処理
 // preタグを一つずつ処理
 contents.forEach(content => {
   content.textContent = omitContent(content.textContent);

@@ -27,7 +27,7 @@
 
       <div class="memoWrapp">
         <% memos.forEach((memo) => { %>
-        <div class="memo">
+        <div class="memo" id="memoBox">
           <form action="/delete/<%= memo.id %>" method="post" id="delete_<%= memo.id %>">
             <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.id %>">
             <label form="delete">
