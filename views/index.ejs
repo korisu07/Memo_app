@@ -41,50 +41,7 @@
     </article>
   </div>
 
-  <script>
+  <script src="js/omitContent.js"></script>
 
-    // 50文字以下の場合省略する
-    function omitContent(string) {
-      const MaxLength = 50, //表示する文字数
-
-        //div.memoの高さを取得
-        memoElement = document.getElementsByClassName('memo'),
-        divMemoSize = memoElement.scrollHeight,
-
-        //preタグの高さを取得
-        preElement = document.getElementsByTagName('pre'),
-        preSize = preElement.scrollHeight;
-
-      // 取得できていないようだ…。
-      // ここを解決しないと次に進めない
-      console.log(preSize);
-      console.log(divMemoSize);
-
-      // 50文字を超えた場合、超えた分を省略する処理
-      if (string.length > MaxLength) {
-        return string.substr(0, MaxLength) + '...';
-      }
-      //削除の処理がおかしくなるため、一旦コメントアウト
-
-      // // preタグの高さがdiv.memoを超えたら発動
-      // else if (preSize > divMemoSize) {
-      //   return string.substr(0, 3) + '...';
-      // }
-
-      // 50文字以内ならそのまま表示
-      return string;
-    }
-
-    // 関数を実行するための処理
-
-    // preタグをすべて読み込み
-    const contents = document.querySelectorAll('pre');
-
-    // preタグを一つずつ処理
-    contents.forEach(content => {
-      content.textContent = omitContent(content.textContent);
-    });
-
-  </script>
 </body>
 </html>
