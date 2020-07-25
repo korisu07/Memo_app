@@ -2,13 +2,16 @@ const MaxLength = 50; //表示する文字数
 
 // 50文字以下の場合省略する
 function omitPreContent(string) {
+
+  //div.memoの高さを取得
   const
-    //div.memoの高さを取得
     memoElement = document.getElementById('memoBox'),
     divMemoSize = memoElement.clientHeight;
 
-  const preHeight = string.clientHeight;
-  const preLength = string.textContent.length;
+  //preタグの高さと文字数を取得
+  const
+    preHeight = string.clientHeight,
+    preLength = string.textContent.length;
 
   // 50文字を超えた場合、超えた分を省略する処理
   if (string.textContent.length > MaxLength) {
@@ -17,7 +20,7 @@ function omitPreContent(string) {
 
   // 50文字以内でも、preタグの高さがdiv.memoを超えたら発動
   else if (preHeight > divMemoSize && preLength <= MaxLength) {
-    return string.textContent = string.textContent.substr(0, 3) + '...';
+    return string.textContent = string.textContent.substring(0, 5) + '...';
   }
 
   // 50文字以内でpreがはみ出していない場合は、そのまま表示
