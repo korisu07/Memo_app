@@ -1,13 +1,23 @@
+// 改行をnbspに変換する
 function brTagSearch(Element) {
-  const str = '(\n|\r\n|\r){5}';
+  const searchStr = '\n|\r\n|\r';
+  return Element.replace((new RegExp(searchStr, 'm')), '&nbsp;');
+}
 
-  return Element.replace((new RegExp(str, 'g')), 'test');
+// nbspまでの文字列を切り出し
+function brTagString(Element) {
+  const str = '&nbsp;';
+
+  const index = str.indexOf(Element, 5);
+
+  return Element.substring(0, index) + '...';
+
 }
 
 // function brTagChange(Element) {
 //   const br = '^([^<br>]+<br>){5}';
 
-//   return Element.replace((new RegExp(br)), '...');
+//   return Element.replace((new RegExp(br),m), '...');
 // }
 
 // preタグをすべて読み込み
@@ -19,6 +29,7 @@ const contents = document.querySelectorAll('pre');
 // preタグを一つずつ処理
 contents.forEach(pre => {
   pre.innerHTML = brTagSearch(pre.innerHTML);
+  pre.textContent = brTagString(pre.textContent);
 });
 
 
