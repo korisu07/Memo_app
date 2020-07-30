@@ -86,12 +86,9 @@ form textarea {
   height: 100%;
 }
 
-.memoWrapp div.memo pre {
+.memoWrapp div.memo label div {
   margin: 0;
   padding: 10px;
-  white-space: pre-wrap;
-  font-size: 15px;
-  font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
 }
 
 .memoWrapp div.memo .delete_btn {
@@ -123,10 +120,6 @@ form textarea {
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 15px;
-}
-
-.memoWrapp label {
-  height: 90%;
 }
 
 .memoWrapp div.memo:first-of-type {

@@ -31,7 +31,7 @@
           <form action="/delete/<%= memo.id %>" method="post" id="delete_<%= memo.id %>">
             <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.id %>">
             <label form="delete">
-              <pre><%= memo.content %></pre>
+              <div><%= memo.content %></div>
               <a href="<%= memo.id %>" class="openMemo">メモを開く</a>
             </label>
           </form>
@@ -41,12 +41,12 @@
         <div class="memo">
           <form id="delete_">
             <input type="submit" class="delete_btn" value="×" form="delete_">
-            <label form="delete">あ<br>い<br>う<br>え<br>お<br>か<br>き<br>く<br>け<br>こ
+            <label form="delete">
+              <div>あ<br>い<br>う<br>え<br>お<br>か<br>き<br>く<br>け<br>こ</div>
               <a href="#" class="openMemo">メモを開く</a>
             </label>
           </form>
         </div>
-
 
       </div>
     </article>

@@ -20,7 +20,7 @@ function brTagString(Element) {
 // }
 
 // preタグをすべて読み込み
-const contents = document.querySelectorAll('div.memo label');
+const contents = document.querySelectorAll('div.memo label div');
 
 // brTagSearch(contents);
 
