@@ -5,8 +5,10 @@ function omitPreContent(string) {
 
   //div.memoの高さを取得
   const
-    memoElement = document.getElementById('memoBox'),
+    memoElement = document.querySelector('div.memo'),
     divMemoSize = memoElement.clientHeight;
+
+  console.log(divMemoSize);
 
   //preタグの高さと文字数を取得
   const
@@ -30,10 +32,10 @@ function omitPreContent(string) {
 }
 
 // preタグをすべて読み込み
-const contents = document.querySelectorAll('pre');
+const contents = document.querySelectorAll('div.memo label');
 
 // 関数を実行するための処理
 // preタグを一つずつ処理
-contents.forEach(content => {
-  content.textContent = omitPreContent(content);
+contents.forEach(box => {
+  box.textContent = omitPreContent(box);
 });
