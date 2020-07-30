@@ -6,10 +6,15 @@ function brTagChange(Element) {
 
 // nbspまでの文字列を切り出し
 function brTagString(Element) {
-  const str = '&nbsp;';
 
-  const index = str.indexOf(Element);
-  return Element.substring(0, index) + '...';
+  const match = Element.innerHTML.match((new RegExp('<br>', 'g')));
+  console.log(match);
+
+  //配列の中から５つ目の<br>タグを取り出すことには成功した。
+  //その文字までの文字数をカウントさせたい。
+  const index = Element.innerHTML.indexOf(match[5]);
+  console.log(index);
+  return Element.innerHTML.substr(0, index) + '...';
 
 }
 
@@ -28,7 +33,7 @@ const contents = document.querySelectorAll('div.memo label div');
 // preタグを一つずつ処理
 contents.forEach(box => {
   box.innerHTML = brTagChange(box.innerHTML);
-  // pre.textContent = brTagString(pre.textContent);
+  box.innerHTML = brTagString(box);
 });
 
 
