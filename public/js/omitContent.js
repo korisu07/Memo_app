@@ -1,41 +1,51 @@
-const MaxLength = 50; //表示する文字数
+// 改行をnbspに変換する
+function brTagChange(Element) {
+  const searchStr = '\n|\r\n|\r';
+  return Element.replace(new RegExp(searchStr, 'g'), '<br>');
+}
 
-// 50文字以下の場合省略する
-function omitPreContent(string) {
+// nbspまでの文字列を切り出し
+function brTagString(Element) {
 
   //div.memoの高さを取得
   const
     memoElement = document.querySelector('div.memo'),
     divMemoSize = memoElement.clientHeight;
 
-  console.log(divMemoSize);
+  // console.log(divMemoSize);
 
-  //preタグの高さと文字数を取得
+  //textの高さと文字数を取得
   const
-    preHeight = string.clientHeight,
-    preLength = string.textContent.length;
+    textHeight = Element.clientHeight;
 
-  // 50文字を超えた場合、超えた分を省略する処理
-  if (string.textContent.length > MaxLength) {
-    return string.textContent.substr(0, MaxLength) + '...';
+  const match = Element.innerHTML.match(new RegExp('(<br>|[^<br>]+<br>){5}'));
+  // console.log(match);
+
+  const index = Element.innerHTML.lastIndexOf(match[1]);
+  // console.log(index);
+
+  const MaxLength = 30; //表示する文字数
+
+  // textの高さがdiv.memoを超えたら発動
+  if (textHeight >= divMemoSize - 25) {
+    return Element.innerHTML.substr(0, index) + '...';
   }
-
-  // 50文字以内でも、preタグの高さがdiv.memoを超えたら発動
-  else if (preHeight > divMemoSize && preLength <= MaxLength) {
-    return string.textContent = string.textContent.substring(0, 5) + '...';
+  else if (Element.textContent.length >= MaxLength) {
+    return Element.innerHTML.substr(0, MaxLength) + '...';
   }
-
-  // 50文字以内でpreがはみ出していない場合は、そのまま表示
   else {
-    return string.textContent;
+    return Element.innerHTML;
   }
 }
 
+
+
 // preタグをすべて読み込み
-const contents = document.querySelectorAll('div.memo label');
+const contents = document.querySelectorAll('div.memo label div');
 
 // 関数を実行するための処理
 // preタグを一つずつ処理
 contents.forEach(box => {
-  box.textContent = omitPreContent(box);
+  box.innerHTML = brTagChange(box.innerHTML);
+  box.innerHTML = brTagString(box);
 });

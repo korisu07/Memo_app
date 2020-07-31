@@ -1,28 +1,36 @@
 // 改行をnbspに変換する
 function brTagChange(Element) {
   const searchStr = '\n|\r\n|\r';
-  return Element.replace((new RegExp(searchStr, 'g')), '<br>');
+  return Element.replace(new RegExp(searchStr, 'g'), '<br>');
 }
 
 // nbspまでの文字列を切り出し
 function brTagString(Element) {
 
-  const match = Element.innerHTML.match((new RegExp('<br>', 'g')));
+  //div.memoの高さを取得
+  const
+    memoElement = document.querySelector('div.memo'),
+    divMemoSize = memoElement.clientHeight;
+
+  console.log(divMemoSize);
+
+  //preタグの高さと文字数を取得
+  const
+    textHeight = Element.clientHeight;
+
+  const match = Element.innerHTML.match(new RegExp('(<br>|[^<br>]+<br>){5}'));
   console.log(match);
 
-  //配列の中から５つ目の<br>タグを取り出すことには成功した。
-  //その文字までの文字数をカウントさせたい。
-  const index = Element.innerHTML.indexOf(match[5]);
+  const index = Element.innerHTML.lastIndexOf(match[1]);
   console.log(index);
-  return Element.innerHTML.substr(0, index) + '...';
 
+  // preタグの高さがdiv.memoを超えたら発動
+  if (textHeight >= divMemoSize - 25) {
+    return Element.innerHTML.substr(0, index) + '...';
+  } else {
+    return Element.innerHTML;
+  }
 }
-
-// function brTagChange(Element) {
-//   const br = '^([^<br>]+<br>){5}';
-
-//   return Element.replace((new RegExp(br),m), '...');
-// }
 
 // preタグをすべて読み込み
 const contents = document.querySelectorAll('div.memo label div');
@@ -35,9 +43,3 @@ contents.forEach(box => {
   box.innerHTML = brTagChange(box.innerHTML);
   box.innerHTML = brTagString(box);
 });
-
-
-//惜しい所までいけた。
-//５番目の改行を&nbsp;に変換することができるなら、突破口が見える。
-//最終的に、&nbsp;までの文字数をそれぞれカウントさせて、
-//その文字数までを切り出したい。
