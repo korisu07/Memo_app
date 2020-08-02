@@ -26,13 +26,13 @@
       <div id="countText"></div>
 
       <div class="memoWrapp">
-        <% memos.forEach((memo) => { %>
+        <% memos.filter((memo) => { %>
         <div class="memo">
           <form action="/delete/<%= memo.id %>" method="post" id="delete_<%= memo.id %>">
             <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.id %>">
             <label form="delete">
               <div><%= memo.content %></div>
-              <a href="<%= memo.id %>" class="openMemo">メモを開く</a>
+              <a href="/memo/<%= memo.id %>" class="openMemo">メモを開く</a>
             </label>
           </form>
         </div>
