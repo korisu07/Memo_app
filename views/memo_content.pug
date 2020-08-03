@@ -5,7 +5,8 @@ html
 
   body
     div.memoView
-      div.memoText= memoContent
-      div#closeMemo= 'メモを閉じる'
-    div#overlay
+      div#memoText !{JSON.stringify(memoContent, replacer)}
+      a(href="/")#closeMemo= 'メモを閉じる'
+      div#overlay
+    script(src="/js/memoContentView.js")
     script(src="/js/memoOpen.js")
