@@ -1,0 +1,58 @@
+body{
+  background:#fff;
+}
+div.memoView{
+  display: none;
+  box-sizing: border-box;
+  position: fixed;
+  //レイアウトの設定
+  width: 50%;
+  min-height: 300px;
+  margin: 1.5em auto;
+  padding: 20px;
+  border: solid 2px #dcdcdc;
+  //テキスト部分の調整
+  div.memoText{
+    position: absolute;
+    //メモを閉じるリンクのちょっと下にテキスト表示
+    top:50;
+  }
+    //リンクの設定
+  #closeMemo{
+    cursor: pointer;
+    //上に固定
+    position: absolute;
+    top: 20;
+    right: 20;
+    //表示の設定
+    display: block;
+    width: 100%;
+    text-align: right;
+    text-decoration: none;
+    //色の設定
+    color: #000;
+    opacity: 0.65;
+    &:hover, &:active{
+    opacity: 1;
+    }
+  }
+    //画面の手前に表示
+  z-index: 2;
+  .show{
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+#overlay{
+  z-index: 1;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  //大きさを指定
+  width: 100%;
+  height: 120%;
+  background-color: #000;
+  opacity: 0.75;
+}

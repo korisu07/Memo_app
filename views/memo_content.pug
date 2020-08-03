@@ -1,6 +1,11 @@
 html
   head
     meta(charset="utf-8")
+    link(rel="stylesheet" href="/css/memo_content.css")
+
   body
-    script.
-    window.memoContent !{JSON.stringify(memoContent)}
+    div.memoView
+      div.memoText= memoContent
+      div#closeMemo= 'メモを閉じる'
+    div#overlay
+    script(src="/js/memoOpen.js")
