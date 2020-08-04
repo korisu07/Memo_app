@@ -47,11 +47,11 @@ function brTagString(Element) {
 }
 
 
-// preタグをすべて読み込み
+// メモ部分をすべて読み込み
 const contents = document.querySelectorAll('div.memo label div');
 
 // 関数を実行するための処理
-// preタグを一つずつ処理
+// メモ部分を一つずつ処理
 contents.forEach(box => {
   box.innerHTML = brTagChange(box.innerHTML);
   box.innerHTML = brTagString(box);
