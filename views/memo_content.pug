@@ -6,7 +6,10 @@ html
   body
     div.memoView
       h2.title title
-      div#closeMemo= 'メモを閉じる'
+      div#btnBox
+        span#editMemo= '編集'
+        span#deleteMemo= '削除'
+      div#closeMemo= '閉じる'
       div#memoText !{JSON.stringify(memoContent)}
       div#overlay
     script(src="/js/memoContentView.js")
