@@ -12,25 +12,62 @@ div.memoView{
   padding:20px;
   border: solid 2px #dcdcdc;
   .title{
-    width: 80%;
+    width: 55%;
     float: left;
     margin: 0;
-    padding-bottom: 20px;
+    padding: 5px 0 15px 0;
   }
-  //リンクの設定
-  #closeMemo{
-    cursor: pointer;
-    //表示の設定
-    float: right;
+  #closeMemo,#btnBox{
     width: 20%;
-    text-align: right;
+  }
+  //spanのボタンをdisplay:blockに
+  span{
+    display: block;
+  }
+  //リンクボタンの基本設定
+  #closeMemo,#editMemo,#deleteMemo{
+    cursor: pointer;
+    //デザインの設定
+    border: solid #8d8d8d 1px;
+    border-radius: 10px;
+    line-height: 20px;
+    margin-right: 10px;
+    text-align: center;
     text-decoration: none;
     //色の設定
     color: #000;
-    opacity: 0.65;
+    opacity: 0.55;
     &:hover, &:active{
-    opacity: 1;
+    background: #dcdcdc;
   }
+} //.memoView ここまで
+//ボタンの色を変更
+#editMemo{
+  $green:#006b00;
+  border-color: $green;
+  background: lighten($color: $green, $amount: 70);
+  &:hover, &:active{
+    background: mix($green, #36cf5d);
+    color: lighten($color: $green, $amount: 70);
+    opacity: 0.45;
+  }
+}
+#deleteMemo{
+  $red: #ff0000;
+  border-color: $red;
+  background: lighten($color: $red, $amount: 45);
+  &:hover, &:active{
+    background: mix($red, #dcdcdc);
+    color: lighten($color: $red, $amount: 68);
+    opacity: 0.45;
+  }
+}
+#closeMemo{
+  margin: 10px;
+}
+//まわりこみの設定
+#btnBox,#closeMemo{
+  float: left;
 }
 //テキスト部分の調整
 div#memoText{

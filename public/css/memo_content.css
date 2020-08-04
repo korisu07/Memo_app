@@ -14,24 +14,64 @@ div.memoView {
 }
 
 div.memoView .title {
-  width: 80%;
+  width: 55%;
   float: left;
   margin: 0;
-  padding-bottom: 20px;
+  padding: 5px 0 15px 0;
+}
+
+div.memoView #closeMemo, div.memoView #btnBox {
+  width: 20%;
+}
+
+div.memoView span {
+  display: block;
+}
+
+div.memoView #closeMemo, div.memoView #editMemo, div.memoView #deleteMemo {
+  cursor: pointer;
+  border: solid #8d8d8d 1px;
+  border-radius: 10px;
+  line-height: 20px;
+  margin-right: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #000;
+  opacity: 0.55;
+}
+
+div.memoView #closeMemo:hover, div.memoView #closeMemo:active, div.memoView #editMemo:hover, div.memoView #editMemo:active, div.memoView #deleteMemo:hover, div.memoView #deleteMemo:active {
+  background: #dcdcdc;
+}
+
+div.memoView #editMemo {
+  border-color: #006b00;
+  background: #d1ffd1;
+}
+
+div.memoView #editMemo:hover, div.memoView #editMemo:active {
+  background: #1b9d2f;
+  color: #d1ffd1;
+  opacity: 0.45;
+}
+
+div.memoView #deleteMemo {
+  border-color: #ff0000;
+  background: #ffe6e6;
+}
+
+div.memoView #deleteMemo:hover, div.memoView #deleteMemo:active {
+  background: #ee6e6e;
+  color: white;
+  opacity: 0.45;
 }
 
 div.memoView #closeMemo {
-  cursor: pointer;
-  float: right;
-  width: 20%;
-  text-align: right;
-  text-decoration: none;
-  color: #000;
-  opacity: 0.65;
+  margin: 10px;
 }
 
-div.memoView #closeMemo:hover, div.memoView #closeMemo:active {
-  opacity: 1;
+div.memoView #btnBox, div.memoView #closeMemo {
+  float: left;
 }
 
 div.memoView div#memoText {
