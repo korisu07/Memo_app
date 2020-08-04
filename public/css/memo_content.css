@@ -6,26 +6,24 @@ div.memoView {
   box-sizing: border-box;
   position: fixed;
   width: 50%;
-  min-height: 300px;
-  margin: 1.5em auto;
+  height: 80vh;
+  margin: 8vh 0 12vh 0;
   padding: 20px;
   border: solid 2px #dcdcdc;
   z-index: 2;
 }
 
-div.memoView div#memoText {
-  position: absolute;
-  top: 50;
-  padding: 10;
+div.memoView .title {
+  width: 80%;
+  float: left;
+  margin: 0;
+  padding-bottom: 20px;
 }
 
 div.memoView #closeMemo {
   cursor: pointer;
-  position: absolute;
-  top: 20;
-  right: 20;
-  display: block;
-  width: 100%;
+  float: right;
+  width: 20%;
   text-align: right;
   text-decoration: none;
   color: #000;
@@ -34,6 +32,11 @@ div.memoView #closeMemo {
 
 div.memoView #closeMemo:hover, div.memoView #closeMemo:active {
   opacity: 1;
+}
+
+div.memoView div#memoText {
+  clear: both;
+  width: 80%;
 }
 
 div.memoView .show {
