@@ -1,4 +1,5 @@
-// 改行をnbspに変換する
+//これはテスト用のjsファイルです。
+// 改行を変換する
 function brTagChange(Element) {
   const searchStr = '\n|\r\n|\r';
   return Element.replace(new RegExp(searchStr, 'g'), '<br>');
