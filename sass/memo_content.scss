@@ -7,27 +7,22 @@ div.memoView{
   position: fixed;
   //レイアウトの設定
   width: 50%;
-  min-height: 300px;
-  margin: 1.5em auto;
-  padding: 20px;
+  height: 80vh;
+  margin: 8vh 0 12vh 0;
+  padding:20px;
   border: solid 2px #dcdcdc;
-  //テキスト部分の調整
-  div#memoText{
-    position: absolute;
-    //メモを閉じるリンクのちょっと下にテキスト表示
-    top:50;
-    padding: 10;
+  .title{
+    width: 80%;
+    float: left;
+    margin: 0;
+    padding-bottom: 20px;
   }
-    //リンクの設定
+  //リンクの設定
   #closeMemo{
     cursor: pointer;
-    //上に固定
-    position: absolute;
-    top: 20;
-    right: 20;
     //表示の設定
-    display: block;
-    width: 100%;
+    float: right;
+    width: 20%;
     text-align: right;
     text-decoration: none;
     //色の設定
@@ -35,8 +30,13 @@ div.memoView{
     opacity: 0.65;
     &:hover, &:active{
     opacity: 1;
-    }
   }
+}
+//テキスト部分の調整
+div#memoText{
+  clear: both;
+  width: 80%;
+}
     //画面の手前に表示
   z-index: 2;
   .show{
