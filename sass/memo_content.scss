@@ -45,20 +45,18 @@ div.memoView{
 #editMemo{
   $green:#006b00;
   border-color: $green;
-  background: lighten($color: $green, $amount: 70);
+  background: rgba(lighten($color: $green, $amount: 70),0.5);
   &:hover, &:active{
-    background: mix($green, #36cf5d);
-    color: lighten($color: $green, $amount: 70);
+    background: rgba(mix($green, #36cf5d),0.45);
     opacity: 0.45;
   }
 }
 #deleteMemo{
   $red: #ff0000;
   border-color: $red;
-  background: lighten($color: $red, $amount: 45);
+  background: rgba(lighten($color: $red, $amount: 45),0.5);
   &:hover, &:active{
-    background: mix($red, #dcdcdc);
-    color: lighten($color: $red, $amount: 68);
+    background: rgba(mix($red, #dcdcdc),0.45);
     opacity: 0.45;
   }
 }
