@@ -111,16 +111,21 @@ form{
       }
     }
   } // memo のレイアウトここまで
-    // 「メモを開く」リンクの
-    a.openMemo{
-      // 位置
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      margin-right: 10px;
-      margin-bottom: 10px;
-      font-size: 15px;
+  // 「メモを開く」リンクの設定
+  .openMemo{
+    cursor: pointer;
+    // 位置
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    opacity: 0.65;
+    &:hover, &:active{
+      opacity: 1;
     }
+  }
 }
 
 @import "_memo_size.scss";

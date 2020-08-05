@@ -113,13 +113,19 @@ form textarea {
   opacity: 1;
 }
 
-.memoWrapp a.openMemo {
+.memoWrapp .openMemo {
+  cursor: pointer;
   position: absolute;
   right: 0;
   bottom: 0;
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 15px;
+  opacity: 0.65;
+}
+
+.memoWrapp .openMemo:hover, .memoWrapp .openMemo:active {
+  opacity: 1;
 }
 
 .memoWrapp div.memo:first-of-type {
