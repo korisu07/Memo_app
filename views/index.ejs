@@ -8,6 +8,7 @@
   <meta name="keywords" content="メモ,メモアプリ,メモメモくん,買い物メモ,予定リスト,予定メモ">
 
   <link rel="stylesheet" href="/css/mystyle.css">
+  <link rel="stylesheet" href="/css/memo_content.css">
 </head>
 <body>
   <div class="container">
@@ -32,13 +33,20 @@
             <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.id %>">
             <label form="delete">
               <div><%= memo.content %></div>
-              <span id="/memo/<%= memo.id %>" class="openMemo">メモを開く</span>
             </label>
+          </form>
+          <form action="/open/<%= memo.id %>" method="post">
+            <button class="openMemo">メモを開く</button>
           </form>
         </div>
         <% }); %>
 
+        <div id="overLay"></div>
+
+        <span id="memo_openTest" class="openMemo">メモを開く</span>
+
         <script src="js/omitContent.js"></script>
+        <script src="js/clickOpenAction.js"></script>
 
 </body>
 </html>

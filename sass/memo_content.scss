@@ -4,8 +4,8 @@ body{
 *{
   box-sizing: border-box;
 }
-div.memoView{
-  z-index: 999;
+div#memoView{
+  z-index: 99;
   background: #fff;
   // display: none;
   position: fixed;
@@ -83,9 +83,9 @@ div#memoText{
   }
 }
 
-#overlay{
-  z-index: -1;
-  // display: none;
+#overLay{
+  z-index: 2;
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
