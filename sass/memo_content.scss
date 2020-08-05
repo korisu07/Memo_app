@@ -1,12 +1,14 @@
 body{
   background:#fff;
 }
+*{
+  box-sizing: border-box;
+}
 div.memoView{
   // display: none;
-  box-sizing: border-box;
   position: fixed;
   //レイアウトの設定
-  width: 50%;
+  width: 70%;
   height: 80vh;
   margin: 8vh 0 12vh 0;
   padding:20px;
@@ -17,20 +19,22 @@ div.memoView{
     margin: 0;
     padding: 5px 0 15px 0;
   }
-  #closeMemo,#btnBox{
-    width: 20%;
-  }
-  //spanのボタンをdisplay:blockに
-  span{
-    display: block;
+  #btnBox{
+    //まわりこみの設定
+    float: right;
+    width: 45%;
+    margin-top: 10px;
   }
   //リンクボタンの基本設定
   #closeMemo,#editMemo,#deleteMemo{
+    display: inline-block;
+    width: 28%;
     cursor: pointer;
     //デザインの設定
     border: solid #8d8d8d 1px;
     border-radius: 10px;
-    line-height: 20px;
+    padding: 10px;
+    line-height: 10px;
     margin-right: 10px;
     text-align: center;
     text-decoration: none;
@@ -61,16 +65,13 @@ div.memoView{
   }
 }
 #closeMemo{
-  margin: 10px;
-}
-//まわりこみの設定
-#btnBox,#closeMemo{
-  float: left;
+  margin-right: 0;
+  margin-left: 10px;
 }
 //テキスト部分の調整
 div#memoText{
   clear: both;
-  width: 80%;
+  width: 100%;
 }
     //画面の手前に表示
   z-index: 2;

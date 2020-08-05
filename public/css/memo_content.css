@@ -2,10 +2,13 @@ body {
   background: #fff;
 }
 
-div.memoView {
+* {
   box-sizing: border-box;
+}
+
+div.memoView {
   position: fixed;
-  width: 50%;
+  width: 70%;
   height: 80vh;
   margin: 8vh 0 12vh 0;
   padding: 20px;
@@ -20,19 +23,20 @@ div.memoView .title {
   padding: 5px 0 15px 0;
 }
 
-div.memoView #closeMemo, div.memoView #btnBox {
-  width: 20%;
-}
-
-div.memoView span {
-  display: block;
+div.memoView #btnBox {
+  float: right;
+  width: 45%;
+  margin-top: 10px;
 }
 
 div.memoView #closeMemo, div.memoView #editMemo, div.memoView #deleteMemo {
+  display: inline-block;
+  width: 28%;
   cursor: pointer;
   border: solid #8d8d8d 1px;
   border-radius: 10px;
-  line-height: 20px;
+  padding: 10px;
+  line-height: 10px;
   margin-right: 10px;
   text-align: center;
   text-decoration: none;
@@ -65,16 +69,13 @@ div.memoView #deleteMemo:hover, div.memoView #deleteMemo:active {
 }
 
 div.memoView #closeMemo {
-  margin: 10px;
-}
-
-div.memoView #btnBox, div.memoView #closeMemo {
-  float: left;
+  margin-right: 0;
+  margin-left: 10px;
 }
 
 div.memoView div#memoText {
   clear: both;
-  width: 80%;
+  width: 100%;
 }
 
 div.memoView .show {
