@@ -7,6 +7,8 @@ body {
 }
 
 div.memoView {
+  z-index: 999;
+  background: #fff;
   position: fixed;
   width: 70%;
   height: 80vh;
@@ -84,8 +86,7 @@ div.memoView .show {
 }
 
 #overlay {
-  z-index: 1;
-  display: none;
+  z-index: -1;
   position: fixed;
   top: 0;
   left: 0;
