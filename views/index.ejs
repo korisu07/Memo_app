@@ -35,14 +35,14 @@
               <div><%= memo.content %></div>
             </label>
           </form>
-          <a href="/open/<%= memo.id %> " class="openMemo">メモを開く</a>
+          <form class="open" method="post" action="/open/<%= memo.id %>">
+            <button class="openMemo">メモを開く</button>
+          </form>
         </div>
         <% }); %>
       </div>
 
-      <div id="overLay">
-        <%- include('memo_content',{ memoContent: 'test' }) %>
-      </div>
+      <%- include('memo_content',{ memoContent: 'test' }) %>
 
       <span id="memo_openTest" class="openMemo">メモを開く</span>
 

@@ -1,28 +1,16 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/memo_content.css">
-</head>
+<div id="overLay"></div>
+<div id="memoView">
+  <h2>タイトル</h2>
 
-<body>
-  <div id="overLay">
-  </div>
-  <div id="memoView">
-    <h2>タイトル</h2>
+  <div id="btnBox">
+    <div id="editMemo">編集</div>
+    <div id="deleteMemo">削除</div>
+    <div id="closeMemo">閉じる</div>
+  </div><!-- /#btnBox -->
 
-    <div id="btnBox">
-      <div id="editMemo">編集</div>
-      <div id="deleteMemo">削除</div>
-      <div id="closeMemo">閉じる</div>
-    </div><!-- /#btnBox -->
+  <div id="memoText">
+    <%= JSON.stringify(memoContent) %>
+  </div><!-- /#memoText -->
+</div><!-- /div#memoView -->
 
-    <div id="memoText">
-      <%= JSON.stringify(memoContent) %>
-    </div><!-- /#memoText -->
-  </div><!-- /div#memoView -->
-
-  <script src="/js/memoContentView.js"></script>
-
-</body>
+<script src="/js/memoContentView.js"></script>
