@@ -4,12 +4,12 @@ html
     link(rel="stylesheet" href="/css/memo_content.css")
 
   body
-    //- div#overLay
-    div#memoView
+    div#overLay(style="display: block;")
+    div#memoView(style="display: block;")
       h2.title タイトル
       div#btnBox
         div#editMemo= '編集'
         div#deleteMemo= '削除'
-        div#closeMemo= '閉じる'
+        a#closeMemo(href="/")= '戻る'
       div#memoText !{JSON.stringify(memoContent)}
     script(src="/js/memoContentView.js")
