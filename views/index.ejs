@@ -35,18 +35,19 @@
               <div><%= memo.content %></div>
             </label>
           </form>
-          <form action="/open/<%= memo.id %>" method="post">
-            <button class="openMemo">メモを開く</button>
-          </form>
+          <a href="/open/<%= memo.id %> " class="openMemo">メモを開く</a>
         </div>
         <% }); %>
+      </div>
 
-        <div id="overLay"></div>
+      <div id="overLay">
+        <%- include('memo_content',{ memoContent: 'test' }) %>
+      </div>
 
-        <span id="memo_openTest" class="openMemo">メモを開く</span>
+      <span id="memo_openTest" class="openMemo">メモを開く</span>
 
-        <script src="js/omitContent.js"></script>
-        <script src="js/clickOpenAction.js"></script>
+      <script src="js/omitContent.js"></script>
+      <script src="js/clickOpenAction.js"></script>
 
 </body>
 </html>
