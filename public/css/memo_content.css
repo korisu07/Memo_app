@@ -7,13 +7,16 @@ body {
 }
 
 div#memoView {
+  display: none;
   z-index: 99;
   background: #fff;
   position: fixed;
+  top: 0;
   cursor: default;
-  width: 70%;
+  box-sizing: border-box;
+  width: 730px;
   height: 80vh;
-  margin: 8vh 0 12vh 0;
+  margin: 10vh 125px 12vh 125px;
   padding: 20px;
   border: solid 2px #dcdcdc;
   z-index: 50;
@@ -84,6 +87,32 @@ div#memoView div#memoText {
 div#memoView .show {
   opacity: 1;
   visibility: visible;
+}
+
+@media (max-width: 1000px) {
+  div#memoView {
+    width: 80%;
+    margin: 10vh 10% 12vh 10%;
+  }
+}
+
+@media (max-width: 768px) {
+  div#memoView {
+    left: 0;
+    width: 100%;
+    margin: 10vh 0 12vh 0;
+  }
+  div#memoView #title {
+    width: 100%;
+    clear: left;
+  }
+  div#memoView #btnBox {
+    width: 100%;
+    clear: right;
+  }
+  div#memoView #memoText {
+    padding-top: 25px;
+  }
 }
 
 #memo_openTest {
