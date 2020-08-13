@@ -7,6 +7,8 @@
 </head>
 
 <body>
+  <div id="overLay">
+  </div>
   <div id="memoView">
     <h2>タイトル</h2>
 
@@ -17,10 +19,10 @@
     </div><!-- /#btnBox -->
 
     <div id="memoText">
-      <%= memoContent %>
+      <%= JSON.stringify(memoContent) %>
     </div><!-- /#memoText -->
   </div><!-- /div#memoView -->
 
-  <!-- <script src="/js/memoContentView.js"></script> -->
+  <script src="/js/memoContentView.js"></script>
 
 </body>
