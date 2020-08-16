@@ -16,7 +16,8 @@
   opacity: 1;
 }
 
-* ul li, * ol li {
+* ul li,
+* ol li {
   list-style-type: none;
 }
 

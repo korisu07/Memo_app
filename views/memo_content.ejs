@@ -9,8 +9,8 @@
   </div><!-- /#btnBox -->
 
   <div id="memoText">
-    <%= JSON.stringify(memoContent) %>
+    <% memos.filter((memo) => { %>
+    <%= memo.content %>
+    <% }); %>
   </div><!-- /#memoText -->
 </div><!-- /div#memoView -->
-
-<script src="/js/memoContentView.js"></script>
