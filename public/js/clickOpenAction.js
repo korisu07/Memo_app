@@ -1,3 +1,5 @@
+'use strict';
+
 const
   eventButton = document.getElementById('memo_openTest'),
   overLay = document.getElementById('overLay'),

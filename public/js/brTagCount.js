@@ -1,3 +1,5 @@
+'use strict';
+
 //これはテスト用のjsファイルです。
 // 改行を変換する
 function brTagChange(Element) {

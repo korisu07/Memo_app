@@ -4,6 +4,8 @@
 //メモの内容がJSON形式で表示されています。
 //本当は直接変換したかったけど無理でした
 
+'use strict';
+
 //メモのdivを読み込み
 const
   loadMemoContent = document.querySelector('div#memoText');
