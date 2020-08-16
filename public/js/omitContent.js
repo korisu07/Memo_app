@@ -1,3 +1,5 @@
+'use strict';
+
 // 改行をbrタグに変換する
 function brTagChange(Element) {
   const searchStr = '\n|\r\n|\r',
