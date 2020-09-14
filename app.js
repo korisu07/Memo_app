@@ -12,8 +12,8 @@ app.use(cookieParser());
 // トップページのルーティング
 app.get('/', (req, res) => {
   const memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-    res.render('index.ejs', {memos: memoCookies});
-    console.log(req.cookies);
+    res.render('index.ejs', {memos: memoCookies, memocontent: memoCookies});
+    console.log(memoCookies);
     // console.log(Array.isArray(memoCookies));
 });
 
