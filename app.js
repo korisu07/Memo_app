@@ -9,12 +9,12 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
 
-
 // トップページのルーティング
 app.get('/', (req, res) => {
-  res.cookie('memo[0]', 'first');
-    res.render('index.ejs', {memos: "test"});
+  const memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
+    res.render('index.ejs', {memos: memoCookies});
     console.log(req.cookies);
+    // console.log(Array.isArray(memoCookies));
 });
 
 // メモ追加のルーティング
@@ -30,26 +30,25 @@ app.post('/create', (req, res) => {
   }
   //内容が入力されている場合
   const content = req.body.memoContent;
-    let i = 1;
+    let i = Object.keys(req.cookies).length - 1;
     i += 1;
-      res.cookie(`memo[${i}]`, content);
+      res.cookie(i, content, { expires: new Date(Date.now() + 900000)});
       res.redirect('/');
 });
 
-// app.post('/delete/:id', (req, res) => {
-//     (error, results) => {
-//       res.redirect('/');
-//     }
-// });
+//Cookieの削除処理
+app.post('/delete/:id', (req, res) => {
+  let id = req.params.id;
+  res.clearCookie(id);
+  res.redirect('/');
+});
 
-// app.post('/open/:id', (req, res) => {
-//     (error, results) => {
-//       console.log(results);
-//       app.locals.memoContent = results;
-//       res.render('memo_content');
-//     }
-// });
-
+//メモを表示する処理
+app.post('/open/:id', (req, res) => {
+  let e = req.params.id;
+  console.log(req.cookies[e]);
+  res.render('memo_content.ejs', { memocontent: req.cookies[e] });
+});
 
 // Localhost:3000に接続
 app.listen(3000, function () {
