@@ -29,20 +29,18 @@
       <div class="memoWrapp">
         <% memos.filter((memo) => { %>
         <div class="memo">
-          <form action="/delete/<%= memo.id %>" method="post" id="delete_<%= memo.id %>">
-            <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.id %>">
+          <form action="/delete/<%= memo.memo_id %>" method="post" id="delete_<%= memo.memo_id %>">
+            <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.memo_id %>">
             <label form="delete">
               <div><%= memo.content %></div>
             </label>
           </form>
-          <form action="/open/<%= memo.id %>" method="post">
-            <button class="openMemo">メモを開く</button>
+          <form action="/open/<%= memo.memo_id %>" method="post">
+            <button class="openMemo" name="open">メモを開く</button>
           </form>
         </div>
         <% }); %>
       </div>
-
-      <%- include('memo_content') %>
 
       <span id="memo_openTest" class="openMemo">メモを開く（動作確認用）</span>
 
