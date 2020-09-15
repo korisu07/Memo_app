@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 
 const app = express();
 
+
 // publicフォルダからCSSや画像ファイルを読み込む設定
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: false }));
@@ -11,14 +12,22 @@ app.use(cookieParser());
 
 // トップページのルーティング
 app.get('/', (req, res) => {
-  const memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-    res.render('index.ejs', {memos: memoCookies, memocontent: memoCookies});
-    console.log(memoCookies);
-    // console.log(Array.isArray(memoCookies));
+  const 
+    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
+    
+  res.render(
+    'index.ejs', 
+    {memos: memoCookies}
+    );
+
+  console.log(req.cookies);
+  console.log(memoCookies);
+  // console.log(Array.isArray(memoCookies));
 });
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
+  
   // メモの内容が未入力の場合
   if (req.body.memoContent == '') {
     res.send('<p>メモの内容を入力してください。<br><a href="/">戻る</a></p>');
@@ -45,9 +54,13 @@ app.post('/delete/:id', (req, res) => {
 
 //メモを表示する処理
 app.post('/open/:id', (req, res) => {
+  //クリックしたボタンの番号を取得
   let e = req.params.id;
-  console.log(req.cookies[e]);
-  res.render('memo_content.ejs', { memocontent: req.cookies[e] });
+
+  const 
+    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
+    
+  res.render('memo_content.ejs', { memoContent: memoCookies[e] });
 });
 
 // Localhost:3000に接続
