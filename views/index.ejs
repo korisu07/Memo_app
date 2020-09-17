@@ -35,14 +35,14 @@
               <div><%= memo.content %></div>
             </label>
           </form>
-          <form action="/open/<%= memo.memo_id %>" method="post">
-            <button class="openMemo" name="open">メモを開く</button>
-          </form>
+          <div id="open_<%= memo.memo_id %>" class="openMemo">
+            メモを開く
+          </div>
         </div>
         <% }); %>
       </div>
 
-      <%- include('memo_content', {memoContent: memos}) %>
+      <%- include('memo_content') %>
 
       <div id="memo_openTest" class="openMemo">メモを開く（動作確認用）</div>
 
