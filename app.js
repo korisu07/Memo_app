@@ -12,9 +12,16 @@ app.use(cookieParser());
 
 // トップページのルーティング
 app.get('/', (req, res) => {
+
+  //メモの内容をマップ付きで配列化します。
   const 
     memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-    
+  
+    if(memoCookies.length === 0){
+      console.log('メモがないので、初期のメモをセットします');
+      res.cookie('first', 'メモを登録してください。', { expires: new Date(Date.now() + 900000)});
+    }
+
   res.render(
     'index.ejs', 
     {memos: memoCookies}
@@ -27,7 +34,11 @@ app.get('/', (req, res) => {
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
-  
+
+  //メモの内容をマップ付きで配列化します。
+  const 
+    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
+
   // メモの内容が未入力の場合
   if (req.body.memoContent == '') {
     res.send('<p>メモの内容を入力してください。<br><a href="/">戻る</a></p>');
@@ -38,10 +49,29 @@ app.post('/create', (req, res) => {
     return false;
   }
   //内容が入力されている場合
-  const content = req.body.memoContent;
-    let i = Object.keys(req.cookies).length - 1;
+
+  //メモの内容をCookieに登録するための関数
+  function plusCookies(number){
+    //入力されたメモの内容を取得
+    const content = req.body.memoContent;
+
+    //メモの数を取得
+    let i = Object.keys(req.cookies).length - number;
     i += 1;
       res.cookie(i, content, { expires: new Date(Date.now() + 900000)});
+  }
+
+    //内容が通った場合、初期のCookieが残っていれば削除します。
+  if(memoCookies[0].memo_id === 'first'){
+    console.log('firstを削除します。');
+    res.clearCookie('first');
+    plusCookies(2);
+  }//初期のCookieがない場合は、そのままメモを登録します。
+  else{
+    console.log('firstはありません');
+    plusCookies(1);
+  }
+
       res.redirect('/');
 });
 
@@ -57,6 +87,7 @@ app.post('/open/:id', (req, res) => {
   //クリックしたボタンの番号を取得
   let e = req.params.id;
 
+  //メモの内容をマップ付きで配列化します。
   const 
     memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
     
