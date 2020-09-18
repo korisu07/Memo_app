@@ -32,7 +32,7 @@
           <form action="/delete/<%= memo.memo_id %>" method="post" id="delete_<%= memo.memo_id %>">
             <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.memo_id %>">
             <label form="delete">
-              <div><%= memo.content %></div>
+              <div id="content_<%= memo.memo_id %>"><%= memo.content %></div>
             </label>
           </form>
           <div id="open_<%= memo.memo_id %>" class="openMemo">
@@ -43,8 +43,6 @@
       </div>
 
       <%- include('memo_content') %>
-
-      <div id="memo_openTest" class="openMemo">メモを開く（動作確認用）</div>
 
       <script src="js/firstSetting.js"></script>
 
