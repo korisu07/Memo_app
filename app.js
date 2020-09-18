@@ -16,11 +16,6 @@ app.get('/', (req, res) => {
   //メモの内容をマップ付きで配列化します。
   const 
     memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-  
-    if(memoCookies.length === 0){
-      console.log('メモがないので、初期のメモをセットします');
-      res.cookie('first', 'メモを登録してください。', { expires: new Date(Date.now() + 900000)});
-    }
 
   res.render(
     'index.ejs', 
@@ -61,16 +56,7 @@ app.post('/create', (req, res) => {
       res.cookie(i, content, { expires: new Date(Date.now() + 900000)});
   }
 
-    //内容が通った場合、初期のCookieが残っていれば削除します。
-  if(memoCookies[0].memo_id === 'first'){
-    console.log('firstを削除します。');
-    res.clearCookie('first');
-    plusCookies(2);
-  }//初期のCookieがない場合は、そのままメモを登録します。
-  else{
-    console.log('firstはありません');
-    plusCookies(1);
-  }
+  plusCookies(1);
 
       res.redirect('/');
 });
