@@ -49,7 +49,8 @@ app.post('/create', (req, res) => {
     //メモの数を取得
     let i = Object.keys(req.cookies).length - number;
     i += 1;
-      res.cookie(i, content, { expires: new Date(Date.now() + 900000)});
+    //メモをcookieに登録
+    res.cookie(i, content, { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
   }
 
   plusCookies(1);
