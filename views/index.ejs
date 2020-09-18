@@ -26,7 +26,7 @@
       </form>
       <div id="countText"></div>
 
-      <div class="memoWrapp">
+      <div class="memoWrap">
         <% memos.filter((memo) => { %>
         <div class="memo">
           <form action="/delete/<%= memo.memo_id %>" method="post" id="delete_<%= memo.memo_id %>">
@@ -45,6 +45,8 @@
       <%- include('memo_content') %>
 
       <div id="memo_openTest" class="openMemo">メモを開く（動作確認用）</div>
+
+      <script src="js/firstSetting.js"></script>
 
       <script src="js/omitContent.js"></script>
       <script src="js/clickOpenAction.js"></script>
