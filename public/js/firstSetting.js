@@ -3,7 +3,7 @@
 const 
   wrapElem = document.querySelector('div.memoWrap'),
   //メモの数をカウント
-  childCount = mainElem.childElementCount;
+  childCount = wrapElem.childElementCount;
 
   //メモが登録されていない場合のみ発動
   if(childCount === 0){
