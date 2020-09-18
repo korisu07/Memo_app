@@ -30,10 +30,6 @@ app.get('/', (req, res) => {
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
 
-  //メモの内容をマップ付きで配列化します。
-  const 
-    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-
   // メモの内容が未入力の場合
   if (req.body.memoContent == '') {
     res.send('<p>メモの内容を入力してください。<br><a href="/">戻る</a></p>');
