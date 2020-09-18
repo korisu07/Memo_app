@@ -16,6 +16,9 @@ const
         <div>メモを登録してください。</div>
       </label>
       </form>
+      <div id="open_default" class="openMemo">
+        メモを開く
+      </div>
     </div>`;
   
     mainElem.innerHTML = tag;
