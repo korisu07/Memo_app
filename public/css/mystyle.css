@@ -57,14 +57,14 @@ form textarea {
   border-radius: 5px;
 }
 
-.memoWrapp {
+.memoWrap {
   display: flex;
   margin-top: 100px;
   flex-flow: row wrap;
   justify-content: start;
 }
 
-.memoWrapp div.memo {
+.memoWrap div.memo {
   position: relative;
   width: 200px;
   height: 200px;
@@ -73,14 +73,14 @@ form textarea {
   border: 1px solid #000;
 }
 
-.memoWrapp div.memo .delete_btn {
+.memoWrap div.memo .delete_btn {
   width: 30px;
   height: 30px;
   line-height: 28px;
   font-size: 28px;
 }
 
-.memoWrapp div.memo form#delete {
+.memoWrap div.memo form#delete {
   position: absolute;
   top: 0;
   left: 0;
@@ -88,12 +88,12 @@ form textarea {
   height: 100%;
 }
 
-.memoWrapp div.memo label div {
+.memoWrap div.memo label div {
   margin: 0;
   padding: 10px;
 }
 
-.memoWrapp div.memo .delete_btn {
+.memoWrap div.memo .delete_btn {
   font-family: 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', sans-serif;
   font-weight: bold;
   text-align: center;
@@ -111,11 +111,11 @@ form textarea {
   border-radius: 10px;
 }
 
-.memoWrapp div.memo .delete_btn:hover, .memoWrapp div.memo .delete_btn:active {
+.memoWrap div.memo .delete_btn:hover, .memoWrap div.memo .delete_btn:active {
   opacity: 1;
 }
 
-.memoWrapp .openMemo {
+.memoWrap .openMemo {
   cursor: pointer;
   position: absolute;
   right: 0;
@@ -126,55 +126,55 @@ form textarea {
   opacity: 0.65;
 }
 
-.memoWrapp .openMemo:hover, .memoWrapp .openMemo:active {
+.memoWrap .openMemo:hover, .memoWrap .openMemo:active {
   opacity: 1;
 }
 
-.memoWrapp div.memo:first-of-type {
+.memoWrap div.memo:first-of-type {
   margin-left: 25px;
 }
 
 @media (min-width: 1008px) {
-  .memoWrapp div.memo:nth-of-type(4n) {
+  .memoWrap div.memo:nth-of-type(4n) {
     margin-right: 0;
   }
-  .memoWrapp div.memo:nth-of-type(4n+1) {
+  .memoWrap div.memo:nth-of-type(4n+1) {
     margin-left: 25px;
   }
 }
 
 @media (max-width: 1007px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 250px;
     height: 250px;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 37.5px;
     height: 37.5px;
     line-height: 35.5px;
     font-size: 35.5px;
   }
-  .memoWrapp div.memo:nth-of-type(3n) {
+  .memoWrap div.memo:nth-of-type(3n) {
     margin-right: 0;
   }
-  .memoWrapp div.memo:nth-of-type(3n+1) {
+  .memoWrap div.memo:nth-of-type(3n+1) {
     margin-left: 25px;
   }
 }
 
 @media (max-width: 907px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     margin-right: 25px;
   }
 }
 
 @media (max-width: 857px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 200px;
     height: 200px;
     margin-left: 50px;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 30px;
     height: 30px;
     line-height: 28px;
@@ -183,22 +183,22 @@ form textarea {
 }
 
 @media (max-width: 807px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     margin-left: 15px;
     margin-right: 15px;
   }
-  .memoWrapp div.memo:first-of-type, .memoWrapp div.memo:nth-of-type(3n+1), .memoWrapp div.memo:nth-of-type(3n) {
+  .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin-left: 15px;
     margin-right: 15px;
   }
 }
 
 @media (max-width: 722px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 40%;
     height: 250px;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 12%;
     height: 30px;
     line-height: 28px;
@@ -207,45 +207,45 @@ form textarea {
 }
 
 @media (max-width: 624px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 45%;
     height: 200px;
     margin: 10px;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 15.75%;
     height: 30px;
     line-height: 28px;
     font-size: 28px;
   }
-  .memoWrapp div.memo:first-of-type, .memoWrapp div.memo:nth-of-type(3n+1), .memoWrapp div.memo:nth-of-type(3n) {
+  .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin: 10px;
   }
 }
 
 @media (max-width: 460px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 80%;
     height: 250px;
     margin: 10px auto;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 12.8%;
     height: 40px;
     line-height: 38px;
     font-size: 28px;
   }
-  .memoWrapp div.memo:first-of-type, .memoWrapp div.memo:nth-of-type(3n+1), .memoWrapp div.memo:nth-of-type(3n) {
+  .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin: 10px auto;
   }
 }
 
 @media (max-width: 374px) {
-  .memoWrapp div.memo {
+  .memoWrap div.memo {
     width: 80%;
     height: 250px;
   }
-  .memoWrapp div.memo .delete_btn {
+  .memoWrap div.memo .delete_btn {
     width: 16%;
     height: 35px;
     line-height: 33px;
