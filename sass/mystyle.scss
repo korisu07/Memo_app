@@ -48,12 +48,18 @@ body {
 
 // テキストボックスのスタイル
 form {
+  input#memoTitle {
+    width: 50%;
+    height: 30px;
+    margin-bottom: 20px;
+  }
   textarea {
     resize: none; // 大きさを変更できないようにする
     width: 100%;
     height: 150px;
     font-size: 20px;
   }
+
 }
 
 .submit_btn {

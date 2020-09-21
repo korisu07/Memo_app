@@ -39,6 +39,12 @@ body h1 {
   margin: 0 auto;
 }
 
+form input#memoTitle {
+  width: 50%;
+  height: 30px;
+  margin-bottom: 20px;
+}
+
 form textarea {
   resize: none;
   width: 100%;
