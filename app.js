@@ -44,13 +44,15 @@ app.post('/create', (req, res) => {
   //メモの内容をCookieに登録するための関数
   function plusCookies(number){
     //入力されたメモの内容を取得
-    const content = req.body.memoContent;
+    const 
+    title = req.body.memoTitle,
+    content = req.body.memoContent;
 
     //メモの数を取得
     let i = Object.keys(req.cookies).length - number;
     i += 1;
     //メモをcookieに登録
-    res.cookie(i, content, { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+    res.cookie(i, {memos: [title, content]}, { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
   }
 
   plusCookies(1);
