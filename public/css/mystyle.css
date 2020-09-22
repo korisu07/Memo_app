@@ -86,6 +86,13 @@ form textarea {
   font-size: 28px;
 }
 
+.memoWrap div.memo h3 {
+  margin: 0;
+  font-size: 1.15em;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
 .memoWrap div.memo form#delete {
   position: absolute;
   top: 0;
@@ -96,7 +103,7 @@ form textarea {
 
 .memoWrap div.memo label div {
   margin: 0;
-  padding: 10px;
+  padding: 0 10px 5px 10px;
 }
 
 .memoWrap div.memo .delete_btn {
