@@ -10,7 +10,8 @@ const
   overLay = document.getElementById('overLay'),
   //表示するメモの中身
   memoView = document.getElementById('memoView'),
-  memoText = document.getElementById('memoText');
+  memoText = document.getElementById('memoText'),
+  memoTitleText = document.querySelector('#memoView h2');
 
   //表示部分のボタンを読み込み
   const 
@@ -26,25 +27,42 @@ const
     //テキストの中身を表示する処理
     const
       //クリックされたボタンのid名から数字だけを取得
-      idNumber = btn.id.replace('open_', ''),
+      idNumber = Number(btn.id.replace('open_', '') - 1),
       //cookieから対応する番号の内容を読み込み
-      cookieContent = decodeURI(document.cookie);
+      cookieContent = decodeURI(document.cookie).replace(new RegExp('j%3A', 'g'),'').replace(new RegExp('%2C', 'g'),', ');
 
       //初期のメモが表示されている場合
       if(btn.id === 'open_default'){
+        //初期のメモのタイトルを表示
+        memoTitleText.innerHTML = document.querySelector('.memoWrap h3').innerHTML;
+        //内容を表示
         memoText.innerHTML = document.getElementById('content_default').innerHTML;
       }
       //ユーザーによるメモが登録されている場合
       else{
-        const 
-        //「;」で分割し配列に
-          cookiesArray = cookieContent.split(';'),
-        //idNumberと一致する配列を参照。
-        //「=」までの文字数をカウント。
-          index = cookiesArray[idNumber].indexOf('=') + 1;
+          const 
+          //「;」で分割し配列に
+            changeArray = cookieContent.split(';'),
+          //idNumberと一致する配列を参照。
+          //「=」までの文字数をカウント。
+            index = changeArray[idNumber].indexOf('=[\"') + 3,
+            index2 = changeArray[idNumber].indexOf('", '),
+            index3 = changeArray[idNumber].indexOf('"]'),
+
+            title = changeArray[idNumber].substring(index, index2),
+            content = changeArray[idNumber].substring(index2 + 4, index3),
+            cookieArray = Array(title, content);
+  
+        // console.log(changeArray);
+        // console.log(title);
+        // console.log(content);
+          
         //「=」より後ろの文字を表示させる
-          memoText.innerHTML = cookiesArray[idNumber].substr(index);
+        memoTitleText.innerHTML = cookieArray[0];
+        memoText.innerHTML = cookieArray[1]
+        .replace(/(\\r|\\r\\n|\\n)/g,'<br>');
       }
+
 
       editBtn.classList.add('edit_' + String(idNumber));
       deleteBtn.classList.add('delete_' + String(idNumber));
