@@ -42,22 +42,33 @@ app.post('/create', (req, res) => {
   //内容が入力されている場合
 
   //メモの内容をCookieに登録するための関数
-  function plusCookies(number){
+  function plusCookies(){
     //入力されたメモの内容を取得
     const 
     title = req.body.memoTitle,
     content = req.body.memoContent;
 
-    //メモの数を取得
-    let i = Object.keys(req.cookies).length - number;
+    //メモの数を取得し、id番号を付与
+    let i = Object.keys(req.cookies).length;
     i += 1;
+
     //メモをcookieに登録
-    res.cookie(i, {memos: [title, content]}, { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+    const defaultTitle = 'タイトル' + i
+
+    //タイトルが登録されていない場合
+    if(title === ""){
+      res.cookie(i, [defaultTitle, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+    }//タイトルが登録されている場合
+    else {
+      res.cookie(i, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+    }
   }
 
-  plusCookies(1);
+  //Cookie登録の処理を実行
+  plusCookies();
 
-      res.redirect('/');
+  //リダイレクト
+  res.redirect('/');
 });
 
 //Cookieの削除処理
