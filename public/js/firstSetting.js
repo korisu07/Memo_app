@@ -13,6 +13,7 @@ const
         <form action="/delete/first" method="post" id="delete_first">
         <input type="submit" class="delete_btn" value="×" form="delete_first">
         <label form="delete">
+          <h3>タイトル</h3>
           <div id="content_default">メモを登録してください。</div>
         </label>
         </form>
