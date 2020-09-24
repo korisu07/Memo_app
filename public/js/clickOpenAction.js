@@ -86,6 +86,10 @@ const
 
       const
         clickIdCookieNumber = btn.id.replace('open_', '');
+
+      editBtn.removeAttribute("class");
+      deleteBtn.removeAttribute("class");
+
       editBtn.classList.add('edit_' + clickIdCookieNumber);
       deleteBtn.classList.add('delete_' + clickIdCookieNumber);
 
