@@ -89,28 +89,40 @@ div#modalMemoWindow .show {
   visibility: visible;
 }
 
+div#deleteConfirm {
+  opacity: 1;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  cursor: default;
+  box-sizing: border-box;
+  width: 730px;
+  height: 80vh;
+  margin: 10vh 125px 12vh 125px;
+}
+
 @media (max-width: 1000px) {
-  div#modalMemoWindow {
+  div#modalMemoWindow, div#deleteConfirm {
     width: 80%;
     margin: 10vh 10% 12vh 10%;
   }
 }
 
 @media (max-width: 768px) {
-  div#modalMemoWindow {
+  div#modalMemoWindow, div#deleteConfirm {
     left: 0;
     width: 100%;
     margin: 10vh 0 12vh 0;
   }
-  div#modalMemoWindow #title {
+  div#modalMemoWindow #title, div#deleteConfirm #title {
     width: 100%;
     clear: left;
   }
-  div#modalMemoWindow #btnBox {
+  div#modalMemoWindow #btnBox, div#deleteConfirm #btnBox {
     width: 100%;
     clear: right;
   }
-  div#modalMemoWindow #modalMemoContent {
+  div#modalMemoWindow #modalMemoContent, div#deleteConfirm #modalMemoContent {
     padding-top: 25px;
   }
 }

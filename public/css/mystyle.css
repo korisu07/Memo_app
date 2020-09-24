@@ -93,15 +93,7 @@ form textarea {
   box-sizing: border-box;
 }
 
-.memoWrap div.memo form#delete {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.memoWrap div.memo label div {
+.memoWrap div.memo .smallMemoContent {
   margin: 0;
   padding: 0 10px 5px 10px;
 }

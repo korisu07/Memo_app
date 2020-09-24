@@ -88,8 +88,21 @@ div#modalMemoContent{
   }
 }
 
+div#deleteConfirm{
+  opacity: 1;
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  cursor: default;
+  box-sizing: border-box;
+  //レイアウトの設定
+  width: 730px;
+  height: 80vh;
+  margin: 10vh 125px 12vh 125px;
+}
+
 //レスポンシブ
-div#modalMemoWindow{
+div#modalMemoWindow, div#deleteConfirm{
   @media(max-width: 1000px){
     width: 80%;
     margin: 10vh 10% 12vh 10%;
@@ -115,6 +128,8 @@ div#modalMemoWindow{
 #memo_openTest{
   cursor: pointer;
 }
+
+
 
 
 #overLay{
