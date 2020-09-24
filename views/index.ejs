@@ -29,12 +29,12 @@
 
       <div class="memoWrap">
         <% memos.filter((memo) => { %>
-        <div class="memo" id="delete_<%= memo.memo_id %>">
-            <div class="delete_btn">×</div>
-
+        <div class="memo">
             <h3 id="title_<%= memo.memo_id %>">
               <%= memo.content[0] %>
             </h3>
+            <div class="delete_btn">×</div>
+            
             <div id="content_<%= memo.memo_id %>" class="smallMemoContent">
               <%= memo.content[1] %>
             </div>
