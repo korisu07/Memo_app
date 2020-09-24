@@ -9,14 +9,13 @@ const
   if(childCount === 0){
     const 
       tag =
-      `<div class="memo">
-        <form action="/delete/first" method="post" id="delete_first">
-        <input type="submit" class="delete_btn" value="×" form="delete_first">
-        <label form="delete">
+      `<div class="memo" id="delete_default">
+          <div class="delete_btn">×</div>
+
           <h3>タイトル</h3>
-          <div id="content_default">メモを登録してください。</div>
-        </label>
-        </form>
+          <div id="content_default" class="smallMemoContent">
+            メモを登録してください。
+          </div>
         <div id="open_default" class="openMemo">
           メモを開く
         </div>
