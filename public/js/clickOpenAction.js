@@ -77,21 +77,11 @@ const
           // console.log(title);
           // console.log(content);
           
-        //「=」より後ろの文字を表示させる
+        //Cookieの「=」より後ろの文字を表示させる
         modalMemoTitle.innerHTML = memoArray[0];
         //表示内容は改行タグに変換
         modalMemoContent.innerHTML = memoArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
       }
-
-
-      const
-        clickIdCookieNumber = btn.id.replace('open_', '');
-
-      editBtn.removeAttribute("class");
-      deleteBtn.removeAttribute("class");
-
-      editBtn.classList.add('edit_' + clickIdCookieNumber);
-      deleteBtn.classList.add('delete_' + clickIdCookieNumber);
 
     //表示に関する処理
     //それぞれの要素を表示
@@ -101,6 +91,20 @@ const
     //フェードインの処理
     overLay.animate([{ opacity: '0' }, { opacity: '0.5' }], 250);
     modalMemoWindow.animate([{ opacity: '0' }, { opacity: '1' }], 150);
+
+
+    //付与されたクラスをリセット
+    editBtn.removeAttribute("class");
+    deleteBtn.removeAttribute("class");
+
+    //表示したCookieのID名を引用
+    const
+      clickCookieName = btn.id.replace('open_', '');
+
+    //クラス付与して、編集ボタンと削除ボタンに対応
+    editBtn.classList.add('edit_' + clickCookieName);
+    deleteBtn.classList.add('delete_' + clickCookieName);
+
 
   }, false);
 });
@@ -154,15 +158,11 @@ editBtn.addEventListener('click', function(){
 
   hideModalMemoOnly();
 
-
-
   //pointerEventsをもとに戻す
   setTimeout("pointerEventsChange('auto')", 300);
 });
 
-if(document.cookie.length >= 1){
-  
-}
+
 
 // ----- 削除ボタンの処理 -----
 
@@ -172,40 +172,26 @@ easyClearBtn = Array.prototype.slice.call(document.getElementsByClassName('delet
 
 easyClearBtn.filter(btn => {
   btn.addEventListener('click', function(){
-    console.log('yes!');
+    overLay.style.display = 'block';
+    confirmDelete();
+
+    const
+      easyID = String(btn.nextElementSibling.id).replace('content_', '');
+    
+      const
+      postDeleteBtn = document.getElementById("postDelete");
+    
+      postDeleteBtn.setAttribute('action', `/delete/${easyID}`);
+
   }, false);
 });
-
 
 deleteBtn.addEventListener('click', function(){
   //重複防止の処理
   pointerEventsChange('none');
 
   hideModalMemoOnly();
-
-  const 
-    confirmWin = `
-      <div id="deleteConfirm">
-        削除しますか？
-        <form method="post" id="postDelete"><button>はい</button></form>
-        <span id="noDel">いいえ</span>
-      </div>
-      `,
-    createDiv = document.createElement('div');
-    createDiv.id = "confirmWrapp";
-    createDiv.innerHTML = confirmWin;
-
-    
-  overLay.parentNode.insertBefore(createDiv, overLay.nextElementSibling);
-
-
-  
-  const 
-  postDeleteBtn = document.getElementById("postDelete"),
-  deleteBtnId = deleteBtn.className.replace('delete_', '');
-
-  postDeleteBtn.setAttribute('action', `/delete/${deleteBtnId}`)
-
+  confirmDelete();
 
   //pointerEventsをもとに戻す
   setTimeout("pointerEventsChange('auto')", 300);
@@ -222,6 +208,31 @@ if(wrapp != null){
 
 
 //共通の関数
+
+function confirmDelete(){
+
+  const 
+    confirmWin = `
+      <div id="deleteConfirm">
+        削除しますか？
+        <form method="post" id="postDelete"><button>はい</button></form>
+        <span id="noDel">いいえ</span>
+      </div>
+      `,
+    createDiv = document.createElement('div');
+    createDiv.id = "confirmWrapp";
+    createDiv.innerHTML = confirmWin;
+
+    
+  overLay.parentNode.insertBefore(createDiv, overLay.nextElementSibling);
+  
+  const
+  deleteBtnId = deleteBtn.className.replace('delete_', ''),
+  postDeleteBtn = document.getElementById("postDelete");
+
+  postDeleteBtn.setAttribute('action', `/delete/${deleteBtnId}`);
+}
+
 
 function hideModalMemoOnly(){
   setTimeout("modalMemoWindow.style.display = 'none'", 200);
