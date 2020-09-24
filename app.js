@@ -57,7 +57,7 @@ app.post('/create', (req, res) => {
 
     //タイトルが登録されていない場合
     if(title === ""){
-      res.cookie(i, [defaultTitle, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(`cookieNumber${i}`, [defaultTitle, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }//タイトルが登録されている場合
     else {
       res.cookie(i, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
@@ -74,6 +74,7 @@ app.post('/create', (req, res) => {
 //Cookieの削除処理
 app.post('/delete/:id', (req, res) => {
   let id = req.params.id;
+  console.log(req.params.id);
   res.clearCookie(id);
   res.redirect('/');
 });
