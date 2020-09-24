@@ -29,14 +29,15 @@
 
       <div class="memoWrap">
         <% memos.filter((memo) => { %>
-        <div class="memo">
-          <form action="/delete/<%= memo.memo_id %>" method="post" id="delete_<%= memo.memo_id %>">
-            <input type="submit" class="delete_btn" value="×" form="delete_<%= memo.memo_id %>">
-            <label form="delete">
-              <h3 id="title_<%= memo.memo_id %>"><%= memo.content[0] %></h3>
-              <div id="content_<%= memo.memo_id %>"><%= memo.content[1] %></div>
-            </label>
-          </form>
+        <div class="memo" id="delete_<%= memo.memo_id %>">
+            <div class="delete_btn">×</div>
+
+            <h3 id="title_<%= memo.memo_id %>">
+              <%= memo.content[0] %>
+            </h3>
+            <div id="content_<%= memo.memo_id %>" class="smallMemoContent">
+              <%= memo.content[1] %>
+            </div>
           <div id="open_<%= memo.memo_id %>" class="openMemo">
             メモを開く
           </div>
