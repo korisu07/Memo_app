@@ -19,7 +19,7 @@ const
 
   //メモを表示する処理
 　//表示ボタンをひとつずつ処理
-  arrayBtn.forEach(btn => {
+  arrayBtn.filter(btn => {
   //「メモを表示する」ボタンをクリックしたときに発動
   btn.addEventListener('click', function () {
   
@@ -31,13 +31,18 @@ const
     //テキストの中身を表示する処理
     const
       //クリックされたボタンのid名から数字だけを取得
-      clickIdNumber = Number(btn.id.replace('open_', '')),
+      child = btn.parentElement,
+      memoBox = document.querySelectorAll('.memoWrap .memo'),
+      clickIdNumber = Array.prototype.indexOf.call(memoBox, child);
 
+    const
       //Cookieから対応する番号の内容を読み込み
       //Cookieをデコード　→　デコードできなかった文字列を変換
       cookieContent = decodeURI(document.cookie).replace(new RegExp('j%3A', 'g'),'').replace(new RegExp('%2C', 'g'),', ');
       //console.log(decodeURI(document.cookie));
 
+      
+      console.log(clickIdNumber);
       //初期のメモが表示されている場合
       //初期のメモが表示される＝メモが登録されていないことになるので、他の処理は省略。
       if(btn.id === 'open_default'){
@@ -53,6 +58,7 @@ const
           //「;」で分割し配列に
             cookiesConvertToArray = cookieContent.split(';'),
           // クリックされたid番号に対応する配列を読み込み
+          // 配列の番号に合わせるために clickIdNumber
             memoCookies = cookiesConvertToArray[clickIdNumber],
 
           //呼び出す内容の前後の位置を検索
@@ -78,8 +84,10 @@ const
       }
 
 
-      editBtn.classList.add('edit_' + clickIdNumber);
-      deleteBtn.classList.add('delete_' + clickIdNumber);
+      const
+        clickIdCookieNumber = btn.id.replace('open_', '');
+      editBtn.classList.add('edit_' + clickIdCookieNumber);
+      deleteBtn.classList.add('delete_' + clickIdCookieNumber);
 
     //表示に関する処理
     //それぞれの要素を表示
@@ -127,13 +135,6 @@ function closeMemoContent(elem){
 
 }
 
-//重複防止用の処理。クリックしたときのイベントを操作します。
-function pointerEventsChange(property){
-  overLay.style.pointerEvents = property;
-  closeModalBtn.style.pointerEvents = property;
-  editBtn.style.pointerEvents = property;
-  deleteBtn.style.pointerEvents = property;
-}
 
 //黒背景をクリック時にフェードアウト
 closeMemoContent(overLay);
@@ -141,3 +142,93 @@ closeMemoContent(overLay);
 //閉じるボタンをクリック時にもフェードアウト
 closeMemoContent(closeModalBtn);
 
+
+// ----- 編集ボタンの処理 -----
+editBtn.addEventListener('click', function(){
+  //重複防止の処理
+  pointerEventsChange('none');
+
+  hideModalMemoOnly();
+
+
+
+  //pointerEventsをもとに戻す
+  setTimeout("pointerEventsChange('auto')", 300);
+});
+
+if(document.cookie.length >= 1){
+  
+}
+
+// ----- 削除ボタンの処理 -----
+
+//最初から表示されている削除ボタン
+const 
+easyClearBtn = Array.prototype.slice.call(document.getElementsByClassName('delete_btn'));
+
+easyClearBtn.filter(btn => {
+  btn.addEventListener('click', function(){
+    console.log('yes!');
+  }, false);
+});
+
+
+deleteBtn.addEventListener('click', function(){
+  //重複防止の処理
+  pointerEventsChange('none');
+
+  hideModalMemoOnly();
+
+  const 
+    confirmWin = `
+      <div id="deleteConfirm">
+        削除しますか？
+        <form method="post" id="postDelete"><button>はい</button></form>
+        <span id="noDel">いいえ</span>
+      </div>
+      `,
+    createDiv = document.createElement('div');
+    createDiv.id = "confirmWrapp";
+    createDiv.innerHTML = confirmWin;
+
+    
+  overLay.parentNode.insertBefore(createDiv, overLay.nextElementSibling);
+
+
+  
+  const 
+  postDeleteBtn = document.getElementById("postDelete"),
+  deleteBtnId = deleteBtn.className.replace('delete_', '');
+
+  postDeleteBtn.setAttribute('action', `/delete/${deleteBtnId}`)
+
+
+  //pointerEventsをもとに戻す
+  setTimeout("pointerEventsChange('auto')", 300);
+});
+
+const wrapp = document.getElementById("confirmWrapp");
+
+if(wrapp != null){
+  overLay.addEventListener('click', function(){
+    document.getElementById('modalWrapp').removeChild(wrapp);
+  });
+}
+
+
+
+//共通の関数
+
+function hideModalMemoOnly(){
+  setTimeout("modalMemoWindow.style.display = 'none'", 200);
+  modalMemoWindow.animate([{ opacity: '1' }, { opacity: '0' }], 220);
+}
+
+
+//重複防止用の処理。クリックしたときのイベントを操作します。
+function pointerEventsChange(property){
+  overLay.style.pointerEvents = property;
+  closeModalBtn.style.pointerEvents = property;
+  editBtn.style.pointerEvents = property;
+  deleteBtn.style.pointerEvents = property;
+}
