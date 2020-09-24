@@ -9,10 +9,10 @@ const
   if(childCount === 0){
     const 
       tag =
-      `<div class="memo" id="delete_default">
+      `<div class="memo">
+          <h3>タイトル</h3>
           <div class="delete_btn">×</div>
 
-          <h3>タイトル</h3>
           <div id="content_default" class="smallMemoContent">
             メモを登録してください。
           </div>
