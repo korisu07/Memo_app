@@ -4,7 +4,7 @@ body{
 *{
   box-sizing: border-box;
 }
-div#memoView{
+div#modalMemoWindow{
   display: none;
   z-index: 99;
   background: #fff;
@@ -51,7 +51,7 @@ div#memoView{
     &:hover, &:active{
     background: #dcdcdc;
   }
-} //.memoView ここまで
+} //#modalMemoWindow ここまで
 //ボタンの色を変更
 #editMemo{
   $green:#006b00;
@@ -76,7 +76,7 @@ div#memoView{
   margin-left: 10px;
 }
 //テキスト部分の調整
-div#memoText{
+div#modalMemoContent{
   clear: both;
   width: 100%;
 }
@@ -89,7 +89,7 @@ div#memoText{
 }
 
 //レスポンシブ
-div#memoView{
+div#modalMemoWindow{
   @media(max-width: 1000px){
     width: 80%;
     margin: 10vh 10% 12vh 10%;
@@ -106,7 +106,7 @@ div#memoView{
       width: 100%;
       clear: right;
     }
-    #memoText{
+    #modalMemoContent{
       padding-top: 25px;
     }
   }
