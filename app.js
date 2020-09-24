@@ -49,11 +49,11 @@ app.post('/create', (req, res) => {
     content = req.body.memoContent;
 
     //メモの数を取得し、id番号を付与
-    let i = Object.keys(req.cookies).length;
+    let i = Object.keys(req.cookies).length - 1;
     i += 1;
 
     //メモをcookieに登録
-    const defaultTitle = 'タイトル' + i
+    const defaultTitle = `タイトル${i + 1}`
 
     //タイトルが登録されていない場合
     if(title === ""){
@@ -79,7 +79,7 @@ app.post('/delete/:id', (req, res) => {
 });
 
 //メモを表示する処理
-app.post('/open/:id', (req, res) => {
+app.post('/edit/:id', (req, res) => {
   //クリックしたボタンの番号を取得
   let e = req.params.id;
 
