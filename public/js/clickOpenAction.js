@@ -2,91 +2,107 @@
 
 const
 　//表示ボタンをすべて読み込み
-  eventButtons = document.getElementsByClassName('openMemo'),
+  getOpenBtn = document.getElementsByClassName('openMemo'),
   //クラスを配列化
-  arrayBtn = Array.from(eventButtons),
+  arrayBtn = Array.from(getOpenBtn);
 
+const
   //半透明の黒背景
   overLay = document.getElementById('overLay'),
   //表示するメモの中身
-  memoView = document.getElementById('memoView'),
-  memoText = document.getElementById('memoText'),
-  memoTitleText = document.querySelector('#memoView h2');
+  modalMemoWindow = document.getElementById('modalMemoWindow');
 
+const 
   //表示部分のボタンを読み込み
-  const 
   editBtn = document.getElementById('editMemo'),
   deleteBtn = document.getElementById('deleteMemo');
 
-  //メモを表示する
+  //メモを表示する処理
 　//表示ボタンをひとつずつ処理
   arrayBtn.forEach(btn => {
   //「メモを表示する」ボタンをクリックしたときに発動
   btn.addEventListener('click', function () {
   
+    const 
+    //表示するメモの中身とタイトルをそれぞれ読み込み
+    modalMemoContent = document.getElementById('modalMemoContent'),
+    modalMemoTitle = document.querySelector('#modalMemoWindow h2');
+
     //テキストの中身を表示する処理
     const
       //クリックされたボタンのid名から数字だけを取得
-      idNumber = Number(btn.id.replace('open_', '') - 1),
-      //cookieから対応する番号の内容を読み込み
+      clickIdNumber = Number(btn.id.replace('open_', '')),
+
+      //Cookieから対応する番号の内容を読み込み
+      //Cookieをデコード　→　デコードできなかった文字列を変換
       cookieContent = decodeURI(document.cookie).replace(new RegExp('j%3A', 'g'),'').replace(new RegExp('%2C', 'g'),', ');
+      //console.log(decodeURI(document.cookie));
 
       //初期のメモが表示されている場合
+      //初期のメモが表示される＝メモが登録されていないことになるので、他の処理は省略。
       if(btn.id === 'open_default'){
+
         //初期のメモのタイトルを表示
-        memoTitleText.innerHTML = document.querySelector('.memoWrap h3').innerHTML;
+        modalMemoTitle.innerHTML = document.querySelector('.memoWrap h3').innerHTML;
         //内容を表示
-        memoText.innerHTML = document.getElementById('content_default').innerHTML;
+        modalMemoContent.innerHTML = document.getElementById('content_default').innerHTML;
       }
       //ユーザーによるメモが登録されている場合
       else{
           const 
           //「;」で分割し配列に
-            changeArray = cookieContent.split(';'),
-          //idNumberと一致する配列を参照。
-          //「=」までの文字数をカウント。
-            index = changeArray[idNumber].indexOf('=[\"') + 3,
-            index2 = changeArray[idNumber].indexOf('", '),
-            index3 = changeArray[idNumber].indexOf('"]'),
+            cookiesConvertToArray = cookieContent.split(';'),
+          // クリックされたid番号に対応する配列を読み込み
+            memoCookies = cookiesConvertToArray[clickIdNumber],
 
-            title = changeArray[idNumber].substring(index, index2),
-            content = changeArray[idNumber].substring(index2 + 4, index3),
-            cookieArray = Array(title, content);
+          //呼び出す内容の前後の位置を検索
+            index1 = memoCookies.indexOf('=[\"'),
+            index2 = memoCookies.indexOf('\", '),
+            index3 = memoCookies.indexOf('\"]'),
+
+            //+3は、index条件の文字数
+            title = memoCookies.substring(index1 + 3, index2),
+            //+4は、index条件の文字数 +1
+            content = memoCookies.substring(index2 + 4, index3),
+            //表示させる内容を切り出して配列化
+            memoArray = Array(title, content);
   
-        // console.log(changeArray);
-        // console.log(title);
-        // console.log(content);
+          // console.log(memoCookies);
+          // console.log(title);
+          // console.log(content);
           
         //「=」より後ろの文字を表示させる
-        memoTitleText.innerHTML = cookieArray[0];
-        memoText.innerHTML = cookieArray[1]
-        .replace(/(\\r|\\r\\n|\\n)/g,'<br>');
+        modalMemoTitle.innerHTML = memoArray[0];
+        //表示内容は改行タグに変換
+        modalMemoContent.innerHTML = memoArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
       }
 
 
-      editBtn.classList.add('edit_' + String(idNumber));
-      deleteBtn.classList.add('delete_' + String(idNumber));
+      editBtn.classList.add('edit_' + clickIdNumber);
+      deleteBtn.classList.add('delete_' + clickIdNumber);
 
     //表示に関する処理
     //それぞれの要素を表示
     overLay.style.display = 'block';
-    memoView.style.display = 'block';
+    modalMemoWindow.style.display = 'block';
     
     //フェードインの処理
     overLay.animate([{ opacity: '0' }, { opacity: '0.5' }], 250);
-    memoView.animate([{ opacity: '0' }, { opacity: '1' }], 150);
+    modalMemoWindow.animate([{ opacity: '0' }, { opacity: '1' }], 150);
 
   }, false);
 });
+//メモを表示する処理　ここまで
+
 
 //要素を隠すための関数
-function hide(a, b) {
+function modalHide(a, b) {
   a.style.display = 'none';
   b.style.display = 'none';
 }
 
 //閉じるボタンを読み込み
-const closeContentBtn = document.getElementById('closeMemo');
+const closeModalBtn = document.getElementById('closeMemo');
 
 //要素をクリックしたときにフェードアウトする
 function closeMemoContent(elem){
@@ -100,10 +116,10 @@ function closeMemoContent(elem){
 
     //フェードアウトの処理
     overLay.animate([{ opacity: '0.5' }, { opacity: '0' }], 220);
-    memoView.animate([{ opacity: '1' }, { opacity: '0' }], 220);
+    modalMemoWindow.animate([{ opacity: '1' }, { opacity: '0' }], 220);
 
     //時間差でdisplay:none;に
-    setTimeout("hide(overLay, memoView)", 200);
+    setTimeout("modalHide(overLay, modalMemoWindow)", 200);
     //pointerEventsをもとに戻す
     setTimeout("pointerEventsChange('auto')", 400);
     
@@ -114,13 +130,14 @@ function closeMemoContent(elem){
 //重複防止用の処理。クリックしたときのイベントを操作します。
 function pointerEventsChange(property){
   overLay.style.pointerEvents = property;
-  closeContentBtn.style.pointerEvents = property;
-  document.querySelector('input');
-
+  closeModalBtn.style.pointerEvents = property;
+  editBtn.style.pointerEvents = property;
+  deleteBtn.style.pointerEvents = property;
 }
 
 //黒背景をクリック時にフェードアウト
 closeMemoContent(overLay);
 
 //閉じるボタンをクリック時にもフェードアウト
-closeMemoContent(closeContentBtn);
+closeMemoContent(closeModalBtn);
+
