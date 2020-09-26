@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
     );
 
   console.log(req.cookies);
+
   console.log(memoCookies);
   // console.log(Array.isArray(memoCookies));
 });
@@ -48,19 +49,38 @@ app.post('/create', (req, res) => {
     title = req.body.memoTitle,
     content = req.body.memoContent;
 
-    //メモの数を取得し、id番号を付与
-    let i = Object.keys(req.cookies).length - 1;
+    //Cookie名の一番大きい数字を取得し、その次の数字を追加
+
+    //まず、Cookie名を配列化　→　key名だけ操作
+    const outputKeyNumbers = Object.keys(req.cookies).map((keys) => {
+      //key名の数字部分だけを取得。
+      const idNumber = String(keys).replace('cookieNumber', '');
+      //これを数値の戻り値として返す。
+      return Number(idNumber);
+    });
+
+    //ナンバリングを一番大きい数字にする処理
+
+    //まず、Cookie名の数字から一番大きい数値を取得
+    let i = Math.max.apply(null, outputKeyNumbers);
+
+    //もしもCookieが未登録の場合、i の数値を0とする
+    if(Object.entries(req.cookies).length === 0){
+      i = 0;
+    }
+
+    //新しくメモを登録する処理
+    //ナンバリングを新たに追加
     i += 1;
 
     //メモをcookieに登録
-    const defaultTitle = `タイトル${i + 1}`
-
     //タイトルが登録されていない場合
     if(title === ""){
+      const defaultTitle = `タイトル${i}`
       res.cookie(`cookieNumber${i}`, [defaultTitle, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }//タイトルが登録されている場合
     else {
-      res.cookie(i, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(`cookieNumber${i}`, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }
   }
 
