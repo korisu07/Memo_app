@@ -17,6 +17,12 @@ const
   editBtn = document.getElementById('editMemo'),
   deleteBtn = document.getElementById('deleteMemo');
 
+
+  const
+  //Cookieをデコード　→　デコードできなかった文字列を変換
+  cookieContent = decodeURIComponent(document.cookie).replace(new RegExp(/j\:/, 'g'),'');
+  console.log(cookieContent);
+
   //メモを表示する処理
 　//表示ボタンをひとつずつ処理
   arrayBtn.filter(btn => {
@@ -35,12 +41,6 @@ const
       memoBox = document.querySelectorAll('.memoWrap .memo'),
       clickIdNumber = Array.prototype.indexOf.call(memoBox, child);
 
-    const
-      //Cookieから対応する番号の内容を読み込み
-      //Cookieをデコード　→　デコードできなかった文字列を変換
-      cookieContent = decodeURI(document.cookie).replace(new RegExp('j%3A', 'g'),'').replace(new RegExp('%2C', 'g'),', ');
-      //console.log(decodeURI(document.cookie));
-
       
       console.log(clickIdNumber);
       //初期のメモが表示されている場合
@@ -56,26 +56,26 @@ const
       else{
           const 
           //「;」で分割し配列に
-            cookiesConvertToArray = cookieContent.split(';'),
+            cookiesConvertToArray = cookieContent.split('; '),
           // クリックされたid番号に対応する配列を読み込み
           // 配列の番号に合わせるために clickIdNumber
             memoCookies = cookiesConvertToArray[clickIdNumber],
-
           //呼び出す内容の前後の位置を検索
-            index1 = memoCookies.indexOf('=[\"'),
-            index2 = memoCookies.indexOf('\", '),
-            index3 = memoCookies.indexOf('\"]'),
+            index1 = memoCookies.indexOf('=\[\"'),
+            index2 = memoCookies.indexOf('\"\,\"'),
+            index3 = memoCookies.indexOf('\"\]'),
 
             //+3は、index条件の文字数
             title = memoCookies.substring(index1 + 3, index2),
             //+4は、index条件の文字数 +1
-            content = memoCookies.substring(index2 + 4, index3),
+            content = memoCookies.substring(index2 + 3, index3),
             //表示させる内容を切り出して配列化
             memoArray = Array(title, content);
   
-          // console.log(memoCookies);
-          // console.log(title);
-          // console.log(content);
+          console.log(memoCookies);
+console.log(index2);
+          console.log(memoArray);
+          // // console.log(content);
           
         //Cookieの「=」より後ろの文字を表示させる
         modalMemoTitle.innerHTML = memoArray[0];
@@ -102,7 +102,7 @@ const
       clickCookieName = btn.id.replace('open_', '');
 
     //クラス付与して、編集ボタンと削除ボタンに対応
-    editBtn.classList.add('edit_' + clickCookieName);
+    editBtn.href = '/edit/' + clickCookieName;
     deleteBtn.classList.add('delete_' + clickCookieName);
 
 
