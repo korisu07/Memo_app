@@ -15,7 +15,10 @@ app.get('/', (req, res) => {
 
   //メモの内容をマップ付きで配列化します。
   const 
-    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
+    memoCookies = Object.entries(req.cookies)
+      //古い順に
+      .map( ([memo_id, content]) => ({memo_id, content}) )
+      .sort();
 
   res.render(
     'index.ejs', 
@@ -25,6 +28,7 @@ app.get('/', (req, res) => {
   console.log(req.cookies);
 
   console.log(memoCookies);
+
   // console.log(Array.isArray(memoCookies));
 });
 
@@ -62,7 +66,9 @@ app.post('/create', (req, res) => {
     //ナンバリングを一番大きい数字にする処理
 
     //まず、Cookie名の数字から一番大きい数値を取得
-    let i = Math.max.apply(null, outputKeyNumbers);
+    let i;
+    
+    i = Math.max.apply(null, outputKeyNumbers);
 
     //もしもCookieが未登録の場合、i の数値を0とする
     if(Object.entries(req.cookies).length === 0){
@@ -99,16 +105,16 @@ app.post('/delete/:id', (req, res) => {
   res.redirect('/');
 });
 
-//メモを表示する処理
-app.post('/edit/:id', (req, res) => {
+//メモを編集する処理
+app.get('/edit/:id', (req, res) => {
   //クリックしたボタンの番号を取得
   let e = req.params.id;
 
   //メモの内容をマップ付きで配列化します。
-  const 
-    memoCookies = Object.entries(req.cookies).map(([memo_id, content]) => ({memo_id, content}));
-    
-  res.render('memo_content.ejs', { memoContent: memoCookies[e] });
+  console.log(e);
+  console.log(req.cookies.e);
+
+  res.render('edit.ejs',{edit_data: 'a'});
 });
 
 // Localhost:3000に接続
