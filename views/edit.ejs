@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>編集画面 - メモくん Memo.app</title>
+  <meta name="description" content="メモくんのメモ編集画面です。">
+  <meta name="keywords" content="メモ,メモアプリ,メモメモくん,買い物メモ,予定リスト,予定メモ">
+
+  <link rel="stylesheet" href="/css/mystyle.css">
+  <link rel="stylesheet" href="/css/memo_content.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>編集画面 - メモくん Memo.app</h1>
+    </header>
+
+    <article>
+      <form action="/create" method="post" id="create">
+        <label>
+          <input type="text" name="memoTitle" id="memoTitle" placeholder="タイトルを入力してください(任意)" maxlength="20">
+          <textarea name="memoContent" id="memoTextArea" cols="18" rows="10" placeholder="メモを入力してください(必須 200文字以内)" maxlength="200" form="create"></textarea>
+          <input type="submit" value="作成する" class="submit_btn" form="create">
+        </label>
+      </form>
+
+    
+      <script src="js/firstSetting.js"></script>
+
+      <script src="js/omitContent.js"></script>
+      <script src="js/clickOpenAction.js"></script>
+
+</body>
+</html>
