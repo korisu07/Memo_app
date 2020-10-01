@@ -2,8 +2,15 @@
 
 // 改行をbrタグに変換する
 function brTagChange(Element) {
-  const searchStr = '\n|\r\n|\r';
+  let searchStr = /(\r\n)/;
+  const searchExp = Element.match(new RegExp(searchStr, 'g'));
+
+  if(searchExp){
     return Element.replace(new RegExp(searchStr, 'g'), '<br>');
+  }else{
+    searchStr = /(\r)|(\n)/;
+    return Element.replace(new RegExp(searchStr, 'g'), '<br>');
+  }
 }
 
 // 文字省略のための処理
@@ -43,7 +50,7 @@ function brTagString(Element) {
 
 
 // メモ部分をすべて読み込み
-const contents = document.querySelectorAll('div.memo label div');
+const contents = document.querySelectorAll('div.smallMemoContent');
 
 // 関数を実行するための処理
 // メモ部分を一つずつ処理
