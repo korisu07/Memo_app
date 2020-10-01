@@ -39,10 +39,9 @@ const
       //クリックされたボタンのid名から数字だけを取得
       child = btn.parentElement,
       memoBox = document.querySelectorAll('.memoWrap .memo'),
+      //何番目の配列をクリックしたかを取得
       clickIdNumber = Array.prototype.indexOf.call(memoBox, child);
 
-      
-      console.log(clickIdNumber);
       //初期のメモが表示されている場合
       //初期のメモが表示される＝メモが登録されていないことになるので、他の処理は省略。
       if(btn.id === 'open_default'){
@@ -56,26 +55,20 @@ const
       else{
           const 
           //「;」で分割し配列に
-            cookiesConvertToArray = cookieContent.split('; '),
-          // クリックされたid番号に対応する配列を読み込み
-          // 配列の番号に合わせるために clickIdNumber
-            memoCookies = cookiesConvertToArray[clickIdNumber],
-          //呼び出す内容の前後の位置を検索
-            index1 = memoCookies.indexOf('=\[\"'),
-            index2 = memoCookies.indexOf('\"\,\"'),
-            index3 = memoCookies.indexOf('\"\]'),
+            cookiesConvertToArray = cookieContent.split('; ').reverse(),
 
-            //+3は、index条件の文字数
-            title = memoCookies.substring(index1 + 3, index2),
-            //+4は、index条件の文字数 +1
-            content = memoCookies.substring(index2 + 3, index3),
-            //表示させる内容を切り出して配列化
-            memoArray = Array(title, content);
+          // 対応するcookieを配列化
+          // 配列の番号に合わせるために clickIdNumberで何番目の配列かを取得
+
+            memoCookies = cookiesConvertToArray[clickIdNumber]
+            .replace('"]', '')
+            .split('=["');
+          
   
-          console.log(memoCookies);
-console.log(index2);
-          console.log(memoArray);
-          // // console.log(content);
+          console.log(memoCookies[1].split('","'));
+
+          const
+            memoArray = memoCookies[1].split('","');
           
         //Cookieの「=」より後ろの文字を表示させる
         modalMemoTitle.innerHTML = memoArray[0];
