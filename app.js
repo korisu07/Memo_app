@@ -99,22 +99,48 @@ app.post('/create', (req, res) => {
 
 //Cookieの削除処理
 app.post('/delete/:id', (req, res) => {
-  let id = req.params.id;
+  let deleteId = req.params.id;
   console.log(req.params.id);
-  res.clearCookie(id);
+  res.clearCookie(deleteId);
   res.redirect('/');
 });
 
 //メモを編集する処理
 app.get('/edit/:id', (req, res) => {
   //クリックしたボタンの番号を取得
-  let e = req.params.id;
+  const e = req.params.id;
+  
 
   //メモの内容をマップ付きで配列化します。
   console.log(e);
-  console.log(req.cookies.e);
+  console.log(req.cookies[e]);
 
-  res.render('edit.ejs',{edit_data: 'a'});
+  res.render('edit.ejs',{edit_id: e, edit_data: req.cookies[e]});
+});
+
+//メモを編集する処理
+app.post('/edit/post/:id', (req, res) => {
+  let
+    a = req.params.id,
+
+    title = req.cookies[a][0],
+    content = req.cookies[a][1];
+
+  switch(true){
+    case req.body.edit_memoTitle != '':
+      title = req.body.edit_memoTitle;
+      break;
+  }
+
+  switch(true){
+    case req.body.edit_memoContent != '':
+      content = req.body.edit_memoContent;
+      break;
+  }
+
+  res.cookie(a, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+
+  res.redirect('/');
 });
 
 // Localhost:3000に接続
