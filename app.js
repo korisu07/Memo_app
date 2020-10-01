@@ -16,9 +16,9 @@ app.get('/', (req, res) => {
   //メモの内容をマップ付きで配列化します。
   const 
     memoCookies = Object.entries(req.cookies)
-      //古い順に
+      //新しい順に
       .map( ([memo_id, content]) => ({memo_id, content}) )
-      .sort();
+      .reverse();
 
   res.render(
     'index.ejs', 
@@ -31,6 +31,17 @@ app.get('/', (req, res) => {
 
   // console.log(Array.isArray(memoCookies));
 });
+
+  //日時を登録
+  const 
+    setTime = new Date(Date.now()),
+    year = setTime.getFullYear(),
+    month = setTime.getMonth(),
+    date = setTime.getDate(),
+    hour = setTime.getHours(),
+    min = String(setTime.getMinutes()).padStart(2, '0'),
+
+    time = `${year}年 ${month}月 ${date}日 ${hour}:${min}`;
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
@@ -50,8 +61,8 @@ app.post('/create', (req, res) => {
   function plusCookies(){
     //入力されたメモの内容を取得
     const 
-    title = req.body.memoTitle,
-    content = req.body.memoContent;
+      title = req.body.memoTitle,
+      content = req.body.memoContent;
 
     //Cookie名の一番大きい数字を取得し、その次の数字を追加
 
@@ -83,10 +94,10 @@ app.post('/create', (req, res) => {
     //タイトルが登録されていない場合
     if(title === ""){
       const defaultTitle = `タイトル${i}`
-      res.cookie(`cookieNumber${i}`, [defaultTitle, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(`cookieNumber${i}`, [defaultTitle, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }//タイトルが登録されている場合
     else {
-      res.cookie(`cookieNumber${i}`, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(`cookieNumber${i}`, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }
   }
 
@@ -138,7 +149,7 @@ app.post('/edit/post/:id', (req, res) => {
       break;
   }
 
-  res.cookie(a, [title, content], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+  res.cookie(a, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
 
   res.redirect('/');
 });
