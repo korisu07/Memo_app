@@ -34,6 +34,10 @@ const
     modalMemoContent = document.getElementById('modalMemoContent'),
     modalMemoTitle = document.querySelector('#modalMemoWindow h2');
 
+    //日時を表示
+    const
+    writeTime = document.getElementById('memoWriteTime');
+
     //テキストの中身を表示する処理
     const
       //クリックされたボタンのid名から数字だけを取得
@@ -41,6 +45,7 @@ const
       memoBox = document.querySelectorAll('.memoWrap .memo'),
       //何番目の配列をクリックしたかを取得
       clickIdNumber = Array.prototype.indexOf.call(memoBox, child);
+      
 
       //初期のメモが表示されている場合
       //初期のメモが表示される＝メモが登録されていないことになるので、他の処理は省略。
@@ -50,6 +55,18 @@ const
         modalMemoTitle.innerHTML = document.querySelector('.memoWrap h3').innerHTML;
         //内容を表示
         modalMemoContent.innerHTML = document.getElementById('content_default').innerHTML;
+
+        const 
+        setTime = new Date(Date.now()),
+        year = setTime.getFullYear(),
+        month = setTime.getMonth(),
+        date = String(setTime.getDate()).padStart(2, '0');
+    
+        const
+          getTime = `${year}/${month}/${date}`;
+
+
+        writeTime.textContent = getTime;
       }
       //ユーザーによるメモが登録されている場合
       else{
@@ -70,10 +87,12 @@ const
           const
             memoArray = memoCookies[1].split('","');
           
+
         //Cookieの「=」より後ろの文字を表示させる
         modalMemoTitle.innerHTML = memoArray[0];
         //表示内容は改行タグに変換
         modalMemoContent.innerHTML = memoArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
+        writeTime.textContent = memoArray[2]; 
       }
 
     //表示に関する処理
