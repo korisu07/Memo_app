@@ -30,7 +30,7 @@
 body {
   background: #fff;
   font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
-  margin: 8;
+  margin: 8px;
 
   // 見出しの設定
   h1 {
@@ -166,6 +166,7 @@ form {
     left: 0;
     padding: 0 8px 10px;
     font-size: 12px;
+    background: transparent;
   }
   // 「メモを開く」リンクの設定
   .openBtn {
@@ -175,6 +176,7 @@ form {
     right: 0;
     padding: 0 8px 8px 8px;
     font-size: 15px;
+    background: transparent;
   }
 }
 

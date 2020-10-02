@@ -24,7 +24,7 @@
 body {
   background: #fff;
   font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
-  margin: 8;
+  margin: 8px;
 }
 
 body h1 {
@@ -152,6 +152,7 @@ form textarea {
   left: 0;
   padding: 0 8px 10px;
   font-size: 12px;
+  background: transparent;
 }
 
 .memoWrap .openBtn {
@@ -161,6 +162,7 @@ form textarea {
   right: 0;
   padding: 0 8px 8px 8px;
   font-size: 15px;
+  background: transparent;
 }
 
 .memoWrap div.memo:first-of-type {
