@@ -29,7 +29,7 @@ function brTagString(Element) {
     textHeight = Element.clientHeight + h3Size - 15,
 
   //★改行が５回されたらマッチして、５回目の改行を配列として切り出す
-    match = Element.innerHTML.match(new RegExp('(<br>|[^<br>]+<br>){5}'));
+    match = Element.innerHTML.match(new RegExp('(<br>|[^<br>]+<br>){4}'));
   // console.log(match);
 
   // matchが作られて、かつtextの高さがdiv.memoを超えたら発動(50文字未満)
