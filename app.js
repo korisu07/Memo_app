@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
     hour = setTime.getHours(),
     min = String(setTime.getMinutes()).padStart(2, '0'),
 
-    time = `${year}年 ${month}月 ${date}日 ${hour}:${min}`;
+    time = `${year}/${month}/${date} ${hour}:${min}`;
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
