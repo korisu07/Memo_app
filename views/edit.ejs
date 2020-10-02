@@ -19,9 +19,9 @@
     <article>
       <form action="/edit/post/<%= edit_id %>" method="post" id="edit">
         <label>
-          <input type="text" name="edit_memoTitle" id="memoTitle" placeholder="<%= edit_data[0] %>" maxlength="20">
-          <textarea name="edit_memoContent" id="memoTextArea" cols="18" rows="10" placeholder="<%= edit_data[1] %>" maxlength="200"></textarea>
-          <input type="submit" value="作成する" class="submit_btn">
+          <input type="text" name="edit_memoTitle" id="memoTitle" placeholder="<%= edit_data[0] %>" value="<%= edit_data[0] %>" maxlength="20">
+          <textarea name="edit_memoContent" id="memoTextArea" cols="18" rows="10" placeholder="<%= edit_data[1] %>" maxlength="200"><%= edit_data[1] %></textarea>
+          <input type="submit" value="編集する" class="submit_btn edit_btn">
         </label>
       </form>
 
