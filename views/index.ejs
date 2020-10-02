@@ -26,24 +26,26 @@
         </label>
       </form>
 
-      <div class="memoWrap">
-        <% memos.filter((memo) => { %>
-        <div class="memo">
-            <h3 id="title_<%= memo.memo_id %>"><%= memo.content[0] %></h3>
-            <div class="delete_btn">×</div>
-            
-            <div id="content_<%= memo.memo_id %>" class="smallMemoContent"><%= memo.content[1] %></div>
-          <div id="open_<%= memo.memo_id %>" class="openMemo">メモを開く</div>
+    <div class="memoWrap">
+      <% memos.filter((memo) => { %>
+      <div class="memo">
+          <h3 id="title_<%= memo.memo_id %>"><%= memo.content[0] %></h3>
+          <div class="delete_btn">×</div>
+          <div id="content_<%= memo.memo_id %>" class="smallMemoContent"><%= memo.content[1] %></div>
+        <div id="open_<%= memo.memo_id %>" class="openMemo">
+          <span class="writeTime"><%= memo.content[2] %></span>
+          <span class="openBtn">メモを開く</span>
         </div>
-        <% }); %>
       </div>
+      <% }); %>
+    </div>
 
-      <%- include('memo_content') %>
-      
-      <script src="js/firstSetting.js"></script>
+    <%- include('memo_content') %>
+    
+    <script src="js/firstSetting.js"></script>
 
-      <script src="js/omitContent.js"></script>
-      <script src="js/clickOpenAction.js"></script>
+    <script src="js/omitContent.js"></script>
+    <script src="js/clickOpenAction.js"></script>
 
-</body>
+  </body>
 </html>
