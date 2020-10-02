@@ -41,6 +41,12 @@
     }
     @media(max-width: 722px){
     @include memoSize(40%, 250px, 30, 12, 30px);
+      .writeTime{
+        font-size: 15px;
+      }
+      .openBtn{
+        padding: 0 8px 10px;
+      }
     }
     @media(max-width: 624px){
     @include memoSize(45%, 200px, 35, 15, 30px);
@@ -49,15 +55,29 @@
         margin: 10px;
       }
     }
-    @media(max-width: 460px){
+    @media(max-width: 500px){
     @include memoSize(80%, 250px, 16, 16, 30px);
       margin: 10px auto;
       &:first-of-type,&:nth-of-type(3n+1),&:nth-of-type(3n){
         margin: 10px auto;
       }
     }
+    @media(max-width: 425px){
+      .writeTime{
+        font-size: 17px;
+      }
+      .openBtn{
+        font-size: 17px;
+      }
+    }
     @media(max-width: 374px){
     @include memoSize(80%, 250px, 20, 14, 30px);
+    .writeTime{
+      font-size: 16px;
+    }
+    .openBtn{
+      font-size: 16px;
+    }
     }
   }
 }

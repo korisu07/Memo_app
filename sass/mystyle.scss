@@ -63,6 +63,7 @@ form {
 }
 
 .submit_btn {
+  cursor: pointer;
   width: 200px;
   height: 50px;
   font-size: 25px;
@@ -104,6 +105,7 @@ form {
 
     // 削除ボタン
     .delete_btn {
+      cursor: pointer;
       font-family: 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', sans-serif;
       font-weight: bold;
       text-align: center;
@@ -126,28 +128,47 @@ form {
 
       &:hover,
       &:active {
+        transition: 0.2s;
         opacity: 1;
       }
     }
   }
 
   // memo のレイアウトここまで
-  // 「メモを開く」リンクの設定
-  .openMemo {
+  // 日時表示のレイアウト
+  .openMemo{
     cursor: pointer;
+    padding: 0 8px 10px 8px;
     // 位置
     position: absolute;
-    right: 0;
     bottom: 0;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    font-size: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    background: transparent;
     opacity: 0.65;
 
     &:hover,
     &:active {
       opacity: 1;
+      transition: 0.2s;
     }
+  }
+  .writeTime{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 8px 10px;
+    font-size: 12px;
+  }
+  // 「メモを開く」リンクの設定
+  .openBtn {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0 8px 8px 8px;
+    font-size: 15px;
   }
 }
 

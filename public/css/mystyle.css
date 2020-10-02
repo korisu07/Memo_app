@@ -53,6 +53,7 @@ form textarea {
 }
 
 .submit_btn {
+  cursor: pointer;
   width: 200px;
   height: 50px;
   font-size: 25px;
@@ -99,6 +100,7 @@ form textarea {
 }
 
 .memoWrap div.memo .delete_btn {
+  cursor: pointer;
   font-family: 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', sans-serif;
   font-weight: bold;
   text-align: center;
@@ -117,22 +119,42 @@ form textarea {
 }
 
 .memoWrap div.memo .delete_btn:hover, .memoWrap div.memo .delete_btn:active {
+  transition: 0.2s;
   opacity: 1;
 }
 
 .memoWrap .openMemo {
   cursor: pointer;
+  padding: 0 8px 10px 8px;
   position: absolute;
-  right: 0;
   bottom: 0;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  font-size: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  background: transparent;
   opacity: 0.65;
 }
 
 .memoWrap .openMemo:hover, .memoWrap .openMemo:active {
   opacity: 1;
+  transition: 0.2s;
+}
+
+.memoWrap .writeTime {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0 8px 10px;
+  font-size: 12px;
+}
+
+.memoWrap .openBtn {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 0 8px 8px 8px;
+  font-size: 15px;
 }
 
 .memoWrap div.memo:first-of-type {
@@ -209,6 +231,12 @@ form textarea {
     line-height: 28px;
     font-size: 28px;
   }
+  .memoWrap div.memo .writeTime {
+    font-size: 15px;
+  }
+  .memoWrap div.memo .openBtn {
+    padding: 0 8px 10px;
+  }
 }
 
 @media (max-width: 624px) {
@@ -228,7 +256,7 @@ form textarea {
   }
 }
 
-@media (max-width: 460px) {
+@media (max-width: 500px) {
   .memoWrap div.memo {
     width: 80%;
     height: 250px;
@@ -245,6 +273,15 @@ form textarea {
   }
 }
 
+@media (max-width: 425px) {
+  .memoWrap div.memo .writeTime {
+    font-size: 17px;
+  }
+  .memoWrap div.memo .openBtn {
+    font-size: 17px;
+  }
+}
+
 @media (max-width: 374px) {
   .memoWrap div.memo {
     width: 80%;
@@ -255,5 +292,11 @@ form textarea {
     height: 35px;
     line-height: 33px;
     font-size: 28px;
+  }
+  .memoWrap div.memo .writeTime {
+    font-size: 16px;
+  }
+  .memoWrap div.memo .openBtn {
+    font-size: 16px;
   }
 }
