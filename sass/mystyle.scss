@@ -74,6 +74,9 @@ form {
   // border-color:rgb(86, 240, 206);
   border-radius: 5px;
 }
+.edit_btn{
+  background: #6da76d;
+}
 
 //メモゾーン
 
@@ -89,6 +92,9 @@ form {
     margin-right: 50px;
     margin-bottom: 50px;
     border: 1px solid #000;
+    
+    border-radius: 15px;
+    overflow:hidden;
 
     h3{
       margin: 0;

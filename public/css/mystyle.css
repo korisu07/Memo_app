@@ -64,6 +64,10 @@ form textarea {
   border-radius: 5px;
 }
 
+.edit_btn {
+  background: #6da76d;
+}
+
 .memoWrap {
   display: flex;
   margin-top: 100px;
@@ -78,6 +82,8 @@ form textarea {
   margin-right: 50px;
   margin-bottom: 50px;
   border: 1px solid #000;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .memoWrap div.memo .delete_btn {

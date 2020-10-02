@@ -127,10 +127,6 @@ div#deleteConfirm {
   }
 }
 
-#memo_openTest {
-  cursor: pointer;
-}
-
 #overLay {
   z-index: 2;
   display: none;
