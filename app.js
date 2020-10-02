@@ -37,11 +37,12 @@ app.get('/', (req, res) => {
     setTime = new Date(Date.now()),
     year = setTime.getFullYear(),
     month = setTime.getMonth(),
-    date = setTime.getDate(),
+    date = String(setTime.getDate()).padStart(2, '0'),
     hour = setTime.getHours(),
-    min = String(setTime.getMinutes()).padStart(2, '0'),
+    min = String(setTime.getMinutes()).padStart(2, '0');
 
-    time = `${year}/${month}/${date} ${hour}:${min}`;
+    let
+      time = `登録日：${year}/${month}/${date} ${hour}:${min}`;
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
@@ -66,12 +67,10 @@ app.post('/create', (req, res) => {
 
     //Cookie名の一番大きい数字を取得し、その次の数字を追加
 
-    //まず、Cookie名を配列化　→　key名だけ操作
+    //まず、Cookie名を配列化　→　key名だけ取得
     const outputKeyNumbers = Object.keys(req.cookies).map((keys) => {
-      //key名の数字部分だけを取得。
-      const idNumber = String(keys).replace('cookieNumber', '');
       //これを数値の戻り値として返す。
-      return Number(idNumber);
+      return Number(keys);
     });
 
     //ナンバリングを一番大きい数字にする処理
@@ -94,10 +93,10 @@ app.post('/create', (req, res) => {
     //タイトルが登録されていない場合
     if(title === ""){
       const defaultTitle = `タイトル${i}`
-      res.cookie(`cookieNumber${i}`, [defaultTitle, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(i, [defaultTitle, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }//タイトルが登録されている場合
     else {
-      res.cookie(`cookieNumber${i}`, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
+      res.cookie(i, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
     }
   }
 
@@ -137,6 +136,7 @@ app.post('/edit/post/:id', (req, res) => {
     title = req.cookies[a][0],
     content = req.cookies[a][1];
 
+  //タイトル部分が空の場合は、もともと登録されているタイトルを再登録
   switch(true){
     case req.body.edit_memoTitle != '':
       title = req.body.edit_memoTitle;
@@ -148,6 +148,8 @@ app.post('/edit/post/:id', (req, res) => {
       content = req.body.edit_memoContent;
       break;
   }
+
+  time = `更新日：${year}/${month}/${date} ${hour}:${min}`;
 
   res.cookie(a, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
 
