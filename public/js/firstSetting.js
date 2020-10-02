@@ -14,7 +14,10 @@ const
           <div class="delete_btn">×</div>
 
           <div id="content_default" class="smallMemoContent">メモを登録してください。</div>
-        <div id="open_default" class="openMemo">メモを開く</div>
+          <div id="open_default" class="openMemo">
+          <span class="writeTime"></span>
+          <span class="openBtn">メモを開く</span>
+        </div>
       </div>`;
   
     wrapElem.innerHTML = tag;

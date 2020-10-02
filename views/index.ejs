@@ -33,7 +33,7 @@
           <div class="delete_btn">×</div>
           <div id="content_<%= memo.memo_id %>" class="smallMemoContent"><%= memo.content[1] %></div>
         <div id="open_<%= memo.memo_id %>" class="openMemo">
-          <span class="writeTime"><%= memo.content[2] %></span>
+          <span class="writeTime"><%= String(memo.content[2]).replace('登録日：', '').replace('更新日：', ''); %></span>
           <span class="openBtn">メモを開く</span>
         </div>
       </div>
