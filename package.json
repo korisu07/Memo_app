@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": ".\\node_modules\\.bin\\nodemon app.js",
+    "start": "node app.js",
     "devstart": "nodemon ./bin/www",
     "test": "ここにテスト用の内容を記述"
   },
