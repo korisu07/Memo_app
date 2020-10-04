@@ -25,11 +25,6 @@ app.get('/', (req, res) => {
     {memos: memoCookies}
     );
 
-  console.log(req.cookies);
-
-  console.log(memoCookies);
-
-  // console.log(Array.isArray(memoCookies));
 });
 
   //日時を登録
@@ -110,7 +105,6 @@ app.post('/create', (req, res) => {
 //Cookieの削除処理
 app.post('/delete/:id', (req, res) => {
   let deleteId = req.params.id;
-  console.log(req.params.id);
   res.clearCookie(deleteId);
   res.redirect('/');
 });
@@ -122,8 +116,6 @@ app.get('/edit/:id', (req, res) => {
   
 
   //メモの内容をマップ付きで配列化します。
-  console.log(e);
-  console.log(req.cookies[e]);
 
   res.render('edit.ejs',{edit_id: e, edit_data: req.cookies[e]});
 });
