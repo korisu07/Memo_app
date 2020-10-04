@@ -149,6 +149,6 @@ app.post('/edit/post/:id', (req, res) => {
 });
 
 // Localhost:3000に接続
-app.listen(3000, '124.154.136.111', function () {
+app.listen(process.env.PORT || 5000, function () {
   console.log('Successful! App listening on port 3000.');
 });
