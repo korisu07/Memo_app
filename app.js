@@ -5,7 +5,7 @@ const app = express();
 
 
 // publicフォルダからCSSや画像ファイルを読み込む設定
-app.use(express.static('public'));
+app.use(express.static('./public'));
 app.use(express.urlencoded({ extended: false }));
 
 app.use(cookieParser());
