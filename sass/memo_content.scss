@@ -114,19 +114,21 @@ div#deleteConfirm{
   z-index: 99;
   position: fixed;
   top: 0;
+  left: 0;
   cursor: default;
   box-sizing: border-box;
   //レイアウトの設定
-  width: 730px;
-  height: 80vh;
-  margin: 10vh 125px 12vh 125px;
+  padding: 10%;
+  width: 50%;
+  height: 50vh;
+  margin: 25vh 25%;
 }
 
 //レスポンシブ
 div#modalMemoWindow, div#deleteConfirm{
   @media(max-width: 1000px){
     width: 80%;
-    margin: 10vh 10% 12vh 10%;
+    margin: 10vh 10% 10vh 10%;
   }
   @media(max-width: 768px){
     left:0;
@@ -149,6 +151,20 @@ div#modalMemoWindow, div#deleteConfirm{
       padding-top: 25px;
     }
   }
+
+  @media(max-width: 425px){
+    #postDelete{
+      clear: left;
+      width: 80%;
+      margin: 0 10% 10px 10%;
+    }
+    #noDel{
+      clear: left;
+      width: 80%;
+      margin-left: 0;
+      margin: 0 10%;
+    }
+  }
 }
 
 
@@ -164,4 +180,64 @@ div#modalMemoWindow, div#deleteConfirm{
   height: 120%;
   background-color: #000;
   opacity: 0.5;
+}
+
+//削除確認ボタンのレイアウト
+.confirmText{
+  width: 100%;
+  text-align: center;
+  font-size: 150%;
+  padding-bottom: 20px;
+}
+#postDelete{
+  float: left;
+  width: 40%;
+}
+#postDelete button{
+  box-sizing: border-box;
+  cursor: pointer;
+  text-align: center;
+  font-size: 120%;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  transition: 0.2s;
+
+  //もともとのborderをリセット
+  border: none;
+  //色の設定
+  color: #000;
+  opacity: 0.55;
+  $red: #ff0000;
+  border:1px solid $red;
+  background: rgba(lighten($color: $red, $amount: 45),0.5);
+  &:hover, &:active{
+    //もともとのborderをリセット
+    border: none;
+    
+    background: rgba(mix($red, #dcdcdc),0.45);
+    opacity: 0.45;
+    $red: #ff0000;
+    border:1px solid $red;
+  }
+}
+#noDel{
+  margin-left: 20%;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-size: 120%;
+  width: 40%;
+  transition: 0.2s;
+
+  //色の設定
+  color: #000;
+  opacity: 0.55;
+  border: solid #8d8d8d 1px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 10px;
+  &:hover, &:active{
+    background: #dcdcdc;
+  }
 }
