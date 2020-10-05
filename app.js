@@ -33,11 +33,19 @@ app.get('/', (req, res) => {
     year = setTime.getFullYear(),
     month = setTime.getMonth(),
     date = String(setTime.getDate()).padStart(2, '0'),
-    hour = setTime.getHours(),
     min = String(setTime.getMinutes()).padStart(2, '0');
 
+  let 
+    hour = setTime.getHours();
+
+    if(hour > 12){
+      hour = `PM ${hour - 12}`;
+    }else{
+      hour = `AM ${hour}`;
+    }
+
     let
-      time = `登録日：${year}/${month}/${date} ${hour}:${min}`;
+      time = `登録日：${year}/${month + 1}/${date} ${hour}:${min}`;
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
@@ -149,6 +157,6 @@ app.post('/edit/post/:id', (req, res) => {
 });
 
 // Localhost:3000に接続
-app.listen(process.env.PORT || 5000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Successful! App listening on port 3000.');
 });
