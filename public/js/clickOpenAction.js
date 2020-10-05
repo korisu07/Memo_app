@@ -21,7 +21,7 @@ const
   const
   //Cookieをデコード　→　デコードできなかった文字列を変換
   cookieContent = decodeURIComponent(document.cookie).replace(new RegExp(/j\:/, 'g'),'');
-  console.log(cookieContent);
+  // console.log(cookieContent);
 
   //メモを表示する処理
 　//表示ボタンをひとつずつ処理
@@ -63,7 +63,7 @@ const
         date = String(setTime.getDate()).padStart(2, '0');
     
         const
-          getTime = `${year}/${month}/${date}`;
+          getTime = `${year}/${month + 1}/${date}`;
 
 
         writeTime.textContent = getTime;
@@ -82,7 +82,7 @@ const
             .split('=["');
           
   
-          console.log(memoCookies[1].split('","'));
+          // console.log(memoCookies[1].split('","'));
 
           const
             memoArray = memoCookies[1].split('","');
@@ -219,7 +219,7 @@ if(wrapp != null){
 
 
 
-//共通の関数
+//削除確認の処理
 
 function confirmDelete(){
 
@@ -242,10 +242,29 @@ function confirmDelete(){
   deleteBtnId = deleteBtn.className.replace('delete_', ''),
   postDeleteBtn = document.getElementById("postDelete");
 
+  //ボタンを押したときにaction属性を付与する
+  //　→　app.jsの処理に受け渡す
   postDeleteBtn.setAttribute('action', `/delete/${deleteBtnId}`);
+
+  
+  //削除しますか　→　いいえ　を押した場合の処理
+  const
+    noDeleteBtn = document.getElementById("noDel"),
+    confirmWrap = document.getElementById("confirmWrapp");
+
+    function clickNoDelete (noBtn){
+      noBtn.addEventListener('click', function(){
+      confirmWrap.style.display = 'none';
+      overLay.style.display = 'none';
+    });
+
+  }
+
+  setTimeout(clickNoDelete(noDeleteBtn), 200);
+
 }
 
-
+//削除ボタンを押したときに、表示を入れ替えるための処理
 function hideModalMemoOnly(){
   setTimeout("modalMemoWindow.style.display = 'none'", 200);
   modalMemoWindow.animate([{ opacity: '1' }, { opacity: '0' }], 220);

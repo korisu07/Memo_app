@@ -12,7 +12,7 @@
 const
   loadMemoContent = document.querySelector('div#memoText');
 
-console.log(loadMemoContent.textContent);
+// console.log(loadMemoContent.textContent);
 
 //JSON形式になっているテキストを
 //JavaScriptで扱えるように変換
@@ -21,7 +21,7 @@ const
   //配列として取り出された最初のもの（これがメモの内容）の値を取得
   textValue = Object.values(textOutPut[0]);
 
-console.log(textValue);
+// console.log(textValue);
 
 //再度JSON形式として変換するときにまわりのカギカッコ等を削除
 const
@@ -38,6 +38,6 @@ function strChange(elem) {
   return elem;
 }
 
-console.log(content);
+// console.log(content);
 
 loadMemoContent.innerHTML = strChange(content);
