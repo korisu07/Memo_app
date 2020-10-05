@@ -32,20 +32,10 @@ app.get('/', (req, res) => {
     setTime = new Date(Date.now()),
     year = setTime.getFullYear(),
     month = setTime.getMonth(),
-    date = String(setTime.getDate()).padStart(2, '0'),
-    min = String(setTime.getMinutes()).padStart(2, '0');
-
-  let 
-    hour = setTime.getHours();
-
-    if(hour > 12){
-      hour = `PM ${hour - 12}`;
-    }else{
-      hour = `AM ${hour}`;
-    }
+    date = String(setTime.getDate()).padStart(2, '0');
 
     let
-      time = `登録日：${year}/${month + 1}/${date} ${hour}:${min}`;
+      time = `登録日：${year}/${month + 1}/${date}`;
 
 // メモ追加のルーティング
 app.post('/create', (req, res) => {
