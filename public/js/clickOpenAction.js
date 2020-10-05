@@ -226,18 +226,20 @@ function confirmDelete(){
   const 
     confirmWin = `
       <div id="deleteConfirm">
-        削除しますか？
+        <div class="confirmText">削除しますか？</div>
         <form method="post" id="postDelete"><button>はい</button></form>
-        <span id="noDel">いいえ</span>
+        <div id="noDel">いいえ</div>
       </div>
       `,
     createDiv = document.createElement('div');
     createDiv.id = "confirmWrapp";
     createDiv.innerHTML = confirmWin;
 
-    
+  //overLayの中に確認用ボタンを埋め込む
   overLay.parentNode.insertBefore(createDiv, overLay.nextElementSibling);
   
+
+  //削除するメモの番号を付与する処理
   const
   deleteBtnId = deleteBtn.className.replace('delete_', ''),
   postDeleteBtn = document.getElementById("postDelete");
@@ -252,17 +254,24 @@ function confirmDelete(){
     noDeleteBtn = document.getElementById("noDel"),
     confirmWrap = document.getElementById("confirmWrapp");
 
-    function clickNoDelete (noBtn){
-      noBtn.addEventListener('click', function(){
+    function clickNoDelete (){
       confirmWrap.style.display = 'none';
       overLay.style.display = 'none';
+    }
+
+    noDeleteBtn.addEventListener('click', function(){
+      clickNoDelete();
     });
 
+    overLay.addEventListener('click', function(){
+      clickNoDelete();
+    });
+
+    postDeleteBtn.addEventListener('click', function(){
+      postDeleteBtn.blur();
+    });
   }
-
-  setTimeout(clickNoDelete(noDeleteBtn), 200);
-
-}
+  //フォーカスを外す処理
 
 //削除ボタンを押したときに、表示を入れ替えるための処理
 function hideModalMemoOnly(){
