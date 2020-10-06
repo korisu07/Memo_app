@@ -139,7 +139,7 @@ app.post('/edit/post/:id', (req, res) => {
       break;
   }
 
-  time = `更新日：${year}/${month}/${date}`;
+  time = `更新日：${year}/${month + 1}/${date}`;
 
   res.cookie(a, [title, content, time], { expires: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000)});
 
