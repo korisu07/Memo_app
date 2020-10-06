@@ -11,7 +11,6 @@ const
       tag =
       `<div class="memo">
           <h3>タイトル</h3>
-          <div class="delete_btn">×</div>
 
           <div id="content_default" class="smallMemoContent">メモを登録してください。</div>
           <div id="open_default" class="openMemo">

@@ -93,6 +93,7 @@ const
         //表示内容は改行タグに変換
         modalMemoContent.innerHTML = memoArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
         writeTime.textContent = memoArray[2]; 
+
       }
 
     //表示に関する処理
@@ -112,11 +113,35 @@ const
     //表示したCookieのID名を引用
     const
       clickCookieName = btn.id.replace('open_', '');
+    
+    const 
+      idName_btnBox = document.getElementById('btnBox');
 
-    //クラス付与して、編集ボタンと削除ボタンに対応
-    editBtn.href = '/edit/' + clickCookieName;
-    deleteBtn.classList.add('delete_' + clickCookieName);
+    //初期のメモが表示されている場合、不要なボタンを消す
+    if(clickCookieName === 'default'){
+      deleteBtn.style.display = 'none';
+      editBtn.style.display = 'none';
+    
 
+      idName_btnBox.style.textAlign = 'right';
+      idName_btnBox.style.width = '100%';
+      document.getElementById('closeMemo').style.width = '30%';
+
+      writeTime.style.width = '100%';
+    }// ユーザーのメモが表示されている場合
+    else{
+
+      //スタイルをもとに戻す
+      idName_btnBox.style.textAlign = '';
+      idName_btnBox.style.width = '';
+      document.getElementById('closeMemo').style.width = '';
+
+      writeTime.style.width = '';
+
+      //クラス付与して、編集ボタンと削除ボタンに対応
+      deleteBtn.classList.add('delete_' + clickCookieName);
+      editBtn.href = '/edit/' + clickCookieName;
+    }
 
   }, false);
 });
