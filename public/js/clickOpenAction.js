@@ -128,6 +128,9 @@ const
       document.getElementById('closeMemo').style.width = '30%';
 
       writeTime.style.width = '100%';
+      writeTime.style.padding = '0';
+
+      document.getElementById('modalMemoContent').style.padding = '0';
     }// ユーザーのメモが表示されている場合
     else{
 
@@ -137,6 +140,9 @@ const
       document.getElementById('closeMemo').style.width = '';
 
       writeTime.style.width = '';
+      writeTime.style.padding = '';
+
+      document.getElementById('modalMemoContent').style.padding = '';
 
       //クラス付与して、編集ボタンと削除ボタンに対応
       deleteBtn.classList.add('delete_' + clickCookieName);
