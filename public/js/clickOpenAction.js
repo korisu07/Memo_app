@@ -1,10 +1,14 @@
 'use strict';
 
-const
+// 
+// ★グローバルスコープ
+// 
+
+let
 　//表示ボタンをすべて読み込み
-  getOpenBtn = document.getElementsByClassName('openMemo'),
+  arrayBtn = document.getElementsByClassName('openMemo'),
   //クラスを配列化
-  arrayBtn = Array.from(getOpenBtn);
+  arrayBtn = Array.from(arrayBtn);
 
 const
   //半透明の黒背景
@@ -17,11 +21,20 @@ const
   editBtn = document.getElementById('editMemo'),
   deleteBtn = document.getElementById('deleteMemo');
 
-
-  const
+const
   //Cookieをデコード　→　デコードできなかった文字列を変換
   cookieContent = decodeURIComponent(document.cookie).replace(new RegExp(/j\:/, 'g'),'');
   // console.log(cookieContent);
+
+// 
+// ここまで　グローバルスコープ　
+// 
+
+// -----------------------------------------------
+
+// 
+// ★クリック時の処理
+// 
 
   //メモを表示する処理
 　//表示ボタンをひとつずつ処理
@@ -96,7 +109,16 @@ const
 
       }
 
-    //表示に関する処理
+// 
+// ここまで　クリック時の処理　
+// 
+
+// -----------------------------------------------
+
+// 
+// ★表示に関する処理
+// 
+
     //それぞれの要素を表示
     overLay.style.display = 'block';
     modalMemoWindow.style.display = 'block';
@@ -151,10 +173,17 @@ const
 
   }, false);
 });
-//メモを表示する処理　ここまで
 
+// 
+// ここまで　メモを表示する処理
+// 
 
-//要素を隠すための関数
+// -----------------------------------------------
+
+// 
+// ★要素を隠すための関数
+//
+
 function modalHide(a, b) {
   a.style.display = 'none';
   b.style.display = 'none';
