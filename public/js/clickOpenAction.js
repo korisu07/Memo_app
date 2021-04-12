@@ -36,9 +36,9 @@ const
 // ★クリック時の処理
 // 
 
-  //メモを表示する処理
-　//表示ボタンをひとつずつ処理
-  arrayBtn.filter(btn => {
+//メモを表示する処理
+//表示ボタンをひとつずつ処理
+arrayBtn.filter(btn => {
   //「メモを表示する」ボタンをクリックしたときに発動
   btn.addEventListener('click', function () {
   
@@ -83,29 +83,25 @@ const
       }
       //ユーザーによるメモが登録されている場合
       else{
-          const 
+        let 
           //「;」で分割し配列に
-            cookiesConvertToArray = cookieContent.split('; ').reverse(),
+          memoContentArray = cookieContent.split('; ').reverse();
 
           // 対応するcookieを配列化
           // 配列の番号に合わせるために clickIdNumberで何番目の配列かを取得
 
-            memoCookies = cookiesConvertToArray[clickIdNumber]
+          memoContentArray  = memoContentArray[clickIdNumber]
             .replace('"]', '')
             .split('=["');
           
-  
-          // console.log(memoCookies[1].split('","'));
-
-          const
-            memoArray = memoCookies[1].split('","');
+          memoContentArray = memoContentArray[1].split('","');
           
 
         //Cookieの「=」より後ろの文字を表示させる
-        modalMemoTitle.innerHTML = memoArray[0];
+        modalMemoTitle.innerHTML = memoContentArray[0];
         //表示内容は改行タグに変換
-        modalMemoContent.innerHTML = memoArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
-        writeTime.textContent = memoArray[2]; 
+        modalMemoContent.innerHTML = memoContentArray[1].replace(/(\\r|\\r\\n|\\n)/g,'<br>');
+        writeTime.textContent = memoContentArray[2]; 
 
       }
 
@@ -238,22 +234,24 @@ editBtn.addEventListener('click', function(){
 
 // ----- 削除ボタンの処理 -----
 
-//最初から表示されている削除ボタン
+//小さいメモに表示されている[×]印の削除ボタン
 const 
-easyClearBtn = Array.prototype.slice.call(document.getElementsByClassName('delete_btn'));
+smallDeleteBtn  = Array.prototype.slice.call(document.getElementsByClassName('delete_btn'));
 
-easyClearBtn.filter(btn => {
+smallDeleteBtn.filter(btn => {
   btn.addEventListener('click', function(){
     overLay.style.display = 'block';
     confirmDelete();
 
+    // クリックされた[×]ボタンの次にある要素、content_(半角数字)の半角数字をメモIDとして取得
     const
-      easyID = String(btn.nextElementSibling.id).replace('content_', '');
+      smallDeleteId = String(btn.nextElementSibling.id).replace('content_', '');
     
+      // 動的に追加される削除ボタンに、アクション属性を追加
       const
       postDeleteBtn = document.getElementById("postDelete");
     
-      postDeleteBtn.setAttribute('action', `/delete/${easyID}`);
+      postDeleteBtn.setAttribute('action', `/delete/${smallDeleteId}`);
 
   }, false);
 });
