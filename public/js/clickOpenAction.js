@@ -6,7 +6,7 @@
 
 let
 　//表示ボタンをすべて読み込み
-  arrayBtn = document.getElementsByClassName('openMemo'),
+  arrayBtn = document.getElementsByClassName('openMemo');
   //クラスを配列化
   arrayBtn = Array.from(arrayBtn);
 
