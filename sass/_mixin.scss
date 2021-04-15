@@ -15,5 +15,6 @@
 }
 
 @mixin newMemoSize($memoWidth, $memoHeight) {
-
+  width: $memoWidth;
+  height: $memoHeight;
 }
