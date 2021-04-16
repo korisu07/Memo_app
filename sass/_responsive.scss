@@ -1,0 +1,75 @@
+//レスポンシブ
+
+@media(max-width: 1000px){
+  div#modalMemoWindow, div#deleteConfirm{
+    width: 80%;
+    margin: 10vh 10% 10vh 10%;
+  }
+}
+
+@media(max-width: 768px){
+  div#modalMemoWindow, div#deleteConfirm{
+    left:0;
+    width: 100%;
+    margin: 10vh 0 12vh 0;
+    #title{
+      width: 100%;
+      clear: left;
+    }
+    #btnBox{
+      width: 100%;
+      clear: right;
+    }
+    #memoWriteTime{
+      width: 100%;
+      clear: left;
+      text-align: right;
+    }
+    #modalMemoContent{
+      padding-top: 25px;
+    }
+  }// end div#modalMemoWindow, div#deleteConfirm.
+}
+
+@media(max-width: 650px){
+  input#memoTitle{
+    width: 80%;
+  }
+}
+
+@media(max-width: 550px){
+  input#memoTitle{
+    width: 100%;
+    height: 50px;
+    font-size: 22px;
+  }
+}
+
+@media(max-width: 550px){
+  textarea#memoTextArea{
+    font-size: 25px;
+  }
+} // end textarea#memoTextArea.
+
+@media(max-width: 425px){
+  div#modalMemoWindow h2{
+    padding-bottom: 0;
+  }
+  #postDelete{
+    clear: left;
+    width: 80%;
+    margin: 0 10% 10px 10%;
+  }
+  #noDel{
+    clear: left;
+    width: 80%;
+    margin-left: 0;
+    margin: 0 10%;
+  }
+}
+
+@media(max-width: 320px){
+  div#modalMemoWindow h2{
+    padding-left: 0;
+  }
+}
