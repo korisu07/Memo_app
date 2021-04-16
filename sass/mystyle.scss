@@ -4,14 +4,14 @@
 @import "_mixin";
 
 * {
-  color: #000;
-  background: #fff;
+  color: $black;
+  background: $white;
   text-align: left;
   box-sizing: border-box;
 
   a {
     text-decoration: none;
-    color: #000;
+    color: $black;
     opacity: 0.65;
 
     &:hover,
@@ -28,7 +28,7 @@
 
 // メインのスタイル設定
 body {
-  background: #fff;
+  background: $white;
   font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
   margin: 8px;
 
@@ -36,7 +36,7 @@ body {
   h1 {
     font-weight: normal;
     font-size: 200%;
-    color: #000;
+    color: $black;
   }
 }
 
@@ -66,7 +66,7 @@ textarea#memoTextArea {
   font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: #fff;
+  color: $white;
   background-color: rgb(143, 210, 255);
   // border-color:rgb(86, 240, 206);
   border-radius: 5px;
@@ -87,7 +87,7 @@ textarea#memoTextArea {
     position: relative;
     margin-right: 30px;
     margin-bottom: 50px;
-    border: 1px solid #000;
+    border: 1px solid $black;
     
     border-radius: 15px;
     overflow:hidden;
@@ -115,10 +115,8 @@ textarea#memoTextArea {
       margin-right: 5px;
       // 色などを指定
       opacity: 0.7;
-      $red: rgb(255, 112, 112);
-      $brown: rgb(48, 32, 0);
       background-color: $red;
-      color: #fff;
+      color: $white;
       border: 1.2px solid $brown;
       font-weight: bold;
       border-radius: 10px;
@@ -128,8 +126,8 @@ textarea#memoTextArea {
         transition: 0.2s;
         opacity: 1;
       }
-    }
-  }
+    }// end .delete_btn
+  }// end div.memo
 
   // memo のレイアウトここまで
   // 日時表示のレイアウト
@@ -169,7 +167,7 @@ textarea#memoTextArea {
     font-size: 15px;
     background: transparent;
   }
-}
+}// end .memoWrap
 
 @import "_memo_size.scss";
 @import "_responsive.scss";

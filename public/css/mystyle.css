@@ -1,14 +1,14 @@
 @charset "UTF-8";
 * {
-  color: #000;
-  background: #fff;
+  color: #1b1b1b;
+  background: #fdfdfd;
   text-align: left;
   box-sizing: border-box;
 }
 
 * a {
   text-decoration: none;
-  color: #000;
+  color: #1b1b1b;
   opacity: 0.65;
 }
 
@@ -22,7 +22,7 @@
 }
 
 body {
-  background: #fff;
+  background: #fdfdfd;
   font-family: 'ＭＳ Ｐ ゴシック', sans-serif;
   margin: 8px;
 }
@@ -30,7 +30,7 @@ body {
 body h1 {
   font-weight: normal;
   font-size: 200%;
-  color: #000;
+  color: #1b1b1b;
 }
 
 .container {
@@ -59,7 +59,7 @@ textarea#memoTextArea {
   font-size: 25px;
   font-weight: bold;
   text-align: center;
-  color: #fff;
+  color: #fdfdfd;
   background-color: #8fd2ff;
   border-radius: 5px;
 }
@@ -79,7 +79,7 @@ textarea#memoTextArea {
   position: relative;
   margin-right: 30px;
   margin-bottom: 50px;
-  border: 1px solid #000;
+  border: 1px solid #1b1b1b;
   border-radius: 15px;
   overflow: hidden;
 }
@@ -105,7 +105,7 @@ textarea#memoTextArea {
   margin-right: 5px;
   opacity: 0.7;
   background-color: #ff7070;
-  color: #fff;
+  color: #fdfdfd;
   border: 1.2px solid #302000;
   font-weight: bold;
   border-radius: 10px;
@@ -158,10 +158,7 @@ textarea#memoTextArea {
 }
 
 .memoWrap div.memo .delete_btn {
-  width: 15%;
-  height: 15%;
   line-height: 31px;
-  font-size: 30px;
 }
 
 .memoWrap div.memo:first-of-type {
@@ -175,6 +172,9 @@ textarea#memoTextArea {
 .memoWrap div.memo .delete_btn {
   float: right;
   box-sizing: border-box;
+  width: 15%;
+  height: 15%;
+  font-size: 30px;
 }
 
 .memoWrap div.memo .smallMemoContent {
@@ -196,10 +196,7 @@ textarea#memoTextArea {
     height: 250px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 35.5px;
-    font-size: 30px;
   }
   .memoWrap div.memo:nth-of-type(3n) {
     margin-right: 0;
@@ -222,10 +219,7 @@ textarea#memoTextArea {
     margin-left: 10px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 31px;
-    font-size: 30px;
   }
 }
 
@@ -246,10 +240,7 @@ textarea#memoTextArea {
     height: 250px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 35.5px;
-    font-size: 30px;
   }
   .memoWrap div.memo .writeTime {
     font-size: 15px;
@@ -266,10 +257,7 @@ textarea#memoTextArea {
     margin: 10px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 34px;
-    font-size: 30px;
   }
   .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin: 10px;
@@ -282,10 +270,7 @@ textarea#memoTextArea {
     height: 220px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 31px;
-    font-size: 30px;
   }
 }
 
@@ -296,10 +281,7 @@ textarea#memoTextArea {
     margin: 10px auto;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 40px;
-    font-size: 30px;
   }
   .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin: 10px auto;
@@ -313,10 +295,7 @@ textarea#memoTextArea {
     margin: 10px auto;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 35.5px;
-    font-size: 30px;
   }
   .memoWrap div.memo:first-of-type, .memoWrap div.memo:nth-of-type(3n+1), .memoWrap div.memo:nth-of-type(3n) {
     margin: 10px auto;
@@ -329,10 +308,7 @@ textarea#memoTextArea {
     height: 250px;
   }
   .memoWrap div.memo .delete_btn {
-    width: 15%;
-    height: 15%;
     line-height: 35.5px;
-    font-size: 30px;
   }
   .memoWrap div.memo .writeTime {
     font-size: 16px;

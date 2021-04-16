@@ -1,10 +1,16 @@
+// 変数
+$white: #fdfdfd;
+$black: #1b1b1b;
+$red: #ff7070;
+$brown: #302000;
+
+// 関数
 @mixin memoAndBtnSizeChange($memoWidth, $memoHeight) {
   width: $memoWidth;
   height: $memoHeight;
   .delete_btn{
-    width: 15%;
-    height: 15%;
+    // line-heightを、メモ本体のheightに合わせて微調整
+    // -2 → ボタンに border: 1px が上下両辺にあるため、その分を減算しています
     line-height: ($memoHeight * 0.15 ) - 2;
-    font-size: 30px;
   }
 }
