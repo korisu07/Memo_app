@@ -11,6 +11,9 @@ div#modalMemoWindow {
   margin: 10vh 125px 12vh 125px;
   padding: 20px;
   border: solid 2px #dcdcdc;
+}
+
+div#modalMemoWindow {
   z-index: 50;
 }
 

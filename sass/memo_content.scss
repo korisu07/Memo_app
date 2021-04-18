@@ -1,3 +1,7 @@
+// メモ一覧のスタイル設定
+@charset "UTF-8";
+
+// #modalMemoWindowの基本スタイル
 div#modalMemoWindow{
   display: none;
   z-index: 99;
@@ -14,6 +18,10 @@ div#modalMemoWindow{
 
   padding:20px;
   border: solid 2px #dcdcdc;
+}
+
+// #modalMemoWindow 直下の要素のスタイル
+div#modalMemoWindow{
   h2{
     font-size: 140%;
     margin: 0;
