@@ -48,6 +48,11 @@ function brTagString(Element) {
   }
 }
 
+
+function omitTargetContent(){
+  
+}
+
 // メモ部分をすべて読み込み
 const contents = document.querySelectorAll('div.smallMemoContent');
 
