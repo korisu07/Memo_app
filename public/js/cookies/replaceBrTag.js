@@ -12,3 +12,14 @@ function brTagChange(Element) {
     return Element.replace(new RegExp(searchStr, 'g'), '<br>');
   }
 }
+
+function escapeHTMLtags( target ){
+  let changeText;
+
+  // HTMLタグを検索し、除外
+  changeText = target.replace(/<[a-z]*>/g, '');
+  changeText = changeText.replace(/<\/[a-z]*>/g, '');
+
+  // 除外したあとの文字列を返す
+  return changeText;
+}
