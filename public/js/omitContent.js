@@ -1,17 +1,6 @@
 'use strict';
 
-// 改行をbrタグに変換する
-function brTagChange(Element) {
-  let searchStr = /(\r\n)/;
-  const searchExp = Element.match(new RegExp(searchStr, 'g'));
-
-  if(searchExp){
-    return Element.replace(new RegExp(searchStr, 'g'), '<br>');
-  }else{
-    searchStr = /(\r)|(\n)/;
-    return Element.replace(new RegExp(searchStr, 'g'), '<br>');
-  }
-}
+import { brTagChange, escapeHTMLtags } from "./cookies/replaceBrTag.js";
 
 // 文字省略のための処理
 function brTagString(Element) {
@@ -48,17 +37,15 @@ function brTagString(Element) {
   }
 }
 
-
-function omitTargetContent(){
-  
-}
-
 // メモ部分をすべて読み込み
 const contents = document.querySelectorAll('div.smallMemoContent');
 
 // 関数を実行するための処理
 // メモ部分を一つずつ処理
 contents.forEach(memoBox => {
-  memoBox.innerHTML = brTagChange(memoBox.innerHTML);
+  const 
+    content = escapeHTMLtags(memoBox.innerHTML);
+    
+  memoBox.innerHTML = brTagChange(content);
   memoBox.innerHTML = brTagString(memoBox);
 });
