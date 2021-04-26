@@ -10,8 +10,6 @@ function brTagString(Element) {
     memoElement = document.querySelector('div.memo'),
     divMemoSize = memoElement.clientHeight;
 
-  // console.log(h3Size);
-
   //textの高さと文字数を取得
   const
     h3Size = document.querySelector('h3').clientHeight,
@@ -19,12 +17,10 @@ function brTagString(Element) {
 
   //★改行が５回されたらマッチして、５回目の改行を配列として切り出す
     match = Element.innerHTML.match(new RegExp('(<br>|[^<br>]+<br>){4}'));
-  // console.log(match);
 
   // matchが作られて、かつtextの高さがdiv.memoを超えたら発動(50文字未満)
   if (match && textHeight >= divMemoSize - 25 && Element.textContent.length <= 50) {
     const index = match[0].length;
-    // console.log(index);
     return Element.innerHTML.substr(0, index) + '...';
   }
   // 50文字を超えている場合に発動
