@@ -21,11 +21,6 @@ const
   editBtn = document.getElementById('editMemo'),
   deleteBtn = document.getElementById('deleteMemo');
 
-const
-  //Cookieをデコード　→　デコードできなかった文字列を変換
-  cookieContent = decodeURIComponent(document.cookie).replace(new RegExp(/j\:/, 'g'),'');
-  // console.log(cookieContent);
-
 // 
 // ここまで　グローバルスコープ　
 // 
@@ -33,8 +28,14 @@ const
 // -----------------------------------------------
 
 // 
+// 
 // ★クリック時の処理
 // 
+
+//Cookieをデコード　→　デコードできなかった文字列を変換
+function decodeCookie(){
+  return decodeURIComponent(document.cookie).replace(new RegExp(/j\:/, 'g'),'');
+}
 
 //メモを表示する処理
 //表示ボタンをひとつずつ処理
@@ -85,7 +86,7 @@ arrayBtn.filter(btn => {
       else{
         let 
           //「;」で分割し配列に
-          memoContentArray = cookieContent.split('; ').reverse();
+          memoContentArray = decodeCookie().split('; ').reverse();
 
           // 対応するcookieを配列化
           // 配列の番号に合わせるために clickIdNumberで何番目の配列かを取得
