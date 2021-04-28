@@ -33,3 +33,27 @@ const
 // 
 
 // -----------------------------------------------
+
+function addModal( action ){
+  action.addEventListener('click', function(){
+    let wrapper;
+  
+    wrapper = document.getElementsByClassName('memoWrap');
+    wrapper = Array.from(wrapper)[0];
+
+    wrapper.insertAdjacentHTML('afterend',contentOfModal);
+
+    console.log('add modal.');
+  });
+}
+
+let
+　//表示ボタンをすべて読み込み
+  arrayMemoBtn = document.getElementsByClassName('test');
+  //クラスを配列化
+  arrayMemoBtn = Array.from(arrayMemoBtn);
+
+
+arrayMemoBtn.forEach(btn => {
+  addModal( btn );
+});
