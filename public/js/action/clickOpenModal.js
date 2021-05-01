@@ -45,12 +45,11 @@ let
 // -----------------------------------------------
 
 function addModal( target ){
-    let wrapper;
-  
-    wrapper = document.getElementsByClassName('memoWrap');
-    wrapper = Array.from(wrapper)[0];
+  const 
+    wrapper = document.getElementById('js-memoWrap');
 
     wrapper.insertAdjacentHTML('afterend', target);
+    
 
     console.log('add modal.');
 }
@@ -66,12 +65,12 @@ function deleteModal( target ){
 arrayMemoBtn.forEach(btn => {
   btn.addEventListener('click', function(){
     // Modalが存在しない場合
-    if(document.getElementById('addTestDiv') === null){
+    if( document.getElementById('modalWrapp') === null ){
       // Modalを追加
-      addModal( testDiv );
+      addModal( contentOfModal );
     } else { //存在する場合
       // Modalを削除
-      deleteModal( document.getElementById('addTestDiv') );
+      deleteModal( document.getElementById('modalWrapp') );
     }
   });
 });
