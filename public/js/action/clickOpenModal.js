@@ -29,7 +29,13 @@ const
   `;
 
 const
-  testDiv = '<div id="addTestDiv">This is test!<div>'
+  // 追加されたことを確認する用のdiv 
+  testDiv = '<div id="addTestDiv">This is test!<div>',
+
+  // modalの全体を取得
+  modalWrapp = document.getElementById('modalWrapp'),
+  // overLayの部分を取得（クリック判定用）
+  overLay = document.getElementById('overLay');
 
   
 let
@@ -42,14 +48,15 @@ let
 // ここまで　グローバルスコープ　
 // 
 
+
 // -----------------------------------------------
+
 
 function addModal( target ){
   const 
     wrapper = document.getElementById('js-memoWrap');
 
     wrapper.insertAdjacentHTML('afterend', target);
-    
 
     console.log('add modal.');
 }
@@ -59,18 +66,64 @@ function deleteModal( target ){
   console.log('delete modal.');
 }
 
+// フェードイン
+function opacity_0_to_100(fade_box, delay_Time = 600){
+  fade_box.animate({
+    opacity:[0, 1]
+  }, delay_Time);
+}
+
+// フェードアウト
+function opacity_100_to_0(fade_box, delay_Time = 600){
+  fade_box.animate({
+    opacity:[1, 0]
+  }, delay_Time);
+}
+
+// -----------------------------------------------
+
+
+// 要素が追加されたときに感知する処理
+
+const observer1 = new MutationObserver(function(){
+  if( document.getElementById('modalWrapp') != null ){
+    // フェードインを実行
+    opacity_0_to_100( document.getElementById('modalWrapp'), 600 );
+  }
+
+});
+
+const config = { 
+  attributes: true, 
+  childList: true, 
+  characterData: true 
+};
+
+
+// -----------------------------------------------
 
 // クリック時に発動
 // ※何故かgetElementByIdを定数にすると上手く動きません
 arrayMemoBtn.forEach(btn => {
   btn.addEventListener('click', function(){
-    // Modalが存在しない場合
-    if( document.getElementById('modalWrapp') === null ){
-      // Modalを追加
-      addModal( contentOfModal );
-    } else { //存在する場合
-      // Modalを削除
-      deleteModal( document.getElementById('modalWrapp') );
-    }
+
+    // Modalを追加
+    addModal( contentOfModal );
+
   });
 });
+
+  // 追加されたModalにフェードインを適用
+  observer1.observe( document.getElementById('modalWrapp'), config );
+
+if( overLay != null ){
+  overLay.addEventListener('click', function(){
+    // フェードアウトを実行
+    opacity_100_to_0( document.getElementById('modalWrapp'), 600 );
+  
+    // Modalを削除
+    setTimeout( 
+      deleteModal( document.getElementById('modalWrapp') )
+    , 600);
+  });
+}
