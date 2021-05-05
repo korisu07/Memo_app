@@ -76,8 +76,8 @@ function resetClass( deleteTaget ){
 function boolDefaultClass( targetBtn ){
 
   const
-  // 先頭の「open_」を除外した結果を判定
-  clickCookieName = targetBtn.id.replace('open_', '');
+    // 先頭の「open_」を除外した結果を判定
+    clickCookieName = targetBtn.id.replace('open_', '');
 
   if( clickCookieName === 'default' ){
     return true;
@@ -85,6 +85,32 @@ function boolDefaultClass( targetBtn ){
     return false;
   }
 }
+
+// #modalMemoWindow 直下の要素を読み込むための関数
+// 後に、内容を代入する処理を簡易化するために使います
+function loadModalElement ( targetName ){
+
+  // #modalMemoWindow 内の要素を指定して取得
+  document.querySelector(`#modalMemoWindow ${targetName}`);
+
+}
+
+// クリックされたボタンの親要素のクラス名を取得する関数
+function passIdNumber( action ){
+
+  //open_memoクラスの親要素である「js-number-(数字)」を取得
+  let
+    // まずクリックされた開くボタンの親要素のクラスを取得
+    parentClass = action.parentNode.className;
+
+    // 余分なクラス名を除外
+    parentClass = parentClass.replace('memo', '');
+    parentClass = parentClass.replace(' ', '');
+
+  return parentClass;
+
+}
+
 
 // 
 // ここまで　関数
@@ -110,6 +136,8 @@ arrayOpenMemoBtn.filter(action => {
       document.getElementById('deleteMemo').style.display = 'none';
     }
     
+    passIdNumber( action );
+
   });
 });
 
