@@ -88,15 +88,14 @@ function boolDefaultClass( targetBtn ){
 
 // #modalMemoWindow 直下の要素を読み込むための関数
 // 後に、内容を代入する処理を簡易化するために使います
-function passModalElementContent ( targetName ){
+function loadModalElement ( targetName ){
 
   // #modalMemoWindow 内の指定された要素を取得し、
   // 中身のテキストを返す
   const
     ElementName = `#modalMemoWindow ${targetName}`;
 
-  return document.querySelector( ElementName ).textContent;
-
+    return document.querySelector( ElementName );
 }
 
 // クリックされたボタンの親要素のクラス名を取得する関数
