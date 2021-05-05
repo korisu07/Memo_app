@@ -6,41 +6,14 @@
 // 
 
 const
-  contentOfModal = `
-    <div id="modalWrapp">
-      <div id="overLay"></div>
-      <div id="modalMemoWindow">
-        <h2></h2>
-
-        <div class="wrapMenu">
-          <span id="memoWriteTime"></span>
-          <div id="btnBox">
-            <a id="editMemo">編集</a>
-            <div id="deleteMemo">削除</div>
-            <div id="closeMemo">閉じる</div>
-          </div><!-- /#btnBox -->
-        </div><!-- /#btnBox -->
-      
-        <div id="modalMemoContent">
-      
-        </div><!-- /#modalMemoContent -->
-      </div><!-- /div#modalMemoWindow -->
-    </div>
-  `;
-
-const
-  // 追加されたことを確認する用のdiv 
-  testDiv = '<div id="addTestDiv">This is test!<div>',
-
   // modalの全体を取得
   modalWrapp = document.getElementById('modalWrapp'),
   // overLayの部分を取得（クリック判定用）
   overLay = document.getElementById('overLay');
 
-  
 let
 　//表示ボタンをすべて読み込み
-  arrayMemoBtn = document.getElementsByClassName('test');
+  arrayMemoBtn = document.getElementsByClassName('openMemo');
   //クラスを配列化
   arrayMemoBtn = Array.from(arrayMemoBtn);
 
@@ -51,30 +24,21 @@ let
 
 // -----------------------------------------------
 
-
-function addModal( target ){
-  const 
-    wrapper = document.getElementById('js-memoWrap');
-
-    wrapper.insertAdjacentHTML('afterend', target);
-
-    console.log('add modal.');
-}
-
-function deleteModal( target ){
-  target.remove();
-  console.log('delete modal.');
-}
-
 // フェードイン
-function opacity_0_to_100(fade_box, delay_Time = 600){
+function opacity_0_to_100(fade_box, delay_Time = 250){
+
+  fade_box.style.display = 'block';
+
   fade_box.animate({
     opacity:[0, 1]
   }, delay_Time);
 }
 
 // フェードアウト
-function opacity_100_to_0(fade_box, delay_Time = 600){
+function opacity_100_to_0(fade_box, delay_Time = 250){
+
+  fade_box.style.display = '';
+
   fade_box.animate({
     opacity:[1, 0]
   }, delay_Time);
@@ -82,48 +46,19 @@ function opacity_100_to_0(fade_box, delay_Time = 600){
 
 // -----------------------------------------------
 
-
-// 要素が追加されたときに感知する処理
-
-const observer1 = new MutationObserver(function(){
-  if( document.getElementById('modalWrapp') != null ){
-    // フェードインを実行
-    opacity_0_to_100( document.getElementById('modalWrapp'), 600 );
-  }
-
-});
-
-const config = { 
-  attributes: true, 
-  childList: true, 
-  characterData: true 
-};
-
-
-// -----------------------------------------------
-
 // クリック時に発動
-// ※何故かgetElementByIdを定数にすると上手く動きません
 arrayMemoBtn.forEach(btn => {
   btn.addEventListener('click', function(){
 
-    // Modalを追加
-    addModal( contentOfModal );
+    opacity_0_to_100( modalWrapp, 600 );
 
   });
 });
 
-  // 追加されたModalにフェードインを適用
-  observer1.observe( document.getElementById('modalWrapp'), config );
 
-if( overLay != null ){
-  overLay.addEventListener('click', function(){
-    // フェードアウトを実行
-    opacity_100_to_0( document.getElementById('modalWrapp'), 600 );
-  
-    // Modalを削除
-    setTimeout( 
-      deleteModal( document.getElementById('modalWrapp') )
-    , 600);
-  });
-}
+overLay.addEventListener('click', function(){
+
+  // フェードアウトを実行
+  opacity_100_to_0( modalWrapp, 600 );
+
+});
