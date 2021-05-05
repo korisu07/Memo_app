@@ -8,14 +8,29 @@
 const
   // modalの全体を取得
   modalWrapp = document.getElementById('modalWrapp'),
-  // overLayの部分を取得（クリック判定用）
-  overLay = document.getElementById('overLay');
+
+  // modal内の編集ボタン
+  editMemo = document.getElementById('editMemo'),
+    // modal内の削除ボタン
+  deleteMemo = document.getElementById('deleteMemo'),
+
+  // メモのmodal表示を閉じるための要素を取得し、配列に
+  arrayCloseMemoDivs = [
+    document.getElementById('overLay'),
+    document.getElementById('closeMemo')
+  ];
+
+
+
+// end const.
 
 let
 　//表示ボタンをすべて読み込み
-  arrayMemoBtn = document.getElementsByClassName('openMemo');
+  arrayOpenMemoBtn = document.getElementsByClassName('openMemo');
   //クラスを配列化
-  arrayMemoBtn = Array.from(arrayMemoBtn);
+  arrayOpenMemoBtn = Array.from(arrayOpenMemoBtn);
+
+// end let.
 
 // 
 // ここまで　グローバルスコープ　
@@ -23,6 +38,10 @@ let
 
 
 // -----------------------------------------------
+
+// 
+// ★関数
+// 
 
 // フェードイン
 function opacity_0_to_100(fade_box, delay_Time = 250){
@@ -36,29 +55,69 @@ function opacity_0_to_100(fade_box, delay_Time = 250){
 
 // フェードアウト
 function opacity_100_to_0(fade_box, delay_Time = 250){
-
-  fade_box.style.display = '';
-
   fade_box.animate({
     opacity:[1, 0]
   }, delay_Time);
+
+  setTimeout(() => {
+    fade_box.style.display = '';
+  }, delay_Time - 50);  
 }
+
+function addClass( addTarget, className ){
+  addTarget.classList.add( className );
+}
+
+function resetClass( deleteTaget ){
+  deleteTaget.removeAttribute("class");
+}
+
+// クリックされたボタンのクラス名が、デフォルト用クラスかどうかを判定
+function boolDefaultClass( targetBtn ){
+
+  const
+  // 先頭の「open_」を除外した結果を判定
+  clickCookieName = targetBtn.id.replace('open_', '');
+
+  if( clickCookieName === 'default' ){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+// 
+// ここまで　関数
+// 
 
 // -----------------------------------------------
 
+// 
+// ★処理が発動するタイミングを記述
+// 
+
 // クリック時に発動
-arrayMemoBtn.forEach(btn => {
-  btn.addEventListener('click', function(){
+arrayOpenMemoBtn.forEach(action => {
+  action.addEventListener('click', function(){
 
-    opacity_0_to_100( modalWrapp, 600 );
+    opacity_0_to_100( modalWrapp );
 
+    // デフォルトメモが登録されている場合
+    if( boolDefaultClass( action ) ){
+
+      // 編集ボタンを削除ボタンを隠す
+      document.getElementById('editMemo').style.display = 'none';
+      document.getElementById('deleteMemo').style.display = 'none';
+    }
+    
   });
 });
 
+arrayCloseMemoDivs.forEach(action =>{
+  action.addEventListener('click', function(){
 
-overLay.addEventListener('click', function(){
-
-  // フェードアウトを実行
-  opacity_100_to_0( modalWrapp, 600 );
-
+    // フェードアウトを実行
+    opacity_100_to_0( modalWrapp );
+  
+  });
 });
