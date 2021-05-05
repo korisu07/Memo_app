@@ -88,7 +88,7 @@ function boolDefaultClass( targetBtn ){
 
 
 // クリックされたボタンの親要素のクラス名を取得する関数
-function passIdName( action ){
+function passClassName( action ){
 
   //open_memoクラスの親要素である「js-number-(数字)」を取得
   let
@@ -104,15 +104,29 @@ function passIdName( action ){
 }
 
 
-// 指定されたID内の特定の要素を読み込むための関数
-function loadTargetOnId( idName ,targetName ){
-
+// クリックされたボタンに紐付けられた内容を読み込むための関数
+function loadMemoText( className ,targetName ){
+  // 指定されたIDの
   const
-    loadTarget = document.querySelector( `${idName} ${targetName}` );
+    loadTarget = document.querySelector( `.${className} ${targetName}` );
 
-  return loadTarget;
+  return loadTarget.textContent;
 }
 
+
+// #modalMemoWindow 直下の要素を読み込んで、
+//　内容を差し込むための関数
+function InsertModalContent ( targetName, text ){
+
+  // #modalMemoWindow 内の指定された要素を取得
+  const
+    ElementName = `#modalMemoWindow ${targetName}`,
+    // 内容を差し込みたい
+    insertTarget = document.querySelector( ElementName );
+
+    return insertTarget.textContent = text;
+
+}
 
 
 // 
@@ -139,6 +153,26 @@ arrayOpenMemoBtn.filter(action => {
       document.getElementById('deleteMemo').style.display = 'none';
     }
 
+    const
+      // 押されたボタンのメモ本体に付与された固有のクラス名を取得
+      // 例：js-number-1
+      targetParent = passClassName(action),
+
+      // メモの内容をそれぞれ取得
+      // タイトル
+      textOfTitle = loadMemoText( targetParent, 'h3' ),
+      // メモの内容
+      textOfContent = loadMemoText( targetParent, '.smallMemoContent' ),
+      // 登録された日時
+      writeTime = loadMemoText( targetParent, '.openMemo .writeTime' );
+
+    // modal内に、それぞれ対応する内容を差し込み
+    // タイトル
+    InsertModalContent('h2', textOfTitle);
+    // メモの内容
+    InsertModalContent('#modalMemoContent', textOfContent);
+    // 登録された日時
+    InsertModalContent('#memoWriteTime', writeTime);
 
   });
 });
