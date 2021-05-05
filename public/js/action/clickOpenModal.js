@@ -13,7 +13,7 @@ const
 
 let
 　//表示ボタンをすべて読み込み
-  arrayMemoBtn = document.getElementsByClassName('test');
+  arrayMemoBtn = document.getElementsByClassName('openMemo');
   //クラスを配列化
   arrayMemoBtn = Array.from(arrayMemoBtn);
 
@@ -25,14 +25,20 @@ let
 // -----------------------------------------------
 
 // フェードイン
-function opacity_0_to_100(fade_box, delay_Time = 600){
+function opacity_0_to_100(fade_box, delay_Time = 250){
+
+  fade_box.style.display = 'block';
+
   fade_box.animate({
     opacity:[0, 1]
   }, delay_Time);
 }
 
 // フェードアウト
-function opacity_100_to_0(fade_box, delay_Time = 600){
+function opacity_100_to_0(fade_box, delay_Time = 250){
+
+  fade_box.style.display = '';
+
   fade_box.animate({
     opacity:[1, 0]
   }, delay_Time);
@@ -41,7 +47,6 @@ function opacity_100_to_0(fade_box, delay_Time = 600){
 // -----------------------------------------------
 
 // クリック時に発動
-// ※何故かgetElementByIdを定数にすると上手く動きません
 arrayMemoBtn.forEach(btn => {
   btn.addEventListener('click', function(){
 
@@ -51,11 +56,9 @@ arrayMemoBtn.forEach(btn => {
 });
 
 
-if( overLay != null ){
-  overLay.addEventListener('click', function(){
+overLay.addEventListener('click', function(){
 
-    // フェードアウトを実行
-    opacity_100_to_0( modalWrapp, 600 );
+  // フェードアウトを実行
+  opacity_100_to_0( modalWrapp, 600 );
 
-  });
-}
+});
