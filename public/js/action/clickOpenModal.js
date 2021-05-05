@@ -6,38 +6,11 @@
 // 
 
 const
-  contentOfModal = `
-    <div id="modalWrapp">
-      <div id="overLay"></div>
-      <div id="modalMemoWindow">
-        <h2></h2>
-
-        <div class="wrapMenu">
-          <span id="memoWriteTime"></span>
-          <div id="btnBox">
-            <a id="editMemo">編集</a>
-            <div id="deleteMemo">削除</div>
-            <div id="closeMemo">閉じる</div>
-          </div><!-- /#btnBox -->
-        </div><!-- /#btnBox -->
-      
-        <div id="modalMemoContent">
-      
-        </div><!-- /#modalMemoContent -->
-      </div><!-- /div#modalMemoWindow -->
-    </div>
-  `;
-
-const
-  // 追加されたことを確認する用のdiv 
-  testDiv = '<div id="addTestDiv">This is test!<div>',
-
   // modalの全体を取得
   modalWrapp = document.getElementById('modalWrapp'),
   // overLayの部分を取得（クリック判定用）
   overLay = document.getElementById('overLay');
 
-  
 let
 　//表示ボタンをすべて読み込み
   arrayMemoBtn = document.getElementsByClassName('test');
@@ -50,21 +23,6 @@ let
 
 
 // -----------------------------------------------
-
-
-function addModal( target ){
-  const 
-    wrapper = document.getElementById('js-memoWrap');
-
-    wrapper.insertAdjacentHTML('afterend', target);
-
-    console.log('add modal.');
-}
-
-function deleteModal( target ){
-  target.remove();
-  console.log('delete modal.');
-}
 
 // フェードイン
 function opacity_0_to_100(fade_box, delay_Time = 600){
