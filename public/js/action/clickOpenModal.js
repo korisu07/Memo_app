@@ -64,20 +64,12 @@ function opacity_100_to_0(fade_box, delay_Time = 250){
   }, delay_Time - 50);  
 }
 
-function addClass( addTarget, className ){
-  addTarget.classList.add( className );
-}
-
-function resetClass( deleteTaget ){
-  deleteTaget.removeAttribute("class");
-}
-
 // クリックされたボタンのクラス名が、デフォルト用クラスかどうかを判定
 function boolDefaultClass( targetBtn ){
 
   const
-  // 先頭の「open_」を除外した結果を判定
-  clickCookieName = targetBtn.id.replace('open_', '');
+    // 先頭の「open_」を除外した結果を判定
+    clickCookieName = targetBtn.id.replace('open_', '');
 
   if( clickCookieName === 'default' ){
     return true;
@@ -85,6 +77,49 @@ function boolDefaultClass( targetBtn ){
     return false;
   }
 }
+
+
+// クリックされたボタンの親要素のクラス名を取得する関数
+function passClassName( action ){
+
+  //open_memoクラスの親要素である「js-number-(数字)」を取得
+  let
+    // まずクリックされた開くボタンの親要素のクラスを取得
+    parentClass = action.parentNode.className;
+
+    // 余分なクラス名を除外
+    parentClass = parentClass.replace('memo', '');
+    parentClass = parentClass.replace(' ', '');
+
+  return parentClass;
+
+}
+
+
+// クリックされたボタンに紐付けられた内容を読み込むための関数
+function loadMemoText( className ,targetName ){
+  // 指定されたIDの
+  const
+    loadTarget = document.querySelector( `.${className} ${targetName}` );
+
+  return loadTarget.textContent;
+}
+
+
+// #modalMemoWindow 直下の要素を読み込んで、
+//　内容を差し込むための関数
+function InsertModalContent ( targetName, text ){
+
+  // #modalMemoWindow 内の指定された要素を取得
+  const
+    ElementName = `#modalMemoWindow ${targetName}`,
+    // 内容を差し込みたい
+    insertTarget = document.querySelector( ElementName );
+
+    return insertTarget.textContent = text;
+
+}
+
 
 // 
 // ここまで　関数
@@ -109,7 +144,28 @@ arrayOpenMemoBtn.filter(action => {
       document.getElementById('editMemo').style.display = 'none';
       document.getElementById('deleteMemo').style.display = 'none';
     }
-    
+
+    const
+      // 押されたボタンのメモ本体に付与された固有のクラス名を取得
+      // 例：js-number-1
+      targetParent = passClassName(action),
+
+      // メモの内容をそれぞれ取得
+      // タイトル
+      textOfTitle = loadMemoText( targetParent, 'h3' ),
+      // メモの内容
+      textOfContent = loadMemoText( targetParent, '.smallMemoContent' ),
+      // 登録された日時
+      writeTime = loadMemoText( targetParent, '.openMemo .writeTime' );
+
+    // modal内に、それぞれ対応する内容を差し込み
+    // タイトル
+    InsertModalContent('h2', textOfTitle);
+    // メモの内容
+    InsertModalContent('#modalMemoContent', textOfContent);
+    // 登録された日時
+    InsertModalContent('#memoWriteTime', writeTime);
+
   });
 });
 
