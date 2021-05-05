@@ -97,7 +97,7 @@ function boolDefaultClass( targetBtn ){
 // 
 
 // クリック時に発動
-arrayOpenMemoBtn.forEach(action => {
+arrayOpenMemoBtn.filter(action => {
   action.addEventListener('click', function(){
 
     opacity_0_to_100( modalWrapp );
@@ -113,7 +113,7 @@ arrayOpenMemoBtn.forEach(action => {
   });
 });
 
-arrayCloseMemoDivs.forEach(action =>{
+arrayCloseMemoDivs.filter(action =>{
   action.addEventListener('click', function(){
 
     // フェードアウトを実行
