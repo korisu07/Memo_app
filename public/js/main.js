@@ -21,7 +21,8 @@ function loadModulefile( filepath ){
 const JS_files = [
   // 相対パス
   'js/viewer/firstSetting.js',
-  'js/clickOpenAction.js'
+  'js/action/clickOpenModal.js'
+  // 'js/clickOpenAction.js'
 ];
 
 const JS_module = [
