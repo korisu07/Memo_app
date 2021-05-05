@@ -40,48 +40,22 @@ function opacity_100_to_0(fade_box, delay_Time = 600){
 
 // -----------------------------------------------
 
-
-// 要素が追加されたときに感知する処理
-
-const observer1 = new MutationObserver(function(){
-  if( document.getElementById('modalWrapp') != null ){
-    // フェードインを実行
-    opacity_0_to_100( document.getElementById('modalWrapp'), 600 );
-  }
-
-});
-
-const config = { 
-  attributes: true, 
-  childList: true, 
-  characterData: true 
-};
-
-
-// -----------------------------------------------
-
 // クリック時に発動
 // ※何故かgetElementByIdを定数にすると上手く動きません
 arrayMemoBtn.forEach(btn => {
   btn.addEventListener('click', function(){
 
-    // Modalを追加
-    addModal( contentOfModal );
+    opacity_0_to_100( modalWrapp, 600 );
 
   });
 });
 
-  // 追加されたModalにフェードインを適用
-  observer1.observe( document.getElementById('modalWrapp'), config );
 
 if( overLay != null ){
   overLay.addEventListener('click', function(){
+
     // フェードアウトを実行
-    opacity_100_to_0( document.getElementById('modalWrapp'), 600 );
-  
-    // Modalを削除
-    setTimeout( 
-      deleteModal( document.getElementById('modalWrapp') )
-    , 600);
+    opacity_100_to_0( modalWrapp, 600 );
+
   });
 }
