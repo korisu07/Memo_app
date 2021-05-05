@@ -64,14 +64,6 @@ function opacity_100_to_0(fade_box, delay_Time = 250){
   }, delay_Time - 50);  
 }
 
-function addClass( addTarget, className ){
-  addTarget.classList.add( className );
-}
-
-function resetClass( deleteTaget ){
-  deleteTaget.removeAttribute("class");
-}
-
 // クリックされたボタンのクラス名が、デフォルト用クラスかどうかを判定
 function boolDefaultClass( targetBtn ){
 
