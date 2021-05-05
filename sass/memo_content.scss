@@ -2,8 +2,10 @@
 @charset "UTF-8";
 
 // #modalMemoWindowの基本スタイル
-div#modalMemoWindow{
+div#modalWrapp{
   display: none;
+}
+div#modalMemoWindow{
   z-index: 99;
   background: #fff;
   // display: none;
@@ -122,7 +124,6 @@ div#deleteConfirm{
 
 #overLay{
   z-index: 2;
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
