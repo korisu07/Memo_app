@@ -86,17 +86,6 @@ function boolDefaultClass( targetBtn ){
   }
 }
 
-// #modalMemoWindow 直下の要素を読み込むための関数
-// 後に、内容を代入する処理を簡易化するために使います
-function loadModalElement ( targetName ){
-
-  // #modalMemoWindow 内の指定された要素を取得し、
-  // 中身のテキストを返す
-  const
-    ElementName = `#modalMemoWindow ${targetName}`;
-
-    return document.querySelector( ElementName );
-}
 
 // クリックされたボタンの親要素のクラス名を取得する関数
 function passIdName( action ){
@@ -113,6 +102,17 @@ function passIdName( action ){
   return parentClass;
 
 }
+
+
+// 指定されたID内の特定の要素を読み込むための関数
+function loadTargetOnId( idName ,targetName ){
+
+  const
+    loadTarget = document.querySelector( `${idName} ${targetName}` );
+
+  return loadTarget;
+}
+
 
 
 // 
@@ -138,8 +138,7 @@ arrayOpenMemoBtn.filter(action => {
       document.getElementById('editMemo').style.display = 'none';
       document.getElementById('deleteMemo').style.display = 'none';
     }
-    
-    passIdName( action );
+
 
   });
 });
