@@ -98,7 +98,8 @@ function passClassName( action ){
 
 // クリックされたボタンに紐付けられた内容を読み込むための関数
 function loadMemoText( className ,targetName ){
-  // 指定されたIDの
+  // 例：「js-number-1」内のタイトルを読み込みたい場合
+  // className = js-number-1, targetName = h3　←このように引数を指定する
   const
     loadTarget = document.querySelector( `.${className} ${targetName}` );
 
