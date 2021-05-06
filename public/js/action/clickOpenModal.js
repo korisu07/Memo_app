@@ -51,7 +51,8 @@ function opacity_0_to_100(fade_box, delay_Time = 250){
   fade_box.animate({
     opacity:[0, 1]
   }, delay_Time);
-}
+} // end function, opacity_0_to_100.
+
 
 // フェードアウト
 function opacity_100_to_0(fade_box, delay_Time = 250){
@@ -62,7 +63,8 @@ function opacity_100_to_0(fade_box, delay_Time = 250){
   setTimeout(() => {
     fade_box.style.display = '';
   }, delay_Time - 50);  
-}
+} // end function, opacity_100_to_0.
+
 
 // クリックされたボタンのクラス名が、デフォルト用クラスかどうかを判定
 function boolDefaultClass( targetBtn ){
@@ -76,7 +78,7 @@ function boolDefaultClass( targetBtn ){
   } else {
     return false;
   }
-}
+} // end function, boolDefaultClass.
 
 
 // クリックされたボタンの親要素のクラス名を取得する関数
@@ -93,18 +95,21 @@ function passClassName( action ){
 
   return parentClass;
 
-}
+} // end function, passClassName.
 
 
 // クリックされたボタンに紐付けられた内容を読み込むための関数
 function loadMemoText( className ,targetName ){
+
   // 例：「js-number-1」内のタイトルを読み込みたい場合
   // className = js-number-1, targetName = h3　←このように引数を指定する
   const
     loadTarget = document.querySelector( `.${className} ${targetName}` );
 
   return loadTarget.textContent;
-}
+
+} // end function, loadMemoText.
+
 
 
 // #modalMemoWindow 直下の要素を読み込んで、
@@ -119,7 +124,7 @@ function InsertModalContent ( targetName, text ){
 
     return insertTarget.textContent = text;
 
-}
+} // end function, InsertModalContent.
 
 
 // 
@@ -144,7 +149,7 @@ arrayOpenMemoBtn.filter(action => {
       // 編集ボタンを削除ボタンを隠す
       document.getElementById('editMemo').style.display = 'none';
       document.getElementById('deleteMemo').style.display = 'none';
-    }
+    } // end if.
 
     const
       // 押されたボタンのメモ本体に付与された固有のクラス名を取得
@@ -167,8 +172,9 @@ arrayOpenMemoBtn.filter(action => {
     // 登録された日時
     InsertModalContent('#memoWriteTime', writeTime);
 
-  });
-});
+  }); // end addEventListener.
+}); // end filter.
+
 
 arrayCloseMemoDivs.filter(action =>{
   action.addEventListener('click', function(){
@@ -176,5 +182,5 @@ arrayCloseMemoDivs.filter(action =>{
     // フェードアウトを実行
     opacity_100_to_0( modalWrapp );
   
-  });
-});
+  }); // end addEventListener.
+}); // end filter.
