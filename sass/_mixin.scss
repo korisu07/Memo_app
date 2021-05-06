@@ -10,7 +10,7 @@ $brown: #302000;
 @mixin memoAndBtnSizeChange($memoWidth, $memoHeight) {
   width: $memoWidth;
   height: $memoHeight;
-  .delete_btn{
+  .smallDeletebtn{
     // line-heightを、メモ本体のheightに合わせて微調整
     // -2 → ボタンに border: 1px が上下両辺にあるため、その分を減算しています
     line-height: ($memoHeight * 0.15 ) - 2;

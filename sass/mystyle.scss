@@ -106,7 +106,7 @@ textarea#memoTextArea {
     }
 
     // 削除ボタン
-    .delete_btn {
+    .smallDeletebtn {
       cursor: pointer;
       font-family: 'ＭＳ ゴシック', 'Hiragino Kaku Gothic ProN', sans-serif;
       text-align: center;
@@ -126,7 +126,7 @@ textarea#memoTextArea {
         transition: 0.2s;
         opacity: 1;
       }
-    }// end .delete_btn
+    }// end .smallDeletebtn
   }// end div.memo
 
   // memo のレイアウトここまで

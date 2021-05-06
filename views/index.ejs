@@ -28,7 +28,7 @@
       <% memos.filter((memo) => { %>
       <div class="memo js-number-<%= memo.memo_id %>">
           <h3><%= memo.content[0] %></h3>
-          <div class="delete_btn">×</div>
+          <div class="smallDeletebtn">×</div>
           <div class="smallMemoContent"><%= memo.content[1] %></div>
         <div class="openMemo">
           <span class="writeTime"><%= String(memo.content[2]).replace('登録日：', '').replace('更新日：', ''); %></span>
