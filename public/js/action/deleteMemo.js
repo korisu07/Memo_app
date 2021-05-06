@@ -18,4 +18,5 @@ function deleteConfirm( memoNumber ){
   `;
 
   return confirmModal;
-}
+  
+} // end function, deleteConfirm.
