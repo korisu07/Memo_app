@@ -127,6 +127,19 @@ function InsertModalContent ( targetName, text ){
 } // end function, InsertModalContent.
 
 
+// クリックされたボタンが属しているメモ番号をもとに、
+// 編集ボタンのリンクタグに、href属性を付与するための処理
+function addEditAction( targetClassName, targetBtn ){
+
+  const
+    editId = '/edit/' + targetClassName.replace('js-number-', '');
+
+  // 対象のボタンへhref属性を付与
+  targetBtn.href = editId;
+
+} // end function, addEditAction.
+
+
 // 
 // ここまで　関数
 // 
@@ -163,6 +176,11 @@ arrayOpenMemoBtn.filter(action => {
       textOfContent = loadMemoText( targetParent, '.smallMemoContent' ),
       // 登録された日時
       writeTime = loadMemoText( targetParent, '.openMemo .writeTime' );
+
+
+    // 編集ボタンに href属性 を付与する処理
+    addEditAction( targetParent, editMemo);
+
 
     // modal内に、それぞれ対応する内容を差し込み
     // タイトル
