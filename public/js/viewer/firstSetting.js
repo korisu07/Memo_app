@@ -9,10 +9,10 @@ const
   if(childCount === 0){
     const 
       tag =
-      `<div class="memo">
+      `<div class="memo js-number-default">
           <h3>タイトル</h3>
 
-          <div id="content_default" class="smallMemoContent">メモを登録してください。</div>
+          <div class="smallMemoContent">メモを登録してください。</div>
           <div id="open_default" class="openMemo">
           <span class="writeTime"></span>
           <span class="openBtn">メモを開く</span>
