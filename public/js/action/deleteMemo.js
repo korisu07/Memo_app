@@ -8,7 +8,6 @@
 
 const
   overLay = document.getElementById('overLay'),
-  modalMemoWindow = document.getElementById('modalMemoWindow'),
   noDel = document.getElementById('noDel');
 
 let
@@ -39,13 +38,25 @@ function deleteConfirm( memoNumber ){
         <button>はい</button>
       </form>
 
-      <a href="/" id="noDel">いいえ</div>
+      <a href="/" id="noDel">いいえ</a>
     </div>
   `;
 
   return confirmModal;
 
 } // end function, deleteConfirm.
+
+// クリックされたボタンに付与されたクラス名（メモ番号）をもとに、
+// 削除確認の「はい」ボタンに、href属性を付与するための処理
+function addDeleteAction( targetClassName, targetElem ){
+
+  const
+    deleteId = '/delete/' + targetClassName.replace('js-number-', '');
+
+  // モーダル内の編集ボタンへhref属性を付与
+  targetElem.href = deleteId;
+
+} // end function, addEditAction.
 
 // 
 // ここまで　関数
@@ -63,12 +74,13 @@ smallDeletebtn.filter(( btn )=>{
 
     const 
       deleteId = passClassName( btn ).replace('js-number-', '');
+
     opacity_0_to_100( modalWrapp );
 
     modalMemoWindow.style.display = 'none';
 
+    // overLayの後ろに、削除確認の画面を追加
     overLay.insertAdjacentHTML('afterend', deleteConfirm(deleteId));
 
   });
 });
-
