@@ -1,28 +1,5 @@
 'use strict';
 
-// 削除ボタンを押した際の処理をここに記述します。
-
-// 
-// ★グローバルスコープ
-// 
-
-const
-  overLay = document.getElementById('overLay'),
-  noDel = document.getElementById('noDel');
-
-let
-  smallDeletebtn = document.getElementsByClassName('smallDeletebtn');
-  smallDeletebtn = Array.from(smallDeletebtn);
-
-
-
-// 
-// ここまで　グローバルスコープ　
-// 
-
-
-// -----------------------------------------------
-
 // 
 // ★関数
 // 
