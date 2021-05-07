@@ -3,13 +3,30 @@
 import { brTagChange, escapeHTMLtags } from "./cookies/replaceBrTag.js";
 
 
+// 
+// ★グローバルスコープ
+// 
+
+// メモ部分をすべて読み込み
+const contents = document.querySelectorAll('div.smallMemoContent');
+
+
 // 改行チェック用の条件
 // 改行が５回されたらマッチして、５回目の改行を配列として切り出す
 function match5Br(targetText) {
   return targetText.match(new RegExp('(<br>|[^<br>]+<br>){4}'))
 }
- 
+
+// 
+// ここまで　グローバルスコープ　
+// 
+
+
 // -----------------------------------------------
+
+// 
+// ★関数
+// 
 
 // 改行が5回以上繰り返されているかをチェックする
 function boolsearch5Br( targetText ){
@@ -25,7 +42,6 @@ function boolsearch5Br( targetText ){
   return resultOfSearch;
 }
 
-// -----------------------------------------------
 
 // 文字省略のための処理
 function brTagString(Element, bool) {
@@ -50,14 +66,24 @@ function brTagString(Element, bool) {
   else if (Element.textContent.length >= 50) {
     return Element.innerHTML.substr(0, 50) + '...';
   }
-  // 50文字を超えていない場合、そのまま返します。
+  // 50文字を超えていない場合、そのまま返します
   else {
     return Element.innerHTML;
-  }
-}
+  } // end if.
 
-// メモ部分をすべて読み込み
-const contents = document.querySelectorAll('div.smallMemoContent');
+} // end function, brTagString.
+
+
+// 
+// ここまで　関数
+// 
+
+// -----------------------------------------------
+
+// 
+// ★処理が発動するタイミングを記述
+// 
+
 
 // 関数を実行するための処理
 // メモ部分を一つずつ処理
