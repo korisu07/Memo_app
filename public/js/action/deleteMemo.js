@@ -81,6 +81,9 @@ function actionNoDel(){
 smallDeletebtn.filter(( btn )=>{
   btn.addEventListener('click', function(){
 
+    // 重複防止のために、クリックイベントを操作
+    changePointerEvents( btn );
+
     const 
       deleteId = passParentClassName( btn ).replace('js-number-', '');
 
@@ -99,6 +102,9 @@ smallDeletebtn.filter(( btn )=>{
 
 // モーダル内の削除ボタンがクリックされた場合の処理
 modalDeleteBtn.addEventListener('click', function(){
+
+  // 重複防止のために、クリックイベントを操作
+  changePointerEvents( btn );
 
   // あらかじめクラスへ受け渡されていたメモ番号を取得し、
   // 番号のみを取り出す

@@ -43,9 +43,6 @@ const
       </div><!-- /div#modalMemoWindow -->
     </div>
   `;
-
-
-
 // end const.
 
 let
@@ -172,6 +169,28 @@ function addModalDeleteClass( targetClassName ) {
 
 }
 
+// 重複防止用の処理
+// クリックしたときのイベントを操作します
+
+
+// イベントを一時的に無効化し、
+// 表示が完了した頃に有効な状態へ戻すための処理
+function changePointerEvents( target, delayTime = 300 ){
+
+  // 一時的にクリックイベントを無効化
+  target.style.pointerEvents = 'none';
+
+  // 指定された時間の分だけ遅延させる
+  setTimeout(() => {
+
+    // クリックイベントを有効な状態へ戻す
+    target.style.pointerEvents = 'auto';
+
+  }, delayTime);
+
+} // end function changePointerEvents.
+
+
 
 // 
 // ここまで　関数
@@ -186,6 +205,9 @@ function addModalDeleteClass( targetClassName ) {
 // メモを開くための処理
 arrayOpenMemoBtn.filter(action => {
   action.addEventListener('click', function(){
+
+    // 一時的にクリックイベントを無効化
+    changePointerEvents( action );
 
     // メモのモーダル表示の表示設定をリセット
     modalMemoWindow.style.display = '';
@@ -227,6 +249,7 @@ arrayOpenMemoBtn.filter(action => {
     // 登録された日時
     InsertModalContent('#memoWriteTime', writeTime);
 
+
   }); // end addEventListener.
 }); // end filter.
 
@@ -234,6 +257,9 @@ arrayOpenMemoBtn.filter(action => {
 // モーダルを閉じるための処理
 arrayCloseMemoDivs.filter(action =>{
   action.addEventListener('click', function(){
+
+    // 重複防止のために、クリックイベントを操作
+    changePointerEvents( action );
 
     // フェードアウトを実行
     opacity_100_to_0( modalWrapp );
