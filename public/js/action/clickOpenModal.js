@@ -111,7 +111,6 @@ function loadMemoText( className ,targetName ){
 } // end function, loadMemoText.
 
 
-
 // #modalMemoWindow 直下の要素を読み込んで、
 //　内容を差し込むための関数
 function InsertModalContent ( targetName, text ){
@@ -160,7 +159,7 @@ function addModalDeleteClass( targetClassName ) {
 // ★処理が発動するタイミングを記述
 // 
 
-// クリック時に発動
+// メモを開くための処理
 arrayOpenMemoBtn.filter(action => {
   action.addEventListener('click', function(){
 
@@ -205,6 +204,7 @@ arrayOpenMemoBtn.filter(action => {
 }); // end filter.
 
 
+// メモを閉じるための処理
 arrayCloseMemoDivs.filter(action =>{
   action.addEventListener('click', function(){
 
