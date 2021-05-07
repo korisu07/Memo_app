@@ -1,9 +1,8 @@
 'use strict';
 
-const 
-  wrapElem = document.querySelector('div.memoWrap'),
-  //メモの数をカウント
-  childCount = wrapElem.childElementCount;
+  // 
+  // ★初期設定
+  // 
 
   //メモが登録されていない場合のみ発動
   if(childCount === 0){
@@ -20,4 +19,4 @@ const
       </div>`;
   
     wrapElem.innerHTML = tag;
-  }
+  } // end if.

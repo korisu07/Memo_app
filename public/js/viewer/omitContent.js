@@ -1,32 +1,26 @@
 'use strict';
 
+// 
+// ★ import
+// 
+
 import { brTagChange, escapeHTMLtags } from "./cookies/replaceBrTag.js";
 
 
 // 
-// ★グローバルスコープ
+// ★関数
 // 
-
-// メモ部分をすべて読み込み
-const contents = document.querySelectorAll('div.smallMemoContent');
 
 
 // 改行チェック用の条件
 // 改行が５回されたらマッチして、５回目の改行を配列として切り出す
 function match5Br(targetText) {
-  return targetText.match(new RegExp('(<br>|[^<br>]+<br>){4}'))
-}
 
-// 
-// ここまで　グローバルスコープ　
-// 
+  return targetText.match(new RegExp('(<br>|[^<br>]+<br>){4}'));
+
+} // end function, match5Br.
 
 
-// -----------------------------------------------
-
-// 
-// ★関数
-// 
 
 // 改行が5回以上繰り返されているかをチェックする
 function boolsearch5Br( targetText ){
@@ -40,7 +34,8 @@ function boolsearch5Br( targetText ){
   }
 
   return resultOfSearch;
-}
+} // end function, boolsearch5Br.
+
 
 
 // 文字省略のための処理
@@ -87,7 +82,7 @@ function brTagString(Element, bool) {
 
 // 関数を実行するための処理
 // メモ部分を一つずつ処理
-contents.forEach(memoBox => {
+contents.filter(memoBox => {
   const 
     content = escapeHTMLtags(memoBox.innerHTML);
   
