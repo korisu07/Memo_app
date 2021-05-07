@@ -23,7 +23,6 @@ const JS_files = [
   'js/viewer/firstSetting.js',
   'js/action/clickOpenModal.js',
   'js/action/deleteMemo.js'
-  // 'js/clickOpenAction.js'
 ];
 
 const JS_module = [
