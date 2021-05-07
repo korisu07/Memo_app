@@ -8,6 +8,8 @@
 const
   // modalの全体を取得
   modalWrapp = document.getElementById('modalWrapp'),
+  // modalのメモ表示をする画面を取得
+  modalMemoWindow = document.getElementById('modalMemoWindow'),
 
   // modal内の編集ボタン
   modalEditBtn = document.getElementById('editMemo'),
@@ -18,7 +20,29 @@ const
   arrayCloseMemoDivs = [
     document.getElementById('overLay'),
     document.getElementById('closeMemo')
-  ];
+  ],
+
+  modalViewer = `
+    <div id="modalWrapp">
+      <div id="overLay"></div>
+      <div id="modalMemoWindow">
+        <h2></h2>
+
+        <div class="wrapMenu">
+          <span id="memoWriteTime"></span>
+          <div id="btnBox">
+            <a id="editMemo">編集</a>
+            <div id="deleteMemo">削除</div>
+            <div id="closeMemo">閉じる</div>
+          </div><!-- /#btnBox -->
+        </div><!-- /#btnBox -->
+      
+        <div id="modalMemoContent">
+      
+        </div><!-- /#modalMemoContent -->
+      </div><!-- /div#modalMemoWindow -->
+    </div>
+  `;
 
 
 
@@ -163,12 +187,15 @@ function addModalDeleteClass( targetClassName ) {
 arrayOpenMemoBtn.filter(action => {
   action.addEventListener('click', function(){
 
+    // メモのモーダル表示の表示設定をリセット
+    modalMemoWindow.style.display = '';
+
     opacity_0_to_100( modalWrapp );
 
     // デフォルトメモが登録されている場合
     if( boolDefaultClass( action ) ){
 
-      // 編集ボタンを削除ボタンを隠す
+      // 編集ボタンと削除ボタンを隠す
       modalEditBtn.style.display = 'none';
       modalDeleteBtn.style.display = 'none';
     } // end if.
@@ -204,12 +231,23 @@ arrayOpenMemoBtn.filter(action => {
 }); // end filter.
 
 
-// メモを閉じるための処理
+// モーダルを閉じるための処理
 arrayCloseMemoDivs.filter(action =>{
   action.addEventListener('click', function(){
 
     // フェードアウトを実行
     opacity_100_to_0( modalWrapp );
+
+    const 
+      deleteConfirm = document.getElementById( 'deleteConfirm' );
+
+    // モーダルを閉じる際、削除の確認画面が追加されている場合は削除する
+    if( deleteConfirm != null ){
+
+      // 削除の確認画面を除外
+      deleteConfirm.remove();
+
+    }
   
   }); // end addEventListener.
 }); // end filter.
