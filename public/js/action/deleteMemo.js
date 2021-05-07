@@ -27,7 +27,7 @@ let
 // ★関数
 // 
 
-// 削除する際の確認画面を出力する処理
+// 削除する際の確認画面を設定する処理
 function deleteConfirm( memoNumber ){
 
   const confirmModal = `
@@ -38,13 +38,14 @@ function deleteConfirm( memoNumber ){
         <button>はい</button>
       </form>
 
-      <a href="/" id="noDel">いいえ</a>
+      <a id="noDel" href="javascript:actionNoDel();">いいえ</a>
     </div>
   `;
 
   return confirmModal;
 
 } // end function, deleteConfirm.
+
 
 // クリックされたボタンに付与されたクラス名（メモ番号）をもとに、
 // 削除確認の「はい」ボタンに、href属性を付与するための処理
@@ -57,6 +58,27 @@ function addDeleteAction( targetClassName, targetElem ){
   targetElem.href = deleteId;
 
 } // end function, addEditAction.
+
+
+// 削除の確認画面で「いいえ」が押された場合に、
+// 内容表示のモーダルに切り替えるための処理
+function actionNoDel(){
+
+  const
+    deleteConfirm = document.getElementById('deleteConfirm');
+
+  opacity_100_to_0( deleteConfirm, 250 );
+
+  setTimeout(() => {
+    deleteConfirm.remove();
+  }, 300);
+
+  // 内容を表示するモーダルを非表示に
+  opacity_0_to_100( modalMemoWindow );
+
+} // end function, actionNoDel.
+
+
 
 // 
 // ここまで　関数
@@ -75,12 +97,33 @@ smallDeletebtn.filter(( btn )=>{
     const 
       deleteId = passClassName( btn ).replace('js-number-', '');
 
+    // モーダル全体をフェードイン
     opacity_0_to_100( modalWrapp );
-
+    // 内容を表示するモーダルを非表示に
     modalMemoWindow.style.display = 'none';
 
     // overLayの後ろに、削除確認の画面を追加
+    // その際に、削除するメモの番号を、deleteConfirm関数に受け渡し
     overLay.insertAdjacentHTML('afterend', deleteConfirm(deleteId));
 
-  });
-});
+  }); // end addEventListener.
+}); // end filter.
+
+
+// モーダル内の削除ボタンがクリックされた場合の処理
+modalDeleteBtn.addEventListener('click', function(){
+
+  // あらかじめクラスへ受け渡されていたメモ番号を取得し、
+  // 番号のみを取り出す
+  const
+    modalDeleteId = modalDeleteBtn.className.replace('js-number-', '');
+
+  // 内容を表示するモーダルを非表示に
+  // ※要素は削除せず、display: none;に変更される
+  opacity_100_to_0( modalMemoWindow );
+
+  // overLayの後ろに、削除確認の画面を追加
+  // その際に、削除するメモの番号を、deleteConfirm関数に受け渡し
+  overLay.insertAdjacentHTML('afterend', deleteConfirm( modalDeleteId ));
+
+}); // end addEventListener.
