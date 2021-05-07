@@ -19,21 +19,29 @@ function loadModulefile( filepath ){
  */
 
 const JS_files = [
-  // 相対パス
+  // index.ejsを基準とした相対パスで指定
+  // global scope
+  'js/viewer/globalScope.js',
+  'js/action/globalScope.js',
+
+  // viewer
   'js/viewer/firstSetting.js',
+
+  // action
   'js/action/clickOpenModal.js',
   'js/action/deleteMemo.js'
 ];
 
 const JS_module = [
-  // 相対パス
-  'js/omitContent.js'
+  // index.ejsを基準とした相対パスで指定
+  // viewer
+  'js/viewer/omitContent.js'
 ];
 
-JS_module.forEach((moduleFile) =>{
+JS_module.filter((moduleFile) =>{
   loadModulefile( moduleFile );
 });
 
-JS_files.forEach((file) => {
+JS_files.filter((file) => {
   loadJSfile( file );
 });
