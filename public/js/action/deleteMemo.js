@@ -47,19 +47,6 @@ function deleteConfirm( memoNumber ){
 } // end function, deleteConfirm.
 
 
-// クリックされたボタンに付与されたクラス名（メモ番号）をもとに、
-// 削除確認の「はい」ボタンに、href属性を付与するための処理
-function addDeleteAction( targetClassName, targetElem ){
-
-  const
-    deleteId = '/delete/' + targetClassName.replace('js-number-', '');
-
-  // モーダル内の編集ボタンへhref属性を付与
-  targetElem.href = deleteId;
-
-} // end function, addEditAction.
-
-
 // 削除の確認画面で「いいえ」が押された場合に、
 // 内容表示のモーダルに切り替えるための処理
 function actionNoDel(){
