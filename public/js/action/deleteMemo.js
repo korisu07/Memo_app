@@ -95,7 +95,7 @@ smallDeletebtn.filter(( btn )=>{
   btn.addEventListener('click', function(){
 
     const 
-      deleteId = passClassName( btn ).replace('js-number-', '');
+      deleteId = passParentClassName( btn ).replace('js-number-', '');
 
     // モーダル全体をフェードイン
     opacity_0_to_100( modalWrapp );

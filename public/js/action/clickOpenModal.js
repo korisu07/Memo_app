@@ -106,7 +106,7 @@ function boolDefaultClass( targetBtn ){
 
 
 // クリックされたボタンの親要素のクラス名を取得する関数
-function passClassName( action ){
+function passParentClassName( action ){
 
   //open_memoクラスの親要素である「js-number-(数字)」を取得
   let
@@ -119,7 +119,7 @@ function passClassName( action ){
 
   return parentClass;
 
-} // end function, passClassName.
+} // end function, passParentClassName.
 
 
 // クリックされたボタンに紐付けられた内容を読み込むための関数
@@ -203,7 +203,7 @@ arrayOpenMemoBtn.filter(action => {
     const
       // 押されたボタンのメモ本体に付与された固有のクラス名を取得
       // 例：js-number-1
-      targetParent = passClassName(action),
+      targetParent = passParentClassName(action),
 
       // メモの内容をそれぞれ取得
       // タイトル
