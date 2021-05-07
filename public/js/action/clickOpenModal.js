@@ -85,7 +85,7 @@ function opacity_100_to_0(fade_box, delay_Time = 250){
   }, delay_Time);
 
   setTimeout(() => {
-    fade_box.style.display = '';
+    fade_box.style.display = 'none';
   }, delay_Time - 50);  
 } // end function, opacity_100_to_0.
 
