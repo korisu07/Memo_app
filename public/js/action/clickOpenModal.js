@@ -10,9 +10,9 @@ const
   modalWrapp = document.getElementById('modalWrapp'),
 
   // modal内の編集ボタン
-  editMemo = document.getElementById('editMemo'),
+  modalEditBtn = document.getElementById('editMemo'),
     // modal内の削除ボタン
-  deleteMemo = document.getElementById('deleteMemo'),
+  modalDeleteBtn = document.getElementById('deleteMemo'),
 
   // メモのmodal表示を閉じるための要素を取得し、配列に
   arrayCloseMemoDivs = [
@@ -129,15 +129,25 @@ function InsertModalContent ( targetName, text ){
 
 // クリックされたボタンが属しているメモ番号をもとに、
 // 編集ボタンのリンクタグに、href属性を付与するための処理
-function addEditAction( targetClassName, targetBtn ){
+function addEditAction( targetClassName ){
 
   const
     editId = '/edit/' + targetClassName.replace('js-number-', '');
 
-  // 対象のボタンへhref属性を付与
-  targetBtn.href = editId;
+  // モーダル内の編集ボタンへhref属性を付与
+  modalEditBtn.href = editId;
 
 } // end function, addEditAction.
+
+
+  // js-number-(数字)のクラスを受けとり、
+  // それをクラス名としてモーダル内の削除ボタンへクラス付与
+function addModalDeleteClass( targetClassName ) {
+  
+  // モーダル内の編集ボタンへクラスを付与
+  modalDeleteBtn.className = targetClassName;
+
+}
 
 
 // 
@@ -160,8 +170,8 @@ arrayOpenMemoBtn.filter(action => {
     if( boolDefaultClass( action ) ){
 
       // 編集ボタンを削除ボタンを隠す
-      document.getElementById('editMemo').style.display = 'none';
-      document.getElementById('deleteMemo').style.display = 'none';
+      modalEditBtn.style.display = 'none';
+      modalDeleteBtn.style.display = 'none';
     } // end if.
 
     const
@@ -179,7 +189,8 @@ arrayOpenMemoBtn.filter(action => {
 
 
     // 編集ボタンに href属性 を付与する処理
-    addEditAction( targetParent, editMemo);
+    addEditAction( targetParent );
+    addModalDeleteClass( targetParent );
 
 
     // modal内に、それぞれ対応する内容を差し込み
