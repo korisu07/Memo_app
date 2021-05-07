@@ -4,7 +4,10 @@
 // ★ import
 // 
 
-import { brTagChange, escapeHTMLtags } from "./cookies/replaceBrTag.js";
+import { brTagChange, escapeHTMLtags } from "/js/cookies/replaceBrTag.js";
+
+
+// -----------------------------------------------
 
 
 // 
@@ -82,7 +85,7 @@ function brTagString(Element, bool) {
 
 // 関数を実行するための処理
 // メモ部分を一つずつ処理
-contents.filter(memoBox => {
+contents.filter( memoBox => {
   const 
     content = escapeHTMLtags(memoBox.innerHTML);
   

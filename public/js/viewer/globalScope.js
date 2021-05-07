@@ -20,8 +20,9 @@ const
 
 
 // メモ部分をすべて読み込み
-const 
-  contents = document.querySelectorAll('div.smallMemoContent');
+let 
+  contents = document.getElementsByClassName('smallMemoContent');
+  contents = Array.from( contents );
   
 
 // ここまで omitContent.js
