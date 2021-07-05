@@ -127,16 +127,12 @@ app.post('/edit/post/:id', (req, res) => {
     content = req.cookies[a][1];
 
   //タイトル部分が空の場合は、もともと登録されているタイトルを再登録
-  switch(true){
-    case req.body.edit_memoTitle != '':
-      title = req.body.edit_memoTitle;
-      break;
+  if(req.body.edit_memoTitle != ''){
+    title = req.body.edit_memoTitle;
   }
 
-  switch(true){
-    case req.body.edit_memoContent != '':
-      content = req.body.edit_memoContent;
-      break;
+  if(req.body.edit_memoContent != ''){
+    content = req.body.edit_memoContent;
   }
 
   time = `更新日：${year}/${month + 1}/${date}`;
